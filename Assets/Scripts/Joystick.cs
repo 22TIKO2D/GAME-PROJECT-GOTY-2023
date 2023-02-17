@@ -86,20 +86,22 @@ namespace Game
             {
                 this.transform.position = this.startPosition;
 
-                // Move away relative to the starting position.
-                this.top.localPosition = Vector2.ClampMagnitude(
+                Vector2 distance = Vector2.ClampMagnitude(
                     this.touchPosition - this.startPosition,
-                    // Clamped to the maximum distance.
+                    // Clamp to the maximum distance.
                     this.topMaxDistance
                 );
 
                 // Divide with `topMaxDistance` to ensure values between [-1.0, 1.0].
-                this.direction = this.top.localPosition / this.topMaxDistance;
+                this.direction = distance / this.topMaxDistance;
+
+                // Move away relative to the starting position.
+                this.top.localPosition = distance;
             }
             else
             {
                 // Move the joystick off-screen.
-                this.transform.position = new Vector2(-100.0f, 0);
+                this.transform.position = new Vector2(-1000.0f, 0);
                 this.top.localPosition = Vector2.zero;
 
                 // Reset the direction.
