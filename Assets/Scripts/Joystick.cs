@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.UI;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace Game
@@ -10,11 +11,13 @@ namespace Game
     {
         /// <summary>Top element moved away relative to the starting position.</summary>
         [SerializeField]
-        private RectTransform top;
+        private Image nob;
+
+        private Image image;
 
         /// <summary>Maximum distance the top element can move.</summary>
         [SerializeField]
-        private float topMaxDistance;
+        private float nobMaxDistance;
 
         /// <summary>Starting position when the finger is pressed down.</summary>
         private Vector2 startPosition = Vector2.zero;
@@ -45,7 +48,7 @@ namespace Game
         /// Speed and direction at which the joystick is moved.
         /// Values never go beyond [-1.0, 1.0].
         /// </summary>
-        public Vector2 direction { get; private set; } = Vector2.zero;
+        public Vector2 Direction { get; private set; } = Vector2.zero;
 
         /// <summary>Finger used for touch inputs.</summary>
         private const int primaryFinger = 0; // First finger to touch the screen.
@@ -84,6 +87,11 @@ namespace Game
             };
         }
 
+        private void Start()
+        {
+            this.image = this.GetComponent<Image>();
+        }
+
         private void Update()
         {
             // When touching show the joystick and calculate the direction.
@@ -100,31 +108,36 @@ namespace Game
                 // If first touch was not over any UI element.
                 if (this.firstTouch == FirstTouch.Clean)
                 {
+                    // Show self and nob.
+                    this.image.enabled = true;
+                    this.nob.enabled = true;
+
                     this.transform.position = this.startPosition;
 
                     Vector2 distance = Vector2.ClampMagnitude(
                         this.touchPosition - this.startPosition,
                         // Clamp to the maximum distance.
-                        this.topMaxDistance
+                        this.nobMaxDistance
                     );
 
-                    // Divide with `topMaxDistance` to ensure values between [-1.0, 1.0].
-                    this.direction = distance / this.topMaxDistance;
+                    // Divide with nob's maximum distance to ensure values between [-1.0, 1.0].
+                    this.Direction = distance / this.nobMaxDistance;
 
                     // Move away relative to the starting position.
-                    this.top.localPosition = distance;
+                    this.nob.transform.localPosition = distance;
                 }
 
                 // If touch is not clean, don't do anything.
             }
             else
             {
-                // Move the joystick off-screen.
-                this.transform.position = new Vector2(-1000.0f, 0);
-                this.top.localPosition = Vector2.zero;
+                // Hide self and nob.
+                this.image.enabled = false;
+                this.nob.transform.localPosition = Vector2.zero;
+                this.nob.enabled = false;
 
                 // Reset the direction.
-                this.direction = Vector2.zero;
+                this.Direction = Vector2.zero;
 
                 // Not touching anymore.
                 this.firstTouch = FirstTouch.None;

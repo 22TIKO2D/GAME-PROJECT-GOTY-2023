@@ -1,0 +1,3 @@
+.unity-ui-document__root {
+    transition: opacity 1s;
+}

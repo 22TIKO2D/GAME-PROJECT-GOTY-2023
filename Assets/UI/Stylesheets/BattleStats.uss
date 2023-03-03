@@ -1,0 +1,49 @@
+.unity-progress-bar__container, .unity-progress-bar__background {
+    height: 100%;
+    max-height: none;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.unity-progress-bar {
+    margin: 0px;
+    padding: 5px;
+    width: 100%;
+    max-height: 25%;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.health-bar.unity-progress-bar .unity-progress-bar__progress {
+    background-color: rgba(0, 255, 0, 255);
+}
+
+.current-turn.unity-progress-bar {
+    color: rgba(255, 255, 255, 255);
+}
+
+.current-turn .unity-progress-bar__progress {
+    background-color: rgba(0, 0, 255, 255);
+}
+
+.unity-group-box {
+    flex-shrink: 0;
+    flex-grow: 1;
+    margin: 0px;
+    padding: 0px;
+}
+
+.group-label.unity-label {
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container.unity-group-box {
+    width: 50%;
+}
+
+.dead {
+    display: none;
+}
