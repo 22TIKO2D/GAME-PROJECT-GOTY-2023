@@ -24,7 +24,7 @@ namespace Game
         private void FixedUpdate()
         {
             // Move player to the direction of the joystick.
-            this.rb2d.velocity = this.joystick.direction * this.moveSpeed;
+            this.rb2d.velocity = this.joystick.Direction * this.moveSpeed;
         }
     }
 }
