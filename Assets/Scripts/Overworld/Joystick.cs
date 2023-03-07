@@ -100,9 +100,10 @@ namespace Game
                 if (this.firstTouch == FirstTouch.None)
                 {
                     // Ignore touches that are over some UI element.
-                    this.firstTouch = EventSystem.current.IsPointerOverGameObject()
-                        ? FirstTouch.Dirty
-                        : FirstTouch.Clean;
+                    this.firstTouch =
+                        EventSystem.current?.IsPointerOverGameObject() ?? true
+                            ? FirstTouch.Dirty
+                            : FirstTouch.Clean;
                 }
 
                 // If first touch was not over any UI element.

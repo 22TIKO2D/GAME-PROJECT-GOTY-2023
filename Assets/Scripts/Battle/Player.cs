@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Battle
 {
@@ -15,70 +14,157 @@ namespace Battle
         [SerializeField]
         private uint healAmount;
 
-        private Image image;
+        /// <summary>UI containing battle stats.</summary>
+        [SerializeField]
+        private UIDocument battleStats;
 
-        /// <summary>Target color when health changes.</summary>
-        private Color targetColor;
-
-        /// <summary>Speed at which color changes.</summary>
-        private const float colorChangeSpeed = 6.0f;
-
-        /// <summary>The current amount of color.</summary>
-        private float colorAmount = 0.0f;
-
-        /// <summary>Enemies in the current battle.</summary>
-        private List<Actor> enemies;
-
-        public override IEnumerator Turn()
+        /// <summary>Action that the player can perform.</summary>
+        private enum Action
         {
-            yield return new WaitForSeconds(0.5f);
-
-            // TODO: Implement player controls.
-            this.Heal(this.healAmount);
-
-            // Damage enemies.
-            // this.enemies.ForEach(enemy => enemy.InflictDamage(75));
-
-            yield return new WaitForSeconds(0.5f);
+            Attack,
+            Heal,
         }
 
-        private void Start()
+        /// <summary>Current action.</summary>
+        private Action? action = null;
+
+        /// <summary>Target enemy.</summary>
+        private ushort? target = null;
+
+        /// <summary>Group of the base actions.</summary>
+        private GroupBox baseGroup;
+
+        /// <summary>Group of the attack targets.</summary>
+        private GroupBox targetGroup;
+
+        /// <summary>Every enemy in this battle.</summary>
+        private Actor[] enemies;
+
+        /// <summary>Target buttons for enemies.</summary>
+        private Button[] targetButtons;
+
+        /// <summary>A specific group to show.</summary>
+        private enum VisibleGroup
         {
-            this.image = this.GetComponent<Image>();
+            None,
+            Base,
+            Target,
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+
+            GroupBox actionGroup = this.battleStats.rootVisualElement.Query<GroupBox>("ActionBox");
+            actionGroup.Clear();
+
+            this.baseGroup = new GroupBox();
+            actionGroup.Add(this.baseGroup);
+
+            Button attackButton = new Button(() => this.action = Action.Attack);
+            attackButton.text = "Attack";
+            this.baseGroup.Add(attackButton);
+
+            Button healButton = new Button(() => this.action = Action.Heal);
+            healButton.text = "Heal";
+            this.baseGroup.Add(healButton);
+
+            this.targetGroup = new GroupBox();
+            actionGroup.Add(this.targetGroup);
 
             // Find all enemies.
             this.enemies = GameObject
                 .FindGameObjectsWithTag("Enemy")
                 .ToList()
                 .Select(go => go.GetComponent<Actor>())
-                .ToList();
+                .ToArray();
 
-            // Listen to the health change events.
-            this.HealthChange.AddListener(this.OnHealthChange);
+            Button cancelButton = new Button(() => this.target = 0);
+            cancelButton.text = "Cancel";
+            this.targetGroup.Add(cancelButton);
+
+            this.targetButtons = new Button[this.enemies.Length];
+            for (int i = 0; i < this.enemies.Length; i++)
+            {
+                ushort target = (ushort)(i + 1);
+                this.targetButtons[i] = new Button(() => this.target = target);
+                this.targetButtons[i].text = this.enemies[i].Name;
+                this.targetGroup.Add(this.targetButtons[i]);
+            }
+
+            this.ShowGroup(VisibleGroup.None);
         }
 
-        private void Update()
+        /// <summary>Show the specific group.</summary>
+        private void ShowGroup(VisibleGroup group)
         {
-            // Rapidly reduce color amount.
-            this.colorAmount -= Time.deltaTime * colorChangeSpeed;
-            this.image.color = Color.Lerp(Color.white, this.targetColor, this.colorAmount);
+            this.baseGroup.style.display =
+                group == VisibleGroup.Base ? DisplayStyle.Flex : DisplayStyle.None;
+
+            this.targetGroup.style.display =
+                group == VisibleGroup.Target ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
-        /// <summary>Invoked when player takes damage.</summary>
-        private void OnHealthChange(int amount)
+        public override IEnumerator Turn()
         {
-            if (amount < 0)
+            while (this.action == null)
             {
-                // Take damage.
-                this.targetColor = Color.red;
-                this.colorAmount = 1.0f;
+                this.ShowGroup(VisibleGroup.Base);
+
+                // Wait until the player has chosen what to do.
+                yield return new WaitUntil(() => this.action != null);
+
+                switch (this.action.Value)
+                {
+                    case Action.Attack:
+                        this.ShowGroup(VisibleGroup.Target);
+
+                        // Wait until the player has chosen a target.
+                        yield return new WaitUntil(() => this.target != null);
+
+                        // Canceled.
+                        if (this.target == 0)
+                        {
+                            this.action = null;
+                        }
+                        else
+                        {
+                            this.MoveForward();
+                            yield return new WaitForSeconds(0.5f);
+
+                            // Hurt the target enemy.
+                            this.enemies[this.target.Value - 1].InflictDamage(75);
+                            yield return new WaitForSeconds(0.5f);
+
+                            this.MoveBackward();
+                            yield return new WaitForSeconds(0.5f);
+
+                            this.StopMoving();
+
+                            if (this.enemies[this.target.Value - 1].IsDead)
+                            {
+                                // Hide the target button if the enemy died.
+                                this.targetButtons[this.target.Value - 1].AddToClassList("dead");
+                            }
+                        }
+
+                        this.target = null;
+                        break;
+
+                    case Action.Heal:
+                        // Heal the player.
+                        this.Heal(this.healAmount);
+
+                        yield return new WaitForSeconds(0.5f);
+                        break;
+                }
             }
-            else if (amount > 0)
-            {
-                // Heal.
-                this.targetColor = Color.green;
-                this.colorAmount = 1.0f;
-            }
+
+            // Reset the current action for the next turn.
+            this.action = null;
+
+            // Hide actions.
+            this.ShowGroup(VisibleGroup.None);
         }
     }
 }

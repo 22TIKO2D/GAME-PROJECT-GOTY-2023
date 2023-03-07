@@ -378,7 +378,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -462,6 +462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5630834979723055983, guid: 2e800ee7d83e613e098c4e0a36537193, type: 3}
+      propertyPath: battleStats
+      value: 
+      objectReference: {fileID: 2136553038}
     - target: {fileID: 7323654836256968766, guid: 2e800ee7d83e613e098c4e0a36537193, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

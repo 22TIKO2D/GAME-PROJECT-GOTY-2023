@@ -1,47 +1,77 @@
-.unity-progress-bar__container, .unity-progress-bar__background {
-    height: 100%;
-    max-height: none;
-    flex-shrink: 0;
-    flex-grow: 1;
+* {
+    margin: 0px;
+    padding: 0px;
 }
 
-.unity-progress-bar {
-    margin: 0px;
-    padding: 5px;
+.unity-progress-bar__container, .unity-progress-bar__progress, .unity-progress-bar__background {
+    border-width: 0px;
+    border-radius: 10px;
+    height: 100%;
+    max-height: none;
+    flex: 1 0;
+}
+
+.unity-progress-bar, .unity-button {
+    border-width: 0px;
+    border-radius: 10px;
     width: 100%;
-    max-height: 25%;
-    flex-shrink: 0;
-    flex-grow: 1;
+    flex: 0 0 25%;
+    margin: 5px 0;
+}
+
+.unity-progress-bar__background {
+    background-color: darkgray;
+}
+
+.unity-button {
+    background-color: lightgray;
+    -unity-font-style: bold;
+}
+
+.unity-button:hover, .unity-button:active {
+    background-color: white;
+}
+
+.unity-progress-bar__progress {
+    background-color: white;
+}
+
+.unity-progress-bar__title, .unity-button.unity-text-element {
+    color: black;
+    font-size: 40px;
 }
 
 .health-bar.unity-progress-bar .unity-progress-bar__progress {
-    background-color: rgba(0, 255, 0, 255);
+    background-color: lightgreen;
 }
 
-.current-turn.unity-progress-bar {
-    color: rgba(255, 255, 255, 255);
-}
-
-.current-turn .unity-progress-bar__progress {
-    background-color: rgba(0, 0, 255, 255);
+.current-turn.unity-progress-bar .unity-progress-bar__progress {
+    background-color: lightblue;
 }
 
 .unity-group-box {
-    flex-shrink: 0;
-    flex-grow: 1;
-    margin: 0px;
-    padding: 0px;
+    flex: 1 0;
 }
 
 .group-label.unity-label {
     -unity-font-style: bold;
     -unity-text-align: middle-center;
-    margin: 0px;
-    padding: 0px;
+    color: white;
+    margin-bottom: 10px;
 }
 
-.container.unity-group-box {
-    width: 50%;
+.battle-stats.unity-group-box {
+    font-size: 40px;
+    flex-direction: row;
+    position: absolute;
+    left: 200px;
+    bottom: 100px;
+    width: 60%;
+    height: 400px;
+}
+
+.battle-stats.unity-group-box .unity-group-box {
+    margin: 0px 2.5px;
 }
 
 .dead {
