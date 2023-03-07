@@ -87,6 +87,9 @@ namespace Battle
 
             this.image = this.GetComponent<Image>();
 
+            // Listen to the health change events.
+            this.HealthChange.AddListener(this.OnHealthChange);
+
             // Get the starting position.
             this.startPosition = this.transform.position;
         }
@@ -95,9 +98,6 @@ namespace Battle
         {
             // Start with the maximum health.
             this.health = this.MaxHealth;
-
-            // Listen to the health change events.
-            this.HealthChange.AddListener(this.OnHealthChange);
         }
 
         protected virtual void Update()
@@ -145,21 +145,9 @@ namespace Battle
         /// <summary>Invoked when this actor's turn comes.</summary>
         public abstract IEnumerator Turn();
 
-        /// <summary>Invoked when player takes damage.</summary>
+        /// <summary>Invoked when actor takes damage.</summary>
         private void OnHealthChange(int amount)
         {
-            // Show floating damage number.
-            GameObject damageObject = GameObject.Instantiate(this.damageText);
-
-            // Set the amount of damage.
-            damageObject.GetComponent<Damage>().Amount = amount;
-
-            // Center the damage text to this actor.
-            damageObject.transform.position =
-                this.transform.position
-                + new Vector3(this.GetComponent<RectTransform>().sizeDelta.x / 2, 0.0f)
-                - new Vector3(damageObject.GetComponent<RectTransform>().sizeDelta.x / 2, 0.0f);
-
             if (amount < 0)
             {
                 // Take damage.
@@ -172,6 +160,18 @@ namespace Battle
                 this.targetColor = Color.green;
                 this.colorAmount = 1.0f;
             }
+
+            // Show floating damage number.
+            GameObject damageObject = GameObject.Instantiate(this.damageText);
+
+            // Set the amount of damage.
+            damageObject.GetComponent<Damage>().Amount = amount;
+
+            // Center the damage text to this actor.
+            damageObject.transform.position =
+                this.transform.position
+                + new Vector3(this.GetComponent<RectTransform>().sizeDelta.x / 2, 0.0f)
+                - new Vector3(damageObject.GetComponent<RectTransform>().sizeDelta.x / 2, 0.0f);
         }
     }
 }

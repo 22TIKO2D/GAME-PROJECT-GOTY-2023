@@ -93,3 +93,4 @@ MonoBehaviour:
   speed: 4
   healAmount: 30
   battleStats: {fileID: 0}
+  damage: 75

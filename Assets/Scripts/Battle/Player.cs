@@ -18,6 +18,10 @@ namespace Battle
         [SerializeField]
         private UIDocument battleStats;
 
+        /// <summary>The amount of damage the player deals to enemies.</summary>
+        [SerializeField]
+        private uint damage;
+
         /// <summary>Action that the player can perform.</summary>
         private enum Action
         {
@@ -133,7 +137,7 @@ namespace Battle
                             yield return new WaitForSeconds(0.5f);
 
                             // Hurt the target enemy.
-                            this.enemies[this.target.Value - 1].InflictDamage(75);
+                            this.enemies[this.target.Value - 1].InflictDamage(this.damage);
                             yield return new WaitForSeconds(0.5f);
 
                             this.MoveBackward();
