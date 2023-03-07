@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9b7fbf58f5745518dc09148c3f729e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  speed: 3
-  healAmount: 20
+  maxHealth: 350
+  speed: 4
+  healAmount: 30
+  battleStats: {fileID: 0}

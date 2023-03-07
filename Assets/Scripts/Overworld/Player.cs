@@ -19,6 +19,9 @@ namespace Game
         private void Start()
         {
             this.rb2d = this.GetComponent<Rigidbody2D>();
+
+            // Restore player's position.
+            this.transform.position = State.PlayerPosition;
         }
 
         private void FixedUpdate()

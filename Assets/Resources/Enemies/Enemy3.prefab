@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6623847048164533658}
   - component: {fileID: 1379161924417963016}
   m_Layer: 5
-  m_Name: Enemy2
+  m_Name: Enemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 025ed2c4f7f6d8a3d9e977e7854014fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 570f66c811081cdd28c628f1e68c648b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4011b52a8e181a1cba60b90725fe89ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  speed: 7
-  enemyName: Enemy Type 2
-  damage: 5
+  maxHealth: 500
+  speed: 4
+  enemyName: Enemy Type 3
+  damage: 175

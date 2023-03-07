@@ -13,16 +13,16 @@ namespace Battle
         private class ActorData
         {
             /// <summary>Actor itself.</summary>
-            public Actor actor { get; set; }
+            public Actor actor;
 
             /// <summary>Time until the actor's turn.</summary>
-            public double waitTime { get; set; }
+            public double waitTime;
 
             /// <summary>Progress bar showing time until the actor's turn.</summary>
-            public ProgressBar timeBar { get; set; }
+            public ProgressBar timeBar;
 
             /// <summary>Progress bar showing the actor's health.</summary>
-            public ProgressBar healthBar { get; set; }
+            public ProgressBar healthBar;
         }
 
         /// <summary>Every actor participating in the battle.</summary>
@@ -56,7 +56,7 @@ namespace Battle
             this.battleEnd.rootVisualElement.style.opacity = 0;
         }
 
-        private void Start()
+        private void OnEnable()
         {
             // Reset actors.
             this.actors.Clear();
@@ -97,7 +97,10 @@ namespace Battle
                 this.actors.Add(new ActorData { actor = enemyObject.GetComponent<Actor>() });
                 this.enemyCount++;
             }
+        }
 
+        private void Start()
+        {
             // Get the fastest actor.
             this.maxSpeed = this.actors.Max(data => data.actor.Speed);
 
@@ -154,8 +157,7 @@ namespace Battle
             this.actors.ForEach(data =>
             {
                 data.healthBar.value = data.actor.Health;
-                data.healthBar.title =
-                    $"{data.actor.Name} ({data.actor.Health}/{data.actor.MaxHealth})";
+                data.healthBar.title = $"{data.actor.Health}/{data.actor.MaxHealth}";
             });
         }
 
@@ -255,11 +257,11 @@ namespace Battle
                 this.isAdvancing = isBattleInProgress;
             }
 
-            this.EndBattle();
+            yield return this.EndBattle();
         }
 
         /// <summary>Called when the battle ends.</summary>
-        private void EndBattle()
+        private IEnumerator EndBattle()
         {
             // Hide battle stats.
             this.battleStats.rootVisualElement.visible = false;
@@ -267,6 +269,11 @@ namespace Battle
             // Show end screen.
             this.battleEnd.rootVisualElement.visible = true;
             this.battleEnd.rootVisualElement.style.opacity = 1;
+
+            yield return new WaitForSeconds(3.0f);
+
+            // Return back to the map.
+            yield return Game.State.Overworld();
         }
     }
 }

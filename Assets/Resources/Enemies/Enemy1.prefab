@@ -91,5 +91,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   speed: 2
-  enemyName: Enemy 1
-  damage: 30
+  enemyName: Enemy Type 1
+  damage: 10
