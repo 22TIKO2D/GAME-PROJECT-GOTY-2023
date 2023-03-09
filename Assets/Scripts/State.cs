@@ -21,53 +21,36 @@ namespace Game
             // Store player position.
             PlayerPosition = GameObject.FindWithTag("Player").transform.position;
 
-            Fade fade = GameObject.Find("Fade").GetComponent<Fade>();
-
             // Disable all event systems.
             GameObject
                 .FindObjectsOfType<EventSystem>()
                 .ToList()
                 .ForEach((es) => es.enabled = false);
 
-            // Start fading in.
-            fade.FadeDir = 1.0f;
-
-            yield return new WaitForSeconds(1.0f);
-
             // Set the enemies.
             BattleEnemies = enemies;
 
-            // Load the scene.
-            SceneManager.LoadScene("Battle");
-
-            // Start fading out.
-            fade.FadeDir = -1.0f;
-
-            yield return new WaitForSeconds(1.0f);
-
-            // Stop fading.
-            fade.FadeDir = 0.0f;
+            yield return ChangeScene("Battle");
         }
 
-        public static IEnumerator Overworld()
-        {
-            Fade fade = GameObject.Find("Fade").GetComponent<Fade>();
+        /// <summary>Switch to the overworld scene.</summary>
+        public static IEnumerator Overworld() => ChangeScene("Overworld");
 
-            // Start fading in.
-            fade.FadeDir = 1.0f;
+        /// <summary>Change the scene with a fade effect.</summary>
+        private static IEnumerator ChangeScene(string name)
+        {
+            Fade fade = Fade.Get();
+
+            fade.FadeIn();
 
             yield return new WaitForSeconds(1.0f);
 
             // Load the scene.
-            SceneManager.LoadScene("Overworld");
+            SceneManager.LoadScene(name);
 
-            // Start fading out.
-            fade.FadeDir = -1.0f;
+            fade.FadeOut();
 
             yield return new WaitForSeconds(1.0f);
-
-            // Stop fading.
-            fade.FadeDir = 0.0f;
         }
     }
 }

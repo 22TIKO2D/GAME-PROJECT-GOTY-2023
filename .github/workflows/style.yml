@@ -2,6 +2,8 @@ name: Check Formatting
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
 jobs:
   check_formatting:
     runs-on: ubuntu-latest
