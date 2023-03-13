@@ -91,5 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 7
-  enemyName: Enemy Type 2
+  enemyName: Tietokone
   damage: 5
+  expGain: 10

@@ -122,15 +122,22 @@ namespace Battle
         /// <summary>Apply damage to the actor's health.</summary>
         public void InflictDamage(uint amount)
         {
+            uint minAmount = amount - (amount / 2);
+            uint maxAmount = amount + (amount / 2);
+
             // Prevent health from going to zero.
-            this.Health -= (uint)Mathf.Min((int)amount, (int)this.Health);
+            this.Health -= (uint)Mathf.Min(Random.Range(minAmount, maxAmount), this.Health);
         }
 
         /// <summary>Heal the actor by increasing health.</summary>
         public void Heal(uint amount)
         {
+            uint minAmount = amount - (amount / 2);
+            uint maxAmount = amount + (amount / 2);
+
             // Prevent health from going over maximum health.
-            this.Health = (uint)Mathf.Min((int)(this.Health + amount), (int)this.MaxHealth);
+            this.Health += (uint)
+                Mathf.Min(Random.Range(minAmount, maxAmount), this.MaxHealth - this.Health);
         }
 
         /// <summary>Move this actor forward.</summary>

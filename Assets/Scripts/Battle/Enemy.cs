@@ -19,6 +19,13 @@ namespace Battle
         /// <summary>Player which to deal damage to.</summary>
         private Actor player;
 
+        /// <summary>Experience gain from defeating this enemy.</summary>
+        [SerializeField]
+        private uint expGain;
+
+        /// <summary>Experience gain from defeating this enemy.</summary>
+        public uint ExpGain => this.expGain;
+
         protected override void Start()
         {
             base.Start();

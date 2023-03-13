@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game
+namespace Overworld
 {
     /// <summary>Player script for the overworld map.</summary>
     public class Player : MonoBehaviour
@@ -37,7 +37,7 @@ namespace Game
             this.targetArrowRenderer = this.targetArrow.GetComponentInChildren<SpriteRenderer>();
 
             // Restore player's position.
-            this.transform.position = State.PlayerPosition;
+            this.transform.position = Game.PlayerStats.Position;
         }
 
         private void FixedUpdate()

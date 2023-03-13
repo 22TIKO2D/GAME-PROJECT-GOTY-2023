@@ -91,5 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   speed: 4
-  enemyName: Enemy Type 3
+  enemyName: Auto
   damage: 175
+  expGain: 100

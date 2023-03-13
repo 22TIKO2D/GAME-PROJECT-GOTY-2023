@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game
+namespace Overworld
 {
     /// <summary>Non-player character.</summary>
     public class NPC : MonoBehaviour
@@ -18,7 +18,7 @@ namespace Game
         private void OnMouseDown()
         {
             // Start the battle when clicked.
-            StartCoroutine(State.Battle(this.battleEnemies));
+            StartCoroutine(Game.State.Battle(this.battleEnemies));
         }
     }
 }

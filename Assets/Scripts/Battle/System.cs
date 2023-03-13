@@ -49,11 +49,20 @@ namespace Battle
         /// <summary>Amount of enemies in the battle.</summary>
         private uint enemyCount = 0;
 
+        /// <summary>Background element in the battle end screen.</summary>
+        private VisualElement battleEndBg;
+
         private void Awake()
         {
+            this.battleEndBg = this.battleEnd.rootVisualElement.Query<VisualElement>("Bg");
+
             // Hide the end screen at the beginning.
-            this.battleEnd.rootVisualElement.visible = false;
-            this.battleEnd.rootVisualElement.style.opacity = 0;
+            this.battleEndBg.visible = false;
+            this.battleEndBg.style.opacity = 0;
+
+            // Go back to the map with the back button.
+            Button backButton = this.battleEnd.rootVisualElement.Query<Button>("Back");
+            backButton.clicked += () => StartCoroutine(Game.State.Overworld());
         }
 
         private void OnEnable()
@@ -182,6 +191,7 @@ namespace Battle
             yield return new WaitForSeconds(1.0f);
             this.isAdvancing = true;
 
+            bool isPlayerDead = false;
             bool isBattleInProgress = true;
             while (isBattleInProgress)
             {
@@ -212,7 +222,6 @@ namespace Battle
                         // Update time bars.
                         this.UpdateTimes();
 
-                        bool isPlayerDead = false;
                         uint enemiesDead = 0;
                         this.actors.ForEach(data =>
                         {
@@ -242,9 +251,14 @@ namespace Battle
                         // End battle if the player dies or all enemies are dead.
                         if (isPlayerDead || enemiesDead >= this.enemyCount)
                         {
-                            Label endLabel = this.battleEnd.rootVisualElement.Query<Label>();
+                            GroupBox problemGroup =
+                                this.battleEnd.rootVisualElement.Query<GroupBox>("Problem");
+
                             // Choose the text based on if the player lost or won.
-                            endLabel.text = isPlayerDead ? "YOU DIED" : "VICTORY";
+                            problemGroup.text = isPlayerDead
+                                ? "Ongelma ei ratkennut"
+                                : "Ongelma korjattu";
+                            problemGroup.AddToClassList(isPlayerDead ? "lost" : "win");
 
                             // Battle ended.
                             isBattleInProgress = false;
@@ -257,23 +271,28 @@ namespace Battle
                 this.isAdvancing = isBattleInProgress;
             }
 
-            yield return this.EndBattle();
-        }
+            // Count cumulative experience gain.
+            uint expGain = (uint)
+                this.actors
+                    .Where((data) => data.actor.gameObject.tag == "Enemy")
+                    .Sum((data) => ((Enemy)data.actor).ExpGain);
 
-        /// <summary>Called when the battle ends.</summary>
-        private IEnumerator EndBattle()
-        {
+            if (isPlayerDead)
+                Game.PlayerStats.BadExp += expGain;
+            else
+                Game.PlayerStats.GoodExp += expGain;
+
+            // Show the experience gain.
+            string expType = isPlayerDead ? "huonoa" : "hyvää";
+            this.battleEnd.rootVisualElement.Query<Label>("Exp").First().text =
+                $"Sait {expGain} {expType} kokemusta.";
+
             // Hide battle stats.
             this.battleStats.rootVisualElement.visible = false;
 
             // Show end screen.
-            this.battleEnd.rootVisualElement.visible = true;
-            this.battleEnd.rootVisualElement.style.opacity = 1;
-
-            yield return new WaitForSeconds(3.0f);
-
-            // Return back to the map.
-            yield return Game.State.Overworld();
+            this.battleEndBg.visible = true;
+            this.battleEndBg.style.opacity = 1;
         }
     }
 }

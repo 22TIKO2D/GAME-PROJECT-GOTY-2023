@@ -4,7 +4,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-namespace Game
+namespace Overworld
 {
     /// <summary>Virtual joystick controller UI element.</summary>
     public class Joystick : MonoBehaviour

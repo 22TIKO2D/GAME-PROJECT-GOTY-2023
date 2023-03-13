@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Game
+namespace Overworld
 {
     /// <summary>Phone UI.</summary>
     public class Phone : MonoBehaviour
@@ -12,6 +12,9 @@ namespace Game
 
         /// <summary>NPCs group.</summary>
         private GroupBox npcsGroup;
+
+        /// <summary>Infos group.</summary>
+        private GroupBox infosGroup;
 
         /// <summary>Back button in the Apuva! menu.</summary>
         private Button backButton;
@@ -30,6 +33,7 @@ namespace Game
         {
             Main,
             Apuva,
+            Info,
         }
 
         private void Start()
@@ -46,8 +50,7 @@ namespace Game
 
             this.buttonsGroup = rootVisual.Query<GroupBox>("Buttons");
             this.npcsGroup = rootVisual.Query<GroupBox>("NPCs");
-
-            this.SetMenuVisible(Menu.Main);
+            this.infosGroup = rootVisual.Query<GroupBox>("Infos");
 
             // Hide when shutdown.
             rootVisual.Query<Button>("Shutdown").First().clicked += () => this.SetVisible(false);
@@ -55,10 +58,15 @@ namespace Game
             // Show Apuva! when this button is clicked.
             rootVisual.Query<Button>("Apuva").First().clicked += this.ShowApuva;
 
+            // Show infos when this button is clicked.
+            rootVisual.Query<Button>("Info").First().clicked += this.ShowInfo;
+
             this.backButton = rootVisual.Query<Button>("Back");
 
             // Hide Apuva! when back is clicked.
             this.backButton.clicked += () => this.SetMenuVisible(Menu.Main);
+
+            this.SetMenuVisible(Menu.Main);
 
             // Hide on start.
             this.SetVisible(false);
@@ -68,7 +76,6 @@ namespace Game
         private void ShowApuva()
         {
             this.npcsGroup.Clear();
-            this.npcsGroup.Add(this.backButton);
 
             this.SetMenuVisible(Menu.Apuva);
 
@@ -92,6 +99,34 @@ namespace Game
                 );
         }
 
+        /// <summary>Show the info page.</summary>
+        private void ShowInfo()
+        {
+            this.infosGroup.Clear();
+
+            this.SetMenuVisible(Menu.Info);
+
+            // Create experience info labels.
+            Label goodExpLabel = new Label(
+                $"Sinulla on {Game.PlayerStats.GoodExp} hyvää kokemusta."
+            );
+            Label badExpLabel = new Label(
+                $"Sinulla on {Game.PlayerStats.BadExp} huonoa kokemusta."
+            );
+
+            // Wrap text.
+            goodExpLabel.style.whiteSpace = WhiteSpace.Normal;
+            badExpLabel.style.whiteSpace = WhiteSpace.Normal;
+
+            // Set colors.
+            goodExpLabel.style.color = Color.green;
+            badExpLabel.style.color = Color.red;
+
+            // Add experience info.
+            this.infosGroup.Add(goodExpLabel);
+            this.infosGroup.Add(badExpLabel);
+        }
+
         /// <summary>Show or hide phone UI.</summary>
         private void SetVisible(bool isVisible)
         {
@@ -106,11 +141,22 @@ namespace Game
                 case Menu.Main:
                     this.buttonsGroup.style.display = DisplayStyle.Flex;
                     this.npcsGroup.style.display = DisplayStyle.None;
+                    this.infosGroup.style.display = DisplayStyle.None;
+                    this.backButton.style.display = DisplayStyle.None;
                     break;
 
                 case Menu.Apuva:
                     this.buttonsGroup.style.display = DisplayStyle.None;
                     this.npcsGroup.style.display = DisplayStyle.Flex;
+                    this.infosGroup.style.display = DisplayStyle.None;
+                    this.backButton.style.display = DisplayStyle.Flex;
+                    break;
+
+                case Menu.Info:
+                    this.buttonsGroup.style.display = DisplayStyle.None;
+                    this.npcsGroup.style.display = DisplayStyle.None;
+                    this.infosGroup.style.display = DisplayStyle.Flex;
+                    this.backButton.style.display = DisplayStyle.Flex;
                     break;
             }
         }

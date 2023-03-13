@@ -8,7 +8,7 @@ namespace Battle
     /// <summary>Player actor in the battle.</summary>
     public class Player : Actor
     {
-        public override string Name => "Player";
+        public override string Name => "Pelaaja";
 
         /// <summary>Amount of health to restore when player heals.</summary>
         [SerializeField]
@@ -55,9 +55,15 @@ namespace Battle
             Target,
         }
 
+        /// <summary>Label for action text.</summary>
+        private Label actionLabel;
+
         protected override void Start()
         {
             base.Start();
+
+            this.actionLabel = this.battleStats.rootVisualElement.Query<Label>("ActionLabel");
+            this.actionLabel.visible = false;
 
             GroupBox actionGroup = this.battleStats.rootVisualElement.Query<GroupBox>("ActionBox");
             actionGroup.Clear();
@@ -66,11 +72,11 @@ namespace Battle
             actionGroup.Add(this.baseGroup);
 
             Button attackButton = new Button(() => this.action = Action.Attack);
-            attackButton.text = "Attack";
+            attackButton.text = "Korjaa";
             this.baseGroup.Add(attackButton);
 
             Button healButton = new Button(() => this.action = Action.Heal);
-            healButton.text = "Heal";
+            healButton.text = "Innostu";
             this.baseGroup.Add(healButton);
 
             this.targetGroup = new GroupBox();
@@ -84,7 +90,7 @@ namespace Battle
                 .ToArray();
 
             Button cancelButton = new Button(() => this.target = 0);
-            cancelButton.text = "Cancel";
+            cancelButton.text = "Peruuta";
             this.targetGroup.Add(cancelButton);
 
             this.targetButtons = new Button[this.enemies.Length];
@@ -102,6 +108,9 @@ namespace Battle
         /// <summary>Show the specific group.</summary>
         private void ShowGroup(VisibleGroup group)
         {
+            // Show label when doing an action.
+            this.actionLabel.visible = group != VisibleGroup.None;
+
             this.baseGroup.style.display =
                 group == VisibleGroup.Base ? DisplayStyle.Flex : DisplayStyle.None;
 

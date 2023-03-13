@@ -1,3 +1,63 @@
-.unity-ui-document__root {
-    transition: opacity 1s;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    transition: opacity 2s;
+}
+
+.main-box {
+    width: 800px;
+    height: auto;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    -unity-text-align: middle-center;
+    border-radius: 40px;
+}
+
+.main-box > .unity-group-box__label {
+    -unity-font-style: bold;
+}
+
+.main-box.lost > .unity-group-box__label {
+    color: red;
+}
+
+.main-box.win > .unity-group-box__label {
+    color: lightgreen;
+}
+
+.unity-label {
+    white-space: normal;
+}
+
+.unity-label {
+    margin: 5px 0;
+}
+
+.unity-button {
+    margin: 5px 0;
+}
+
+.unity-button {
+    background-color: skyblue;
+    color: black;
+    border-width: 0;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.unity-button:hover, .unity-button:active {
+    background-color: white;
 }

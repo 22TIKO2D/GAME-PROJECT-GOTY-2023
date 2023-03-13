@@ -12,14 +12,11 @@ namespace Game
         /// <summary>Enemies seen in battle.</summary>
         public static string[] BattleEnemies { get; private set; }
 
-        /// <summary>Player's position on the map.</summary>
-        public static Vector2 PlayerPosition { get; private set; } = Vector2.zero;
-
         /// <summary>Start a battle with specific enemies.</summary>
         public static IEnumerator Battle(string[] enemies)
         {
             // Store player position.
-            PlayerPosition = GameObject.FindWithTag("Player").transform.position;
+            PlayerStats.Position = GameObject.FindWithTag("Player").transform.position;
 
             // Disable all event systems.
             GameObject
