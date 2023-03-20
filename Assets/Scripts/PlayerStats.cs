@@ -25,5 +25,8 @@ namespace Game
 
         /// <summary>The speed of the player.</summary>
         public static uint Speed => 4 + GoodExp / 20;
+
+        /// <summary>Amount of health to restore when player heals.</summary>
+        public static uint HealAmount => MaxHealth / 5;
     }
 }

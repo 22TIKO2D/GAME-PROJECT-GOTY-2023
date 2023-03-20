@@ -19,18 +19,35 @@ namespace Overworld
         [SerializeField]
         private string description;
 
-        /// <summary>Dialog UI element.</summary>
-        private Dialog dialog;
+        /// <summary>Button used to talk to the player.</summary>
+        private Talk talkButton;
 
         private void Start()
         {
-            this.dialog = GameObject.Find("Dialog").GetComponent<Dialog>();
+            this.talkButton = GameObject.Find("Talk").GetComponent<Talk>();
         }
 
-        private void OnMouseDown()
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            // Show the dialog when clicked.
-            this.dialog.Show(this.Name, this.description, this.battleEnemies);
+            if (collider.gameObject.tag == "Player")
+            {
+                // Show the talk button.
+                this.talkButton.Show(
+                    this.gameObject,
+                    this.Name,
+                    this.description,
+                    this.battleEnemies
+                );
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collider)
+        {
+            if (collider.gameObject.tag == "Player")
+            {
+                // Hide the talk button.
+                this.talkButton.Hide();
+            }
         }
     }
 }

@@ -12,6 +12,10 @@ namespace Overworld
         /// <summary>Enemies seen in the battle.</summary>
         private string[] battleEnemies;
 
+        /// <summary>The main canvas.</summary>
+        [SerializeField]
+        private Canvas canvas;
+
         private void Start()
         {
             this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
@@ -21,7 +25,13 @@ namespace Overworld
 
             // Hide when player doesn't want to help.
             this.rootVisual.Query<Button>("DontHelp").First().clicked += () =>
+            {
+                // Hide the dialog.
                 this.rootVisual.visible = false;
+
+                // Show the canvas again.
+                this.canvas.enabled = true;
+            };
 
             // Start the battle when player wants to help.
             this.rootVisual.Query<Button>("Help").First().clicked += () =>
@@ -39,6 +49,9 @@ namespace Overworld
 
             // Show the dialog.
             this.rootVisual.visible = true;
+
+            // Hide the canvas.
+            this.canvas.enabled = false;
         }
     }
 }

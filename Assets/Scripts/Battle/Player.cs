@@ -10,9 +10,6 @@ namespace Battle
     {
         public override string Name => "Pelaaja";
 
-        /// <summary>Amount of health to restore when player heals.</summary>
-        private uint healAmount;
-
         /// <summary>UI containing battle stats.</summary>
         [SerializeField]
         private UIDocument battleStats;
@@ -172,7 +169,7 @@ namespace Battle
 
                     case Action.Heal:
                         // Heal the player.
-                        this.Heal(this.healAmount);
+                        this.Heal(Game.PlayerStats.HealAmount);
 
                         yield return new WaitForSeconds(0.5f);
                         break;
