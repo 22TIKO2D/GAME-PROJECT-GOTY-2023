@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleEnemies:
-  - Enemy1
+  - Enemy2
   npcName: "Kiinte\xE4 Ukko"
   description: "Minut l\xF6yd\xE4t aina samasta paikasta."
 --- !u!61 &1454884580077441655
