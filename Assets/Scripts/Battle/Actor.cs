@@ -26,25 +26,11 @@ namespace Battle
         /// <summary>Event called when health changes.</summary>
         public UnityEvent<int> HealthChange { get; set; } = new UnityEvent<int>();
 
-        [SerializeField]
-        private uint maxHealth;
-
         /// <summary>Maximum health points for this actor.</summary>
-        public uint MaxHealth
-        {
-            get => this.maxHealth;
-            protected set => this.maxHealth = value;
-        }
-
-        [SerializeField]
-        private uint speed;
+        public uint MaxHealth { get; protected set; }
 
         /// <summary>Speed of this actor in battle.</summary>
-        public uint Speed
-        {
-            get => this.speed;
-            protected set => this.speed = value;
-        }
+        public uint Speed { get; protected set; }
 
         /// <summary>Wether this actor is dead or not.</summary>
         public bool IsDead => this.Health == 0;

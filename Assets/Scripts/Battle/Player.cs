@@ -10,17 +10,9 @@ namespace Battle
     {
         public override string Name => "Pelaaja";
 
-        /// <summary>Amount of health to restore when player heals.</summary>
-        [SerializeField]
-        private uint healAmount;
-
         /// <summary>UI containing battle stats.</summary>
         [SerializeField]
         private UIDocument battleStats;
-
-        /// <summary>The amount of damage the player deals to enemies.</summary>
-        [SerializeField]
-        private uint damage;
 
         /// <summary>Action that the player can perform.</summary>
         private enum Action
@@ -57,6 +49,15 @@ namespace Battle
 
         /// <summary>Label for action text.</summary>
         private Label actionLabel;
+
+        protected override void Awake()
+        {
+            // Initialize values.
+            this.Speed = Game.PlayerStats.Speed;
+            this.MaxHealth = Game.PlayerStats.MaxHealth;
+
+            base.Awake();
+        }
 
         protected override void Start()
         {
@@ -146,7 +147,9 @@ namespace Battle
                             yield return new WaitForSeconds(0.5f);
 
                             // Hurt the target enemy.
-                            this.enemies[this.target.Value - 1].InflictDamage(this.damage);
+                            this.enemies[this.target.Value - 1].InflictDamage(
+                                Game.PlayerStats.Damage
+                            );
                             yield return new WaitForSeconds(0.5f);
 
                             this.MoveBackward();
@@ -166,7 +169,7 @@ namespace Battle
 
                     case Action.Heal:
                         // Heal the player.
-                        this.Heal(this.healAmount);
+                        this.Heal(Game.PlayerStats.HealAmount);
 
                         yield return new WaitForSeconds(0.5f);
                         break;

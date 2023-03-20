@@ -26,6 +26,23 @@ namespace Battle
         /// <summary>Experience gain from defeating this enemy.</summary>
         public uint ExpGain => this.expGain;
 
+        /// <summary>Maximum health points for this enemy.</summary>
+        [SerializeField]
+        private uint maxHealth;
+
+        /// <summary>Speed of this enemy in battle.</summary>
+        [SerializeField]
+        private uint speed;
+
+        protected override void Awake()
+        {
+            // Initialize actor values with the serialized fields.
+            this.MaxHealth = this.maxHealth;
+            this.Speed = this.speed;
+
+            base.Awake();
+        }
+
         protected override void Start()
         {
             base.Start();

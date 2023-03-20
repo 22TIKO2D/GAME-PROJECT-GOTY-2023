@@ -8,16 +8,10 @@ namespace Overworld
     public class Phone : MonoBehaviour
     {
         /// <summary>Buttons group.</summary>
-        private GroupBox buttonsGroup;
+        private GroupBox buttons;
 
-        /// <summary>NPCs group.</summary>
-        private GroupBox npcsGroup;
-
-        /// <summary>Infos group.</summary>
-        private GroupBox infosGroup;
-
-        /// <summary>Back button in the Apuva! menu.</summary>
-        private Button backButton;
+        /// <summary>App group.</summary>
+        private ScrollView app;
 
         /// <summary>Root phone visual element.</summary>
         private VisualElement phone;
@@ -28,13 +22,9 @@ namespace Overworld
         /// <summary>Player character.</summary>
         private Player player;
 
-        /// <summary>Menu that is currently seen.</summary>
-        private enum Menu
-        {
-            Main,
-            Apuva,
-            Info,
-        }
+        /// <summary>The main canvas.</summary>
+        [SerializeField]
+        private Canvas canvas;
 
         private void Start()
         {
@@ -48,9 +38,8 @@ namespace Overworld
             // Show the phone screen when the phone button is clicked.
             this.phoneButton.RegisterCallback<ClickEvent>((_) => this.SetVisible(true));
 
-            this.buttonsGroup = rootVisual.Query<GroupBox>("Buttons");
-            this.npcsGroup = rootVisual.Query<GroupBox>("NPCs");
-            this.infosGroup = rootVisual.Query<GroupBox>("Infos");
+            this.buttons = rootVisual.Query<GroupBox>("Buttons");
+            this.app = rootVisual.Query<ScrollView>("App");
 
             // Hide when shutdown.
             rootVisual.Query<Button>("Shutdown").First().clicked += () => this.SetVisible(false);
@@ -59,25 +48,30 @@ namespace Overworld
             rootVisual.Query<Button>("Apuva").First().clicked += this.ShowApuva;
 
             // Show infos when this button is clicked.
-            rootVisual.Query<Button>("Info").First().clicked += this.ShowInfo;
-
-            this.backButton = rootVisual.Query<Button>("Back");
-
-            // Hide Apuva! when back is clicked.
-            this.backButton.clicked += () => this.SetMenuVisible(Menu.Main);
-
-            this.SetMenuVisible(Menu.Main);
+            rootVisual.Query<Button>("Stats").First().clicked += this.ShowStats;
 
             // Hide on start.
             this.SetVisible(false);
         }
 
+        /// <summary>Reset the app view.</summary>
+        private void ResetApp()
+        {
+            this.app.Clear();
+
+            // Add a close/back button.
+            Button closeButton = new Button(() => this.ShowApps(true));
+            closeButton.text = "Sulje";
+            this.app.Add(closeButton);
+
+            // Show the app view.
+            this.ShowApps(false);
+        }
+
         /// <summary>Show the Apuva! app list.</summary>
         private void ShowApuva()
         {
-            this.npcsGroup.Clear();
-
-            this.SetMenuVisible(Menu.Apuva);
+            this.ResetApp();
 
             GameObject
                 .FindGameObjectsWithTag("NPC")
@@ -90,21 +84,18 @@ namespace Overworld
                         Button npcButton = new Button(() =>
                         {
                             this.player.Target = npc.gameObject;
-                            this.SetMenuVisible(Menu.Main);
                             this.SetVisible(false);
                         });
                         npcButton.text = npc.Name;
-                        this.npcsGroup.Add(npcButton);
+                        this.app.Add(npcButton);
                     }
                 );
         }
 
-        /// <summary>Show the info page.</summary>
-        private void ShowInfo()
+        /// <summary>Show the player stats page.</summary>
+        private void ShowStats()
         {
-            this.infosGroup.Clear();
-
-            this.SetMenuVisible(Menu.Info);
+            this.ResetApp();
 
             // Create experience info labels.
             Label goodExpLabel = new Label(
@@ -114,51 +105,42 @@ namespace Overworld
                 $"Sinulla on {Game.PlayerStats.BadExp} huonoa kokemusta."
             );
 
-            // Wrap text.
-            goodExpLabel.style.whiteSpace = WhiteSpace.Normal;
-            badExpLabel.style.whiteSpace = WhiteSpace.Normal;
-
             // Set colors.
             goodExpLabel.style.color = Color.green;
             badExpLabel.style.color = Color.red;
 
             // Add experience info.
-            this.infosGroup.Add(goodExpLabel);
-            this.infosGroup.Add(badExpLabel);
+            this.app.Add(goodExpLabel);
+            this.app.Add(badExpLabel);
+
+            // Add other labels.
+            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.MaxHealth} motivaatiota.")); // Health
+            this.app.Add(
+                new Label(
+                    $"Sinä korjaat ongelmia keskimäärin {Game.PlayerStats.Damage} pisteen tehokkuudella."
+                )
+            ); // Damage
+            this.app.Add(new Label($"Sinun nopeutesi on {Game.PlayerStats.Speed}.")); // Speed
         }
 
         /// <summary>Show or hide phone UI.</summary>
         private void SetVisible(bool isVisible)
         {
+            // Show the apps when shown/hidden.
+            this.ShowApps(true);
+
             this.phone.style.display = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
             this.phoneButton.style.display = isVisible ? DisplayStyle.None : DisplayStyle.Flex;
+
+            // Disable the canvas the phone is shown.
+            this.canvas.enabled = !isVisible;
         }
 
-        private void SetMenuVisible(Menu menu)
+        /// <summary>Show the main apps panel.</summary>
+        private void ShowApps(bool isVisible)
         {
-            switch (menu)
-            {
-                case Menu.Main:
-                    this.buttonsGroup.style.display = DisplayStyle.Flex;
-                    this.npcsGroup.style.display = DisplayStyle.None;
-                    this.infosGroup.style.display = DisplayStyle.None;
-                    this.backButton.style.display = DisplayStyle.None;
-                    break;
-
-                case Menu.Apuva:
-                    this.buttonsGroup.style.display = DisplayStyle.None;
-                    this.npcsGroup.style.display = DisplayStyle.Flex;
-                    this.infosGroup.style.display = DisplayStyle.None;
-                    this.backButton.style.display = DisplayStyle.Flex;
-                    break;
-
-                case Menu.Info:
-                    this.buttonsGroup.style.display = DisplayStyle.None;
-                    this.npcsGroup.style.display = DisplayStyle.None;
-                    this.infosGroup.style.display = DisplayStyle.Flex;
-                    this.backButton.style.display = DisplayStyle.Flex;
-                    break;
-            }
+            this.buttons.style.display = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
+            this.app.style.display = isVisible ? DisplayStyle.None : DisplayStyle.Flex;
         }
     }
 }

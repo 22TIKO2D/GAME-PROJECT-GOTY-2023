@@ -15,10 +15,39 @@ namespace Overworld
         [SerializeField]
         private string npcName;
 
-        private void OnMouseDown()
+        /// <summary>Description for the dialog.</summary>
+        [SerializeField]
+        private string description;
+
+        /// <summary>Button used to talk to the player.</summary>
+        private Talk talkButton;
+
+        private void Start()
         {
-            // Start the battle when clicked.
-            StartCoroutine(Game.State.Battle(this.battleEnemies));
+            this.talkButton = GameObject.Find("Talk").GetComponent<Talk>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.gameObject.tag == "Player")
+            {
+                // Show the talk button.
+                this.talkButton.Show(
+                    this.gameObject,
+                    this.Name,
+                    this.description,
+                    this.battleEnemies
+                );
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collider)
+        {
+            if (collider.gameObject.tag == "Player")
+            {
+                // Hide the talk button.
+                this.talkButton.Hide();
+            }
         }
     }
 }

@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.buttons.unity-group-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-icon.unity-button {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    font-size: 50px;
+}
+
+#Buttons, #App {
+    padding: 20px;
+}
+
+.unity-label {
+    white-space: normal;
+    margin: 10px 0;
+    font-size: 50px;
+}
+
+.unity-button {
+    padding: 10px 5px;
+    margin: 10px 0;
+}
