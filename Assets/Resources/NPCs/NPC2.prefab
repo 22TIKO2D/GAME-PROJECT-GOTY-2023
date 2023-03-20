@@ -101,6 +101,7 @@ MonoBehaviour:
   battleEnemies:
   - Enemy3
   npcName: Pekka
+  description: Olen kultainen lumiukko...
 --- !u!61 &1454884580077441655
 BoxCollider2D:
   m_ObjectHideFlags: 0

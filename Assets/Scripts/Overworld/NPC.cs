@@ -15,10 +15,22 @@ namespace Overworld
         [SerializeField]
         private string npcName;
 
+        /// <summary>Description for the dialog.</summary>
+        [SerializeField]
+        private string description;
+
+        /// <summary>Dialog UI element.</summary>
+        private Dialog dialog;
+
+        private void Start()
+        {
+            this.dialog = GameObject.Find("Dialog").GetComponent<Dialog>();
+        }
+
         private void OnMouseDown()
         {
-            // Start the battle when clicked.
-            StartCoroutine(Game.State.Battle(this.battleEnemies));
+            // Show the dialog when clicked.
+            this.dialog.Show(this.Name, this.description, this.battleEnemies);
         }
     }
 }
