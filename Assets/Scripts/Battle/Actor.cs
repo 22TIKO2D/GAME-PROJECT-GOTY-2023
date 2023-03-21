@@ -127,13 +127,13 @@ namespace Battle
         }
 
         /// <summary>Move this actor forward.</summary>
-        protected void MoveForward() => this.moveDir = 1.0f;
+        public void MoveForward() => this.moveDir = 1.0f;
 
         /// <summary>Move this actor backward.</summary>
-        protected void MoveBackward() => this.moveDir = -1.0f;
+        public void MoveBackward() => this.moveDir = -1.0f;
 
         /// <summary>Stop moving this actor.</summary>
-        protected void StopMoving() => this.moveDir = 0.0f;
+        public void StopMoving() => this.moveDir = 0.0f;
 
         /// <summary>Invoked when this actor's turn comes.</summary>
         public abstract IEnumerator Turn();
