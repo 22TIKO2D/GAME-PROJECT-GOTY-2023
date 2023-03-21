@@ -18,6 +18,9 @@ namespace Game
             // Store player position.
             PlayerStats.Position = GameObject.FindWithTag("Player").transform.position;
 
+            // Save before starting the battle.
+            PlayerStats.Save();
+
             // Disable all event systems.
             GameObject
                 .FindObjectsOfType<EventSystem>()

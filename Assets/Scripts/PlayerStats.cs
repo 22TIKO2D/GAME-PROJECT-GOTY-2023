@@ -46,6 +46,15 @@ namespace Game
             public string[] skills;
         }
 
+        /// <summary>Reset the player stats to their default values.</summary>
+        public static void Reset()
+        {
+            GoodExp = 0;
+            BadExp = 0;
+            Position = Vector2.zero;
+            Skills = new List<string>();
+        }
+
         /// <summary>Save file's name.</summary>
         private const string SaveFile = "player.sav";
 
