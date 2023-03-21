@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.IO;
 using System.Security.Cryptography;
 using System.Collections.Generic;
@@ -35,6 +36,34 @@ namespace Game
 
         /// <summary>Skills the player possesses.</summary>
         public static List<string> Skills = new List<string>();
+
+        /// <summary>A list of the skill classes.</summary>
+        public static List<Battle.IPlayerSkill> SkillClasses =>
+            Skills
+                .Select(
+                    // Get the skill by its name.
+                    (skill) =>
+                        (Battle.IPlayerSkill)
+                            Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
+                )
+                .ToList();
+
+        /// <summary>Unlock a new skill.</summary>
+        public static bool UnlockSkill(string name)
+        {
+            // Add the skill if it doesn't yet exist.
+            if (!Skills.Contains(name))
+            {
+                Skills.Add(name);
+
+                // Sort the skills.
+                Skills.Sort();
+
+                return true;
+            }
+
+            return false;
+        }
 
         /// <summary>Data structure used for saving the player stats.</summary>
         [Serializable]

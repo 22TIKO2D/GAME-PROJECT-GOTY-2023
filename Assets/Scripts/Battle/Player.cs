@@ -68,14 +68,7 @@ namespace Battle
             this.MaxHealth = Game.PlayerStats.MaxHealth;
 
             // Initialize skills.
-            this.skills = Game.PlayerStats.Skills
-                .Select(
-                    // Get the skill by its name.
-                    (skill) =>
-                        (IPlayerSkill)
-                            Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
-                )
-                .ToArray();
+            this.skills = Game.PlayerStats.SkillClasses.ToArray();
 
             base.Awake();
         }

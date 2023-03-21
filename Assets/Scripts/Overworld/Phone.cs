@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -121,6 +122,16 @@ namespace Overworld
                 )
             ); // Damage
             this.app.Add(new Label($"Sinun nopeutesi on {Game.PlayerStats.Speed}.")); // Speed
+
+            // If player has some skills.
+            if (Game.PlayerStats.Skills.Count > 0)
+            {
+                // Get the names of the skills.
+                string[] skillNames = Game.PlayerStats.SkillClasses
+                    .Select((skill) => skill.Name)
+                    .ToArray();
+                this.app.Add(new Label($"Sinun kykysi: {string.Join(", ", skillNames)}")); // Skills
+            }
         }
 
         /// <summary>Show or hide phone UI.</summary>
