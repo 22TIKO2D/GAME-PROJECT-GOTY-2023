@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -67,9 +68,14 @@ namespace Battle
             this.MaxHealth = Game.PlayerStats.MaxHealth;
 
             // Initialize skills.
-            this.skills = new IPlayerSkill[2];
-            this.skills[0] = new Skill.Heal();
-            this.skills[1] = new Skill.AOE();
+            this.skills = Game.PlayerStats.Skills
+                .Select(
+                    // Get the skill by its name.
+                    (skill) =>
+                        (IPlayerSkill)
+                            Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
+                )
+                .ToArray();
 
             base.Awake();
         }
@@ -184,19 +190,13 @@ namespace Battle
                         }
                         else
                         {
-                            this.MoveForward();
-                            yield return new WaitForSeconds(0.5f);
-
-                            // Hurt the target enemy.
-                            this.enemies[this.target.Value - 1].InflictDamage(
-                                Game.PlayerStats.Damage
+                            yield return this.Roundtrip(
+                                () =>
+                                    // Deal damage to the target enemy.
+                                    this.enemies[this.target.Value - 1].InflictDamage(
+                                        Game.PlayerStats.Damage
+                                    )
                             );
-                            yield return new WaitForSeconds(0.5f);
-
-                            this.MoveBackward();
-                            yield return new WaitForSeconds(0.5f);
-
-                            this.StopMoving();
 
                             // Make sure.
                             this.CheckDead();

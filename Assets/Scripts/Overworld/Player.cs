@@ -76,5 +76,14 @@ namespace Overworld
                 this.targetArrowRenderer.enabled = false;
             }
         }
+
+        private void OnApplicationQuit()
+        {
+            // Set the player's position before saving.
+            Game.PlayerStats.Position = this.transform.position;
+
+            // Save the game on exit.
+            Game.PlayerStats.Save();
+        }
     }
 }

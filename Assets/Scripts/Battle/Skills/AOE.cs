@@ -1,5 +1,5 @@
 using System.Collections;
-using UnityEngine;
+using System.Linq;
 
 namespace Battle.Skill
 {
@@ -9,20 +9,17 @@ namespace Battle.Skill
 
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
-            player.MoveForward();
-            yield return new WaitForSeconds(0.5f);
-
-            foreach (Enemy enemy in enemies)
-            {
-                // Deal evenly divided damage to all enemies.
-                enemy.InflictDamage(Game.PlayerStats.Damage / (uint)enemies.Length);
-            }
-            yield return new WaitForSeconds(0.5f);
-
-            player.MoveBackward();
-            yield return new WaitForSeconds(0.5f);
-
-            player.StopMoving();
+            yield return player.Roundtrip(
+                () =>
+                    // Deal damage to all enemies.
+                    enemies
+                        .ToList()
+                        .ForEach(
+                            (enemy) =>
+                                // Evenly divide damage between enemies.
+                                enemy.InflictDamage(Game.PlayerStats.Damage / (uint)enemies.Length)
+                        )
+            );
         }
     }
 }
