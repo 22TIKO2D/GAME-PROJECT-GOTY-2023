@@ -53,17 +53,11 @@ namespace Battle
 
         public override IEnumerator Turn()
         {
-            this.MoveForward();
-            yield return new WaitForSeconds(0.5f);
-
-            // Hurt the player.
-            this.player.InflictDamage(this.damage);
-            yield return new WaitForSeconds(0.5f);
-
-            this.MoveBackward();
-            yield return new WaitForSeconds(0.5f);
-
-            this.StopMoving();
+            yield return this.Roundtrip(
+                () =>
+                    // Deal damage to the player.
+                    this.player.InflictDamage(this.damage)
+            );
         }
     }
 }

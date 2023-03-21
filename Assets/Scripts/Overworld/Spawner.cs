@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Overworld
 {
+    /// <summary>Spawn NPCs on the map.</summary>
     public class Spawner : MonoBehaviour
     {
-        private void Start()
+        private void Awake()
         {
             // Get all the spawn points.
             List<Transform> spawnPoints = GameObject

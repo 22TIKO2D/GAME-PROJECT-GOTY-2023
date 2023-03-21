@@ -1,7 +1,9 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Battle
 {
@@ -126,14 +128,24 @@ namespace Battle
                 Mathf.Min(Random.Range(minAmount, maxAmount), this.MaxHealth - this.Health);
         }
 
-        /// <summary>Move this actor forward.</summary>
-        protected void MoveForward() => this.moveDir = 1.0f;
+        /// <summary>Move forward, do action, and move back.</summary>
+        public IEnumerator Roundtrip(Action action)
+        {
+            // Move forward.
+            this.moveDir = 1.0f;
+            yield return new WaitForSeconds(0.5f);
 
-        /// <summary>Move this actor backward.</summary>
-        protected void MoveBackward() => this.moveDir = -1.0f;
+            // Do the action.
+            action();
+            yield return new WaitForSeconds(0.5f);
 
-        /// <summary>Stop moving this actor.</summary>
-        protected void StopMoving() => this.moveDir = 0.0f;
+            // Move backward.
+            this.moveDir = -1.0f;
+            yield return new WaitForSeconds(0.5f);
+
+            // Stop the movement.
+            this.moveDir = 0.0f;
+        }
 
         /// <summary>Invoked when this actor's turn comes.</summary>
         public abstract IEnumerator Turn();

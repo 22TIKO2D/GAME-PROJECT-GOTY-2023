@@ -45,7 +45,7 @@ namespace Game
         public static Fade Get()
         {
             return (
-                GameObject.Find("Fade")
+                GameObject.FindObjectOfType<Fade>()?.gameObject
                 ?? GameObject.Instantiate(Resources.Load<GameObject>("Fade"))
             ).GetComponent<Fade>();
         }

@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -271,6 +273,13 @@ namespace Battle
                 this.isAdvancing = isBattleInProgress;
             }
 
+            // End the battle.
+            this.EndBattle(isPlayerDead);
+        }
+
+        /// <summary>Called when the battle ends.</summary>
+        private void EndBattle(bool isPlayerDead)
+        {
             // Count cumulative experience gain.
             uint expGain = (uint)
                 this.actors
@@ -286,6 +295,40 @@ namespace Battle
             string expType = isPlayerDead ? "huonoa" : "hyvää";
             this.battleEnd.rootVisualElement.Query<Label>("Exp").First().text =
                 $"Sait {expGain} {expType} kokemusta.";
+
+            // Skills that we unlocked.
+            List<string> skillsUnlocked = new List<string>();
+
+            // Get all the available skills.
+            Assembly
+                .GetExecutingAssembly()
+                .GetTypes()
+                .Where((type) => type.Namespace == "Battle.Skill")
+                // Check if the class is inherited from IPlayerSkill.
+                .Where((type) => typeof(IPlayerSkill).IsAssignableFrom(type))
+                .Select((type) => (IPlayerSkill)Activator.CreateInstance(type))
+                .ToList()
+                .ForEach(
+                    (skill) =>
+                    {
+                        // If we have enough experience.
+                        if (Game.PlayerStats.GoodExp >= skill.Exp)
+                            // If the skill is not yet unlocked, unlock it.
+                            if (Game.PlayerStats.UnlockSkill(skill.GetType().Name))
+                                skillsUnlocked.Add(skill.Name);
+                    }
+                );
+
+            Label skillLabel = this.battleEnd.rootVisualElement.Query<Label>("Skill");
+            skillLabel.text =
+                skillsUnlocked.Count == 1
+                    // Only one skill.
+                    ? $"Sait kyvyn {skillsUnlocked[0]}"
+                    // Multiple skills.
+                    : $"Sait kyvyt {string.Join(", ", skillsUnlocked)}";
+            // Show if unlocked any skills.
+            skillLabel.style.display =
+                skillsUnlocked.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;
 
             // Hide battle stats.
             this.battleStats.rootVisualElement.visible = false;
