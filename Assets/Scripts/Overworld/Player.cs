@@ -29,6 +29,9 @@ namespace Overworld
         /// <summary>Target object.</summary>
         public GameObject Target { private get; set; } = null;
 
+        /// <summary>If we want to save the game.</summary>
+        private bool wantSave = false;
+
         private void Start()
         {
             this.rb2d = this.GetComponent<Rigidbody2D>();
@@ -77,13 +80,41 @@ namespace Overworld
             }
         }
 
-        private void OnApplicationQuit()
+        private void LateUpdate()
+        {
+            // Fix saving on Android.
+            if (this.wantSave)
+            {
+                this.Save();
+                this.wantSave = false;
+            }
+        }
+
+        /// <summary>Save the game.</summary>
+        private void Save()
         {
             // Set the player's position before saving.
             Game.PlayerStats.Position = this.transform.position;
 
             // Save the game on exit.
             Game.PlayerStats.Save();
+        }
+
+        // Save on quit (desktop).
+        private void OnApplicationQuit() => this.Save();
+
+        // Save on pause (Android).
+        private void OnApplicationPause(bool isPaused)
+        {
+            if (isPaused)
+                this.wantSave = true;
+        }
+
+        // Save on lose focus (Android).
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if (!hasFocus)
+                this.wantSave = true;
         }
     }
 }
