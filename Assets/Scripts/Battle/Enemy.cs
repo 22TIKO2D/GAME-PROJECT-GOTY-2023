@@ -34,6 +34,10 @@ namespace Battle
         [SerializeField]
         private uint speed;
 
+        /// <summary>Difficulty of this enemy.</summary>
+        public decimal Difficulty =>
+            (decimal)Mathf.Pow(this.damage, 1.5f) * this.speed * this.maxHealth;
+
         protected override void Awake()
         {
             // Initialize actor values with the serialized fields.

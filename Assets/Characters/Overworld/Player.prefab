@@ -326,6 +326,7 @@ MonoBehaviour:
   joystick: {fileID: 0}
   moveSpeed: 2
   targetDistanceOffset: 1.5
+  mainCamera: {fileID: 8852653251553973351}
 --- !u!70 &8852653252285185919
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

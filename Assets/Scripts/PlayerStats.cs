@@ -34,6 +34,9 @@ namespace Game
         /// <summary>Amount of health to restore when player heals.</summary>
         public static uint HealAmount => MaxHealth / 5;
 
+        /// <summary>Power of the player compared to the difficulty of the enemies.</summary>
+        public static decimal Power => Damage * Speed * MaxHealth;
+
         /// <summary>Skills the player possesses.</summary>
         public static List<string> Skills = new List<string>();
 

@@ -26,11 +26,18 @@ namespace Overworld
         [SerializeField]
         private float targetDistanceOffset;
 
+        /// <summary>The main camera in the scene.</summary>
+        [SerializeField]
+        private Camera mainCamera;
+
         /// <summary>Target object.</summary>
         public GameObject Target { private get; set; } = null;
 
         /// <summary>If we want to save the game.</summary>
         private bool wantSave = false;
+
+        /// <summary>The velocity at which the camera zooms.</summary>
+        private float cameraZoomVelocity = 0.0f;
 
         private void Start()
         {
@@ -51,6 +58,14 @@ namespace Overworld
 
         private void Update()
         {
+            // Zoom the camera out when moving.
+            this.mainCamera.orthographicSize = Mathf.SmoothDamp(
+                this.mainCamera.orthographicSize,
+                2.0f + Mathf.Clamp01(this.rb2d.velocity.magnitude),
+                ref this.cameraZoomVelocity,
+                0.5f
+            );
+
             if (this.Target != null)
             {
                 this.targetArrowRenderer.enabled = true;

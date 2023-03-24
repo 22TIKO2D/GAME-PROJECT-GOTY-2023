@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -40,6 +41,27 @@ namespace Overworld
 
         public void Show(string name, string desc, string[] enemies)
         {
+            // Calculate the difficulty.
+            ushort difficulty = (ushort)(
+                enemies
+                    .ToList()
+                    .Select(
+                        (enemy) =>
+                            // Not very efficient to load the resources every time
+                            // we calculate the difficulty, but good enough.
+                            Resources
+                                .Load<GameObject>("Enemies/" + enemy)
+                                .GetComponent<Battle.Enemy>()
+                    )
+                    // Sum the difficulty of the enemies.
+                    .Sum((enemy) => enemy.Difficulty)
+                // Divided by the player's power.
+                / Game.PlayerStats.Power
+            );
+
+            // Set the difficulty level.
+            this.SetDifficulty(difficulty);
+
             // Set name and description.
             this.rootVisual.Query<Label>("Name").First().text = name;
             this.rootVisual.Query<Label>("Desc").First().text = desc;
@@ -52,6 +74,29 @@ namespace Overworld
 
             // Hide the canvas.
             this.canvas.enabled = false;
+        }
+
+        /// <summary>Set the difficulty level.</summary>
+        private void SetDifficulty(ushort level)
+        {
+            // Get the difficulty stars.
+            VisualElement[] stars = this.rootVisual
+                .Query<GroupBox>("Difficulty")
+                .First()
+                .Children()
+                .ToArray();
+
+            // Active stars.
+            for (int i = 0; i <= Mathf.Min(level, stars.Length - 1); i++)
+            {
+                stars[i].style.opacity = 1.0f;
+            }
+
+            // Dim stars.
+            for (int i = level + 1; i < stars.Length; i++)
+            {
+                stars[i].style.opacity = 0.2f;
+            }
         }
     }
 }
