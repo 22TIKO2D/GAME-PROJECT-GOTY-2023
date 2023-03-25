@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6623847048164533658}
   - component: {fileID: 1379161924417963016}
   m_Layer: 5
-  m_Name: Enemy2
+  m_Name: PC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,3 +94,4 @@ MonoBehaviour:
   expGain: 10
   maxHealth: 50
   speed: 7
+  value: 5

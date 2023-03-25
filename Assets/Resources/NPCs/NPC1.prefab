@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleEnemies:
-  - Enemy1
-  - Enemy2
+  - Toilet
+  - PC
   npcName: Kalle
   description: Minun nimeni on Kalle. Haluatko auttaa minua?
 --- !u!58 &-8167260358077933856

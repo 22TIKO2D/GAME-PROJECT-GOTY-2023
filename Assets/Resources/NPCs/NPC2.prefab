@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleEnemies:
-  - Enemy3
+  - Car
   npcName: Pekka
   description: Olen kultainen lumiukko...
 --- !u!58 &1916165469970270594
