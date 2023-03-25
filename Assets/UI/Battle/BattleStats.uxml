@@ -17,10 +17,9 @@
         </ui:GroupBox>
         <ui:GroupBox class="container">
             <ui:Label text="Toiminto" display-tooltip-when-elided="true" name="ActionLabel" class="group-label" />
-            <ui:GroupBox name="ActionBox">
-                <ui:Button text="Korjaa" display-tooltip-when-elided="true" />
-                <ui:Button text="Innostu" display-tooltip-when-elided="true" />
-            </ui:GroupBox>
+            <ui:ScrollView name="ActionBox" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" touch-scroll-type="Elastic">
+                <ui:Button text="Toiminto" display-tooltip-when-elided="true" />
+            </ui:ScrollView>
         </ui:GroupBox>
     </ui:GroupBox>
 </ui:UXML>

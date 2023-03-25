@@ -120,12 +120,8 @@ namespace Battle
         /// <summary>Heal the actor by increasing health.</summary>
         public void Heal(uint amount)
         {
-            uint minAmount = amount - (amount / 2);
-            uint maxAmount = amount + (amount / 2);
-
             // Prevent health from going over maximum health.
-            this.Health += (uint)
-                Mathf.Min(Random.Range(minAmount, maxAmount), this.MaxHealth - this.Health);
+            this.Health += (uint)Mathf.Min(amount, this.MaxHealth - this.Health);
         }
 
         /// <summary>Move forward, do action, and move back.</summary>

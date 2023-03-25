@@ -31,14 +31,18 @@ namespace Game
         /// <summary>The speed of the player.</summary>
         public static uint Speed => 4 + GoodExp / 20;
 
-        /// <summary>Amount of health to restore when player heals.</summary>
-        public static uint HealAmount => MaxHealth / 5;
-
         /// <summary>Power of the player compared to the difficulty of the enemies.</summary>
         public static decimal Power => Damage * Speed * MaxHealth;
 
         /// <summary>Skills the player possesses.</summary>
-        public static List<string> Skills = new List<string>();
+        public static List<string> Skills { get; private set; } = new List<string>();
+
+        /// <summary>Items that the player possesses.</summary>
+        public static Dictionary<string, uint> Items { get; private set; } =
+            new Dictionary<string, uint>();
+
+        /// <summary>The amount of money that the player has.</summary>
+        public static uint Money { get; set; } = 0;
 
         /// <summary>A list of the skill classes.</summary>
         public static List<Battle.IPlayerSkill> SkillClasses =>
@@ -68,14 +72,56 @@ namespace Game
             return false;
         }
 
+        /// <summary>Add a new item for the player.</summary>
+        public static void AddItem(string name, uint count = 1)
+        {
+            // Add the `count` amount of items.
+            Items[name] = Items.GetValueOrDefault(name, (uint)0) + count;
+        }
+
+        /// <summary>Get the amount of a specific item.</summary>
+        public static uint GetItemCount(string name)
+        {
+            // Get the item or 0 if we have none of that type.
+            return Items.GetValueOrDefault(name, (uint)0);
+        }
+
+        /// <summary>Remove an item from the player.</summary>
+        public static void RemoveItem(string name)
+        {
+            // If we have this type of item.
+            if (GetItemCount(name) > 0)
+            {
+                // Remove it.
+                Items[name]--;
+            }
+
+            // If we have no items of this type left.
+            if (GetItemCount(name) == 0)
+            {
+                // Remove the item.
+                Items.Remove(name);
+            }
+        }
+
         /// <summary>Data structure used for saving the player stats.</summary>
         [Serializable]
         private struct SaveData
         {
+            /// <summary>Data holding an item and its count.</summary>
+            [Serializable]
+            public struct Item
+            {
+                public string name;
+                public uint count;
+            }
+
             public uint goodExp;
             public uint badExp;
             public Vector2 position;
             public string[] skills;
+            public Item[] items;
+            public uint money;
         }
 
         /// <summary>Reset the player stats to their default values.</summary>
@@ -85,6 +131,8 @@ namespace Game
             BadExp = 0;
             Position = Vector2.zero;
             Skills = new List<string>();
+            Items = new Dictionary<string, uint>();
+            Money = 10; // Start with some money.
         }
 
         /// <summary>Save file's name.</summary>
@@ -119,6 +167,12 @@ namespace Game
                     badExp = BadExp,
                     position = Position,
                     skills = Skills.ToArray(),
+                    items = Items
+                        .ToList()
+                        // Convert to `SaveData.Item` struct.
+                        .Select((item) => new SaveData.Item { name = item.Key, count = item.Value })
+                        .ToArray(),
+                    money = Money,
                 };
 
                 // Write to the file.
@@ -157,11 +211,24 @@ namespace Game
                     // Read the file.
                     SaveData saveData = JsonUtility.FromJson<SaveData>(reader.ReadToEnd());
 
+                    // Reset before loading.
+                    Reset();
+
                     // Set the values.
                     GoodExp = saveData.goodExp;
                     BadExp = saveData.badExp;
-                    Position = saveData.position;
-                    Skills = new List<string>(saveData.skills);
+                    if (saveData.position != null)
+                        Position = saveData.position;
+                    if (saveData.skills != null)
+                        Skills = new List<string>(saveData.skills);
+                    if (saveData.items != null)
+                        Items = new Dictionary<string, uint>(
+                            saveData.items.Select(
+                                // Convert back to key value pairs.
+                                (item) => new KeyValuePair<string, uint>(item.name, item.count)
+                            )
+                        );
+                    Money = saveData.money;
                 }
             }
         }

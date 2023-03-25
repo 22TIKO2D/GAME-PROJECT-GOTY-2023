@@ -15,8 +15,7 @@
     border-width: 0px;
     border-radius: 10px;
     width: 100%;
-    flex: 0 0 25%;
-    margin: 5px 0;
+    margin: 5px 0px;
 }
 
 .unity-progress-bar__background {
@@ -26,6 +25,7 @@
 .unity-button {
     background-color: lightgray;
     -unity-font-style: bold;
+    white-space: normal;
 }
 
 .unity-button:hover, .unity-button:active {
@@ -39,6 +39,7 @@
 .unity-progress-bar__title, .unity-button.unity-text-element {
     color: black;
     font-size: 40px;
+    padding: 20px 0px;
 }
 
 .health-bar.unity-progress-bar .unity-progress-bar__progress {
@@ -47,10 +48,6 @@
 
 .current-turn.unity-progress-bar .unity-progress-bar__progress {
     background-color: lightblue;
-}
-
-.unity-group-box {
-    flex: 1 0;
 }
 
 .group-label.unity-label {
@@ -64,13 +61,14 @@
     font-size: 40px;
     flex-direction: row;
     position: absolute;
-    left: 200px;
-    bottom: 100px;
+    left: 100px;
+    bottom: 50px;
     width: 60%;
-    height: 400px;
+    height: 455px;
 }
 
-.battle-stats.unity-group-box .unity-group-box {
+.container.unity-group-box {
+    flex: 1 0;
     margin: 0px 2.5px;
 }
 

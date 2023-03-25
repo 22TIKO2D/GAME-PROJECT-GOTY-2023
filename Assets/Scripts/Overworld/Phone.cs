@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -50,6 +49,9 @@ namespace Overworld
 
             // Show infos when this button is clicked.
             rootVisual.Query<Button>("Stats").First().clicked += this.ShowStats;
+
+            // Show items when this button is clicked.
+            rootVisual.Query<Button>("Items").First().clicked += this.ShowItems;
 
             // Hide on start.
             this.SetVisible(false);
@@ -115,6 +117,7 @@ namespace Overworld
             this.app.Add(badExpLabel);
 
             // Add other labels.
+            this.app.Add(new Label($"Sinulla on ${Game.PlayerStats.Money} rahaa")); // Money
             this.app.Add(new Label($"Sinulla on {Game.PlayerStats.MaxHealth} motivaatiota.")); // Health
             this.app.Add(
                 new Label(
@@ -132,6 +135,31 @@ namespace Overworld
                     .ToArray();
                 this.app.Add(new Label($"Sinun kykysi: {string.Join(", ", skillNames)}")); // Skills
             }
+        }
+
+        /// <summary>Show the player's items.</summary>
+        private void ShowItems()
+        {
+            this.ResetApp();
+
+            Game.PlayerStats.Items
+                .ToList()
+                .ForEach(
+                    (itemPair) =>
+                    {
+                        // Get the item. Not very efficient.
+                        Game.Item item = Resources
+                            .Load<GameObject>("Items/" + itemPair.Key)
+                            .GetComponent<Game.Item>();
+
+                        // Show the item name, its count, and how much health it restores.
+                        this.app.Add(
+                            new Label(
+                                $"{item.Name} (x{itemPair.Value})\npalauttaa {item.Health} motia"
+                            )
+                        );
+                    }
+                );
         }
 
         /// <summary>Show or hide phone UI.</summary>

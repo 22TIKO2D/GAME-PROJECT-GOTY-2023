@@ -19,6 +19,7 @@ namespace Battle
         {
             Attack,
             Skill,
+            Item,
         }
 
         /// <summary>Current action.</summary>
@@ -30,6 +31,9 @@ namespace Battle
         /// <summary>Selected skill.</summary>
         private ushort? skill = null;
 
+        /// <summary>Selected item.</summary>
+        private string item = null;
+
         /// <summary>Group of the base actions.</summary>
         private GroupBox baseGroup;
 
@@ -38,6 +42,9 @@ namespace Battle
 
         /// <summary>Group of the player skills.</summary>
         private GroupBox skillGroup;
+
+        /// <summary>Group of the player's items.</summary>
+        private GroupBox itemGroup;
 
         /// <summary>Every enemy in this battle.</summary>
         private Enemy[] enemies;
@@ -55,6 +62,7 @@ namespace Battle
             Base,
             Target,
             Skill,
+            Item,
         }
 
         /// <summary>Label for action text.</summary>
@@ -79,7 +87,9 @@ namespace Battle
             this.actionLabel = this.battleStats.rootVisualElement.Query<Label>("ActionLabel");
             this.actionLabel.visible = false;
 
-            GroupBox actionGroup = this.battleStats.rootVisualElement.Query<GroupBox>("ActionBox");
+            ScrollView actionGroup = this.battleStats.rootVisualElement.Query<ScrollView>(
+                "ActionBox"
+            );
             actionGroup.Clear();
 
             this.baseGroup = new GroupBox();
@@ -90,8 +100,12 @@ namespace Battle
             this.baseGroup.Add(attackButton);
 
             Button skillsButton = new Button(() => this.action = Action.Skill);
-            skillsButton.text = "Kyky";
+            skillsButton.text = "Kyvyt";
             this.baseGroup.Add(skillsButton);
+
+            Button itemsButton = new Button(() => this.action = Action.Item);
+            itemsButton.text = "Tavarat";
+            this.baseGroup.Add(itemsButton);
 
             { // Target group.
                 this.targetGroup = new GroupBox();
@@ -139,7 +153,46 @@ namespace Battle
                 }
             }
 
+            { // Item group.
+                this.itemGroup = new GroupBox();
+                actionGroup.Add(this.itemGroup);
+
+                // Build the group.
+                this.BuildItemGroup();
+            }
+
             this.ShowGroup(VisibleGroup.None);
+        }
+
+        /// <summary>Build the item group.</summary>
+        private void BuildItemGroup()
+        {
+            this.itemGroup.Clear();
+
+            // Create cancel button.
+            Button cancelButton = new Button(() => this.item = "");
+            cancelButton.text = "Peruuta";
+            this.itemGroup.Add(cancelButton);
+
+            // Get all the items that the player possesses.
+            Game.PlayerStats.Items
+                .ToList()
+                .ForEach(
+                    (itemPair) =>
+                    {
+                        string itemKey = itemPair.Key;
+
+                        // Get the item. Not very efficient.
+                        Game.Item item = Resources
+                            .Load<GameObject>("Items/" + itemKey)
+                            .GetComponent<Game.Item>();
+
+                        Button itemButton = new Button(() => this.item = itemKey);
+                        itemButton.text =
+                            $"{item.Name} (x{itemPair.Value})\npalauttaa {item.Health} motia";
+                        this.itemGroup.Add(itemButton);
+                    }
+                );
         }
 
         /// <summary>Show the specific group.</summary>
@@ -156,6 +209,9 @@ namespace Battle
 
             this.skillGroup.style.display =
                 group == VisibleGroup.Skill ? DisplayStyle.Flex : DisplayStyle.None;
+
+            this.itemGroup.style.display =
+                group == VisibleGroup.Item ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
         public override IEnumerator Turn()
@@ -218,6 +274,39 @@ namespace Battle
                         }
 
                         this.skill = null;
+                        break;
+
+                    case Action.Item:
+                        this.ShowGroup(VisibleGroup.Item);
+
+                        // Wait until the player has chosen an item.
+                        yield return new WaitUntil(() => this.item != null);
+
+                        // Canceled.
+                        if (this.item == "")
+                        {
+                            this.action = null;
+                        }
+                        else
+                        {
+                            // Get the item.
+                            Game.Item item = Resources
+                                .Load<GameObject>("Items/" + this.item)
+                                .GetComponent<Game.Item>();
+
+                            // Remove the item.
+                            Game.PlayerStats.RemoveItem(this.item);
+
+                            // Rebuild the group.
+                            this.BuildItemGroup();
+
+                            // Heal the player by the amount this item restores.
+                            this.Heal(item.Health);
+
+                            yield return new WaitForSeconds(0.5f);
+                        }
+
+                        this.item = null;
                         break;
                 }
             }

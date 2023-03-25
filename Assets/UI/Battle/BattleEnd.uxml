@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/Stylesheets/BattleEnd.uss?fileID=7433441132597879392&amp;guid=1015d8a9d75d66bc689cba9f8a40c31b&amp;type=3#BattleEnd" />
     <ui:VisualElement name="Bg" class="bg">
         <ui:GroupBox text="Ongelma korjattu" name="Problem" class="main-box">
-            <ui:Label text="Sait 10 kokemuspistettä" display-tooltip-when-elided="true" name="Exp" />
+            <ui:Label text="Sait 10 kokemuspistettä" display-tooltip-when-elided="true" name="Info" />
             <ui:Label text="Sekä kyvyn" display-tooltip-when-elided="true" name="Skill" />
             <ui:Button text="Takaisin kartalle" display-tooltip-when-elided="true" name="Back" />
         </ui:GroupBox>

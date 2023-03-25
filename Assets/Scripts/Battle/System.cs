@@ -280,11 +280,14 @@ namespace Battle
         /// <summary>Called when the battle ends.</summary>
         private void EndBattle(bool isPlayerDead)
         {
+            // Get the enemies.
+            List<Enemy> enemies = this.actors
+                .Where((data) => data.actor.gameObject.tag == "Enemy")
+                .Select((data) => (Enemy)data.actor)
+                .ToList();
+
             // Count cumulative experience gain.
-            uint expGain = (uint)
-                this.actors
-                    .Where((data) => data.actor.gameObject.tag == "Enemy")
-                    .Sum((data) => ((Enemy)data.actor).ExpGain);
+            uint expGain = (uint)enemies.Sum((enemy) => enemy.ExpGain);
 
             if (isPlayerDead)
                 Game.PlayerStats.BadExp += expGain;
@@ -293,8 +296,23 @@ namespace Battle
 
             // Show the experience gain.
             string expType = isPlayerDead ? "huonoa" : "hyvää";
-            this.battleEnd.rootVisualElement.Query<Label>("Exp").First().text =
-                $"Sait {expGain} {expType} kokemusta.";
+
+            if (isPlayerDead)
+            {
+                this.battleEnd.rootVisualElement.Query<Label>("Info").First().text =
+                    $"Sait {expGain} {expType} kokemusta.";
+            }
+            else
+            {
+                // Count cumulative money gain.
+                uint moneyGain = (uint)enemies.Sum((enemy) => enemy.Value);
+
+                // Only get money if player won.
+                Game.PlayerStats.Money += moneyGain;
+
+                this.battleEnd.rootVisualElement.Query<Label>("Info").First().text =
+                    $"Sait {expGain} {expType} kokemusta ja ${moneyGain} rahaa.";
+            }
 
             // Skills that we unlocked.
             List<string> skillsUnlocked = new List<string>();
@@ -336,6 +354,9 @@ namespace Battle
             // Show end screen.
             this.battleEndBg.visible = true;
             this.battleEndBg.style.opacity = 1;
+
+            // Save after the battle.
+            Game.PlayerStats.Save();
         }
     }
 }

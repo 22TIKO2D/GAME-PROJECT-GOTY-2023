@@ -34,6 +34,12 @@ namespace Battle
         [SerializeField]
         private uint speed;
 
+        [SerializeField]
+        private uint value;
+
+        /// <summary>The amount of money you get from this enemy.</summary>
+        public uint Value => this.value;
+
         /// <summary>Difficulty of this enemy.</summary>
         public decimal Difficulty =>
             (decimal)Mathf.Pow(this.damage, 1.5f) * this.speed * this.maxHealth;
