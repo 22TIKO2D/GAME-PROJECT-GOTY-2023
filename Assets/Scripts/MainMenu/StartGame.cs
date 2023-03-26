@@ -1,18 +1,28 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MainMenu
 {
     public class StartGame : MonoBehaviour
     {
+        /// <summary>Disable this button if no save is available.</summary>
+        [SerializeField]
+        private bool disableWhenNoSave;
+
+        private void Start()
+        {
+            if (this.disableWhenNoSave)
+            {
+                // Disable if no save available.
+                this.GetComponent<Button>().interactable = Game.PlayerStats.SavePresent;
+            }
+        }
+
         /// <summary>Continue the existing game.</summary>
         public void ContinueGame()
         {
-            // Only load if the save is present.
-            if (Game.PlayerStats.SavePresent)
-            {
-                // Load the player stats.
-                Game.PlayerStats.Load();
-            }
+            // Load the player stats.
+            Game.PlayerStats.Load();
 
             // Start the game.
             StartCoroutine(Game.State.Overworld());

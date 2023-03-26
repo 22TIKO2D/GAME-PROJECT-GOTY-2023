@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 namespace Game
 {
@@ -20,6 +21,10 @@ namespace Game
         [SerializeField]
         private RawImage fadeImage;
 
+        /// <summary>Audio mixer used when fading.</summary>
+        [SerializeField]
+        private AudioMixer audioMixer;
+
         private void Start()
         {
             // Keep fade when switching scenes.
@@ -39,6 +44,15 @@ namespace Game
                 new Color(1, 1, 1, 1), // Opaque
                 this.fadeAmount
             );
+
+            // Fade the volume.
+            this.audioMixer.SetFloat("Volume", this.Linear2dB(1 - this.fadeAmount));
+        }
+
+        /// <summary>Convert linear audio to decibels.
+        private float Linear2dB(float amount)
+        {
+            return Mathf.Approximately(amount, 0) ? -144 : (Mathf.Log10(amount) * 20);
         }
 
         /// <summary>Get or instantiate a fade.</summary>

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1880008929
   m_SortingLayer: 3
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 94760265292c26bb9a03c0ca8c4595f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee1520ede6c507e8c8032367aad04f33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -158,7 +158,7 @@ Camera:
   m_GameObject: {fileID: 8852653251553973349}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -212,8 +212,8 @@ GameObject:
   - component: {fileID: 8852653252285185917}
   - component: {fileID: 8852653252285185913}
   - component: {fileID: 8852653252285185918}
-  - component: {fileID: 8852653252285185919}
   - component: {fileID: 1136782122}
+  - component: {fileID: 2234149218118576467}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_SortingLayerID: -1880008929
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 86666451fece60a4591a13f001be8e20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8125865051f792a71bb182cfb27cf3eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -327,7 +327,19 @@ MonoBehaviour:
   moveSpeed: 2
   targetDistanceOffset: 1.5
   mainCamera: {fileID: 8852653251553973351}
---- !u!70 &8852653252285185919
+--- !u!114 &1136782122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8852653252285185906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31057ef324a04478bb4f7d469b3cdc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &2234149218118576467
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,17 +353,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.64, y: 0.9}
+  m_Size: {x: 0.5, y: 0.985}
   m_Direction: 0
---- !u!114 &1136782122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8852653252285185906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31057ef324a04478bb4f7d469b3cdc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

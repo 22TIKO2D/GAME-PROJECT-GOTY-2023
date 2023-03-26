@@ -187,5 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f710d8ff1e6ceb7df9220e03e43749a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeDir: -1
   fadeSpeed: 1
   fadeImage: {fileID: 4146695639983351444}
+  audioMixer: {fileID: 24100000, guid: f799c74a51ad1c9dda7071646f70667f, type: 2}

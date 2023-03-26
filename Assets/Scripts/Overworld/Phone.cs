@@ -117,7 +117,7 @@ namespace Overworld
             this.app.Add(badExpLabel);
 
             // Add other labels.
-            this.app.Add(new Label($"Sinulla on ${Game.PlayerStats.Money} rahaa")); // Money
+            this.app.Add(new Label($"Sinulla on ${Game.PlayerStats.Money} rahaa.")); // Money
             this.app.Add(new Label($"Sinulla on {Game.PlayerStats.MaxHealth} motivaatiota.")); // Health
             this.app.Add(
                 new Label(

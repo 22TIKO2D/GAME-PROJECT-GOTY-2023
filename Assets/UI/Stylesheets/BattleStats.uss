@@ -69,7 +69,7 @@
 
 .container.unity-group-box {
     flex: 1 0;
-    margin: 0px 2.5px;
+    margin: 0px 5px;
 }
 
 .dead {
