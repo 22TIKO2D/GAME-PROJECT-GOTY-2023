@@ -133,7 +133,7 @@ namespace Overworld
                 string[] skillNames = Game.PlayerStats.SkillClasses
                     .Select((skill) => skill.Name)
                     .ToArray();
-                this.app.Add(new Label($"Sinun kykysi: {string.Join(", ", skillNames)}")); // Skills
+                this.app.Add(new Label($"Sinun taitosi: {string.Join(", ", skillNames)}")); // Skills
             }
         }
 

@@ -12,6 +12,12 @@ namespace Battle
 
         public override string Name => this.enemyName;
 
+        [SerializeField]
+        private string fix;
+
+        /// <summary>The fix text.</summary>
+        public string Fix => fix;
+
         /// <summary>The amount of damage this enemy deals to the player.</summary>
         [SerializeField]
         private uint damage;

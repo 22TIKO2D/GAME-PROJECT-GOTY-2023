@@ -341,9 +341,9 @@ namespace Battle
             skillLabel.text =
                 skillsUnlocked.Count == 1
                     // Only one skill.
-                    ? $"Sait kyvyn {skillsUnlocked[0]}"
+                    ? $"Sait taidon {skillsUnlocked[0]}"
                     // Multiple skills.
-                    : $"Sait kyvyt {string.Join(", ", skillsUnlocked)}";
+                    : $"Sait taidot {string.Join(", ", skillsUnlocked)}";
             // Show if unlocked any skills.
             skillLabel.style.display =
                 skillsUnlocked.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;

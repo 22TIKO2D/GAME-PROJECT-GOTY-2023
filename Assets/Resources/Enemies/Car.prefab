@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Auto
+  fix: "Kirist\xE4 pultteja"
   damage: 175
   expGain: 100
   maxHealth: 500

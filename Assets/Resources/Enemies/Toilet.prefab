@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: "WC-p\xF6ntt\xF6"
+  fix: "Tiivist\xE4 putkia"
   damage: 10
   expGain: 40
   maxHealth: 200

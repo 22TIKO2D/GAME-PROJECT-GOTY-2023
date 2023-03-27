@@ -100,7 +100,7 @@ namespace Battle
             this.baseGroup.Add(attackButton);
 
             Button skillsButton = new Button(() => this.action = Action.Skill);
-            skillsButton.text = "Kyvyt";
+            skillsButton.text = "Taidot";
             this.baseGroup.Add(skillsButton);
 
             Button itemsButton = new Button(() => this.action = Action.Item);
@@ -129,7 +129,7 @@ namespace Battle
                 {
                     ushort target = (ushort)(i + 1);
                     this.targetButtons[i] = new Button(() => this.target = target);
-                    this.targetButtons[i].text = this.enemies[i].Name;
+                    this.targetButtons[i].text = this.enemies[i].Fix;
                     this.targetGroup.Add(this.targetButtons[i]);
                 }
             }

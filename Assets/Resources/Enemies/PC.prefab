@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Tietokone
+  fix: Poista viiruksia
   damage: 5
   expGain: 10
   maxHealth: 50
