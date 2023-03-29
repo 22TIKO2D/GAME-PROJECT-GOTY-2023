@@ -17,16 +17,16 @@ namespace Game
         public static Vector2 Position { get; set; } = Vector2.zero;
 
         /// <summary>Maximum health of the player character.</summary>
-        public static uint MaxHealth => 100 + Exp / 2;
+        public static uint MaxHealth => 100 + (uint)(10 * Mathf.Sqrt(Exp));
 
         /// <summary>The amount of damage player does to enemies.</summary>
-        public static uint Damage => 10 + Exp;
+        public static uint Damage => 10 + (uint)(10 * Mathf.Log(1 + Exp / 10));
 
         /// <summary>The speed of the player.</summary>
-        public static uint Speed => 4 + Exp / 20;
+        public static uint Speed => 4 + (uint)Mathf.Log(1 + Exp / 10);
 
         /// <summary>Power of the player compared to the difficulty of the enemies.</summary>
-        public static decimal Power => (decimal)Mathf.Pow(Damage, 1.5f) * Speed * MaxHealth;
+        public static uint Power => Damage * Speed * MaxHealth;
 
         /// <summary>Skills the player possesses.</summary>
         public static List<string> Skills { get; set; } = new List<string>();

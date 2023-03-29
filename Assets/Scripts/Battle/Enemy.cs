@@ -59,8 +59,7 @@ namespace Battle
         public string[] Skills => this.skills;
 
         /// <summary>Difficulty of this enemy.</summary>
-        public decimal Difficulty =>
-            (decimal)Mathf.Pow(this.damage, 1.5f) * this.speed * this.maxHealth;
+        public uint Difficulty => this.damage * this.speed * this.maxHealth;
 
         protected override void Awake()
         {

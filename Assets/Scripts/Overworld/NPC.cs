@@ -5,9 +5,11 @@ namespace Overworld
     /// <summary>Non-player character.</summary>
     public class NPC : MonoBehaviour
     {
-        /// <summary>Enemies seen in the battle.</summary>
         [SerializeField]
         private string[] battleEnemies;
+
+        /// <summary>Enemies seen in the battle.</summary>
+        public string[] Enemies => this.battleEnemies;
 
         /// <summary>The name of this NPC.</summary>
         public string Name => npcName;

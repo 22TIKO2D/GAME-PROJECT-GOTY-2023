@@ -327,7 +327,7 @@ namespace Battle
                 .ToArray();
 
             // Add the skills.
-            Game.PlayerStats.Skills.Concat(skillGain);
+            Game.PlayerStats.Skills = Game.PlayerStats.Skills.Concat(skillGain).ToList();
 
             // The actual skill names.
             string[] skillNames = skillGain

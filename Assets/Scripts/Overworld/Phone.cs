@@ -34,6 +34,15 @@ namespace Overworld
             VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
 
             this.phone = rootVisual.Query<VisualElement>("Phone");
+            // Hide when clicked the empty area.
+            this.phone.RegisterCallback<ClickEvent>(
+                (e) =>
+                {
+                    // When clicked this element specifically.
+                    if (e.target == e.currentTarget)
+                        this.SetVisible(false);
+                }
+            );
 
             this.phoneButton = rootVisual.Query<VisualElement>("PhoneButton");
             // Show the phone screen when the phone button is clicked.
@@ -90,7 +99,39 @@ namespace Overworld
                             this.player.Target = npc.gameObject;
                             this.SetVisible(false);
                         });
-                        npcButton.text = npc.Name;
+
+                        // Get the difficulty.
+                        string difficulty = Math.Clamp(
+                            (
+                                npc.Enemies
+                                    .ToList()
+                                    .Select(
+                                        (enemy) =>
+                                            // Not very efficient to load the resources every time
+                                            // we calculate the difficulty, but good enough.
+                                            Resources
+                                                .Load<GameObject>("Enemies/" + enemy)
+                                                .GetComponent<Battle.Enemy>()
+                                    )
+                                    // Sum the difficulty of the enemies.
+                                    .Sum((enemy) => enemy.Difficulty)
+                                // Divided by the player's power.
+                                / Game.PlayerStats.Power
+                            ),
+                            0,
+                            4
+                        ) switch
+                        {
+                            0 => "Helppo",
+                            1 => "Sopiva",
+                            2 => "Kohtuullinen",
+                            3 => "Vaikea",
+                            4 => "Mahdoton",
+                            _ => "???",
+                        };
+
+                        npcButton.text = $"{npc.Name} ({difficulty})";
+
                         this.app.Add(npcButton);
                     }
                 );
