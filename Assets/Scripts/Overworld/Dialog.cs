@@ -55,6 +55,8 @@ namespace Overworld
                     )
                     // Sum the difficulty of the enemies.
                     .Sum((enemy) => enemy.Difficulty)
+                // 5 stars.
+                * 5
                 // Divided by the player's power.
                 / Game.PlayerStats.Power
             );
