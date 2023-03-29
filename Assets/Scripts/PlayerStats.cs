@@ -90,6 +90,7 @@ namespace Game
             public string[] skills;
             public Item[] items;
             public uint money;
+            public uint time;
         }
 
         /// <summary>Reset the player stats to their default values.</summary>
@@ -100,6 +101,7 @@ namespace Game
             Skills = new List<string>();
             Items = new Dictionary<string, uint>();
             Money = 10; // Start with some money.
+            Time = 0;
         }
 
         /// <summary>Save file's name.</summary>
@@ -139,6 +141,7 @@ namespace Game
                         .Select((item) => new SaveData.Item { name = item.Key, count = item.Value })
                         .ToArray(),
                     money = Money,
+                    time = Time,
                 };
 
                 // Write to the file.
@@ -194,6 +197,7 @@ namespace Game
                             )
                         );
                     Money = saveData.money;
+                    Time = saveData.time;
                 }
             }
         }
