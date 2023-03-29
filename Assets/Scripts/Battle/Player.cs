@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -75,7 +76,15 @@ namespace Battle
             this.MaxHealth = Game.PlayerStats.MaxHealth;
 
             // Initialize skills.
-            this.skills = Game.PlayerStats.SkillClasses.ToArray();
+            this.skills = Game.PlayerStats.Skills
+                .Select(
+                    (skill) =>
+                        (
+                            (Battle.IPlayerSkill)
+                                Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
+                        )
+                )
+                .ToArray();
 
             base.Awake();
         }

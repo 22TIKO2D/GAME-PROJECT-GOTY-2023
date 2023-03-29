@@ -8,9 +8,6 @@ namespace Battle
         /// <summary>Name of the skill.</summary>
         public string Name { get; }
 
-        /// <summary>Experience needed to unlock this skill.</summary>
-        public uint Exp { get; }
-
         /// <summary>Method to use the skill.</summary>
         public IEnumerator Use(Player player, Enemy[] enemies);
     }

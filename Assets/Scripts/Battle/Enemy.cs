@@ -46,6 +46,18 @@ namespace Battle
         /// <summary>The amount of money you get from this enemy.</summary>
         public uint Value => this.value;
 
+        [SerializeField]
+        private uint time;
+
+        /// <summary>The amount of time it takes to beat this enemy.</summary>
+        public uint Time => this.time;
+
+        [SerializeField]
+        private string[] skills;
+
+        /// <summary>Skills that the player will gain by defeating this enemy.</summary>
+        public string[] Skills => this.skills;
+
         /// <summary>Difficulty of this enemy.</summary>
         public decimal Difficulty =>
             (decimal)Mathf.Pow(this.damage, 1.5f) * this.speed * this.maxHealth;

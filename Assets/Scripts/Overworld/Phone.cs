@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -100,23 +101,8 @@ namespace Overworld
         {
             this.ResetApp();
 
-            // Create experience info labels.
-            Label goodExpLabel = new Label(
-                $"Sinulla on {Game.PlayerStats.GoodExp} hyvää kokemusta."
-            );
-            Label badExpLabel = new Label(
-                $"Sinulla on {Game.PlayerStats.BadExp} huonoa kokemusta."
-            );
-
-            // Set colors.
-            goodExpLabel.style.color = Color.green;
-            badExpLabel.style.color = Color.red;
-
-            // Add experience info.
-            this.app.Add(goodExpLabel);
-            this.app.Add(badExpLabel);
-
-            // Add other labels.
+            // Add info labels.
+            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.Exp} kokemusta."));
             this.app.Add(new Label($"Sinulla on ${Game.PlayerStats.Money} rahaa.")); // Money
             this.app.Add(new Label($"Sinulla on {Game.PlayerStats.MaxHealth} motivaatiota.")); // Health
             this.app.Add(
@@ -130,8 +116,14 @@ namespace Overworld
             if (Game.PlayerStats.Skills.Count > 0)
             {
                 // Get the names of the skills.
-                string[] skillNames = Game.PlayerStats.SkillClasses
-                    .Select((skill) => skill.Name)
+                string[] skillNames = Game.PlayerStats.Skills
+                    .Select(
+                        (skill) =>
+                            (
+                                (Battle.IPlayerSkill)
+                                    Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
+                            ).Name
+                    )
                     .ToArray();
                 this.app.Add(new Label($"Sinun taitosi: {string.Join(", ", skillNames)}")); // Skills
             }

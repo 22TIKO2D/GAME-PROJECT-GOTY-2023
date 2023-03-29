@@ -11,31 +11,25 @@ namespace Game
     public static class PlayerStats
     {
         /// <summary>Good experience collected by the player.</summary>
-        public static uint GoodExp { get; set; } = 0;
-
-        /// <summary>Bad experience collected by the player.</summary>
-        public static uint BadExp { get; set; } = 0;
-
-        /// <summary>Total experience collected by the player.</summary>
-        public static uint TotalExp => GoodExp + BadExp;
+        public static uint Exp { get; set; } = 0;
 
         /// <summary>Player's position on the map.</summary>
         public static Vector2 Position { get; set; } = Vector2.zero;
 
         /// <summary>Maximum health of the player character.</summary>
-        public static uint MaxHealth => 100 - BadExp / 2;
+        public static uint MaxHealth => 100 + Exp / 2;
 
         /// <summary>The amount of damage player does to enemies.</summary>
-        public static uint Damage => 10 + GoodExp;
+        public static uint Damage => 10 + Exp;
 
         /// <summary>The speed of the player.</summary>
-        public static uint Speed => 4 + GoodExp / 20;
+        public static uint Speed => 4 + Exp / 20;
 
         /// <summary>Power of the player compared to the difficulty of the enemies.</summary>
-        public static decimal Power => Damage * Speed * MaxHealth;
+        public static decimal Power => (decimal)Mathf.Pow(Damage, 1.5f) * Speed * MaxHealth;
 
         /// <summary>Skills the player possesses.</summary>
-        public static List<string> Skills { get; private set; } = new List<string>();
+        public static List<string> Skills { get; set; } = new List<string>();
 
         /// <summary>Items that the player possesses.</summary>
         public static Dictionary<string, uint> Items { get; private set; } =
@@ -44,33 +38,8 @@ namespace Game
         /// <summary>The amount of money that the player has.</summary>
         public static uint Money { get; set; } = 0;
 
-        /// <summary>A list of the skill classes.</summary>
-        public static List<Battle.IPlayerSkill> SkillClasses =>
-            Skills
-                .Select(
-                    // Get the skill by its name.
-                    (skill) =>
-                        (Battle.IPlayerSkill)
-                            Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
-                )
-                .ToList();
-
-        /// <summary>Unlock a new skill.</summary>
-        public static bool UnlockSkill(string name)
-        {
-            // Add the skill if it doesn't yet exist.
-            if (!Skills.Contains(name))
-            {
-                Skills.Add(name);
-
-                // Sort the skills.
-                Skills.Sort();
-
-                return true;
-            }
-
-            return false;
-        }
+        /// <summary>The game time in minutes.</summary>
+        public static uint Time { get; set; } = 0;
 
         /// <summary>Add a new item for the player.</summary>
         public static void AddItem(string name, uint count = 1)
@@ -116,8 +85,7 @@ namespace Game
                 public uint count;
             }
 
-            public uint goodExp;
-            public uint badExp;
+            public uint exp;
             public Vector2 position;
             public string[] skills;
             public Item[] items;
@@ -127,8 +95,7 @@ namespace Game
         /// <summary>Reset the player stats to their default values.</summary>
         public static void Reset()
         {
-            GoodExp = 0;
-            BadExp = 0;
+            Exp = 0;
             Position = Vector2.zero;
             Skills = new List<string>();
             Items = new Dictionary<string, uint>();
@@ -163,8 +130,7 @@ namespace Game
                 // Get the values.
                 SaveData saveData = new SaveData
                 {
-                    goodExp = GoodExp,
-                    badExp = BadExp,
+                    exp = Exp,
                     position = Position,
                     skills = Skills.ToArray(),
                     items = Items
@@ -215,8 +181,7 @@ namespace Game
                     Reset();
 
                     // Set the values.
-                    GoodExp = saveData.goodExp;
-                    BadExp = saveData.badExp;
+                    Exp = saveData.exp;
                     if (saveData.position != null)
                         Position = saveData.position;
                     if (saveData.skills != null)

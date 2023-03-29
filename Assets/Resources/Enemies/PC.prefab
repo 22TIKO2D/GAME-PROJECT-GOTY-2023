@@ -96,3 +96,4 @@ MonoBehaviour:
   maxHealth: 50
   speed: 7
   value: 5
+  time: 10

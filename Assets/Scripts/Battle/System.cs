@@ -286,67 +286,70 @@ namespace Battle
                 .Select((data) => (Enemy)data.actor)
                 .ToList();
 
-            // Count cumulative experience gain.
-            uint expGain = (uint)enemies.Sum((enemy) => enemy.ExpGain);
+            // Move time forward.
+            uint timeGain = (uint)
+                enemies.Sum(
+                    // Calculate time based on how much of the problem got fixed.
+                    (enemy) => ((enemy.MaxHealth - enemy.Health) * enemy.Time) / enemy.MaxHealth
+                );
+            Game.PlayerStats.Time += timeGain;
 
-            if (isPlayerDead)
-                Game.PlayerStats.BadExp += expGain;
-            else
-                Game.PlayerStats.GoodExp += expGain;
+            Label infoLabel = this.battleEnd.rootVisualElement.Query<Label>("Info");
 
-            // Show the experience gain.
-            string expType = isPlayerDead ? "huonoa" : "hyvää";
-
-            if (isPlayerDead)
+            // Gain experience only if player won
+            if (!isPlayerDead)
             {
-                this.battleEnd.rootVisualElement.Query<Label>("Info").First().text =
-                    $"Sait {expGain} {expType} kokemusta.";
-            }
-            else
-            {
+                // Count cumulative experience gain.
+                uint expGain = (uint)enemies.Sum((enemy) => enemy.ExpGain);
+
+                Game.PlayerStats.Exp += expGain;
+
                 // Count cumulative money gain.
                 uint moneyGain = (uint)enemies.Sum((enemy) => enemy.Value);
 
                 // Only get money if player won.
                 Game.PlayerStats.Money += moneyGain;
 
-                this.battleEnd.rootVisualElement.Query<Label>("Info").First().text =
-                    $"Sait {expGain} {expType} kokemusta ja ${moneyGain} rahaa.";
+                infoLabel.text =
+                    $"Sait {expGain} kokemusta, {moneyGain}€ rahaa, sekä siihen kului {timeGain} minuuttia.";
+            }
+            else
+            {
+                // Nothing will be gained if lost the battle.
+                infoLabel.text = $"Tuhlasit {timeGain} minuuttia aikaa";
             }
 
-            // Skills that we unlocked.
-            List<string> skillsUnlocked = new List<string>();
+            // Skills that the player gained.
+            string[] skillGain = enemies
+                .SelectMany((enemy) => enemy.Skills)
+                // Skills that the player doesn't yet have.
+                .Where((skill) => !Game.PlayerStats.Skills.Contains(skill))
+                .ToArray();
 
-            // Get all the available skills.
-            Assembly
-                .GetExecutingAssembly()
-                .GetTypes()
-                .Where((type) => type.Namespace == "Battle.Skill")
-                // Check if the class is inherited from IPlayerSkill.
-                .Where((type) => typeof(IPlayerSkill).IsAssignableFrom(type))
-                .Select((type) => (IPlayerSkill)Activator.CreateInstance(type))
-                .ToList()
-                .ForEach(
+            // Add the skills.
+            Game.PlayerStats.Skills.Concat(skillGain);
+
+            // The actual skill names.
+            string[] skillNames = skillGain
+                .Select(
                     (skill) =>
-                    {
-                        // If we have enough experience.
-                        if (Game.PlayerStats.GoodExp >= skill.Exp)
-                            // If the skill is not yet unlocked, unlock it.
-                            if (Game.PlayerStats.UnlockSkill(skill.GetType().Name))
-                                skillsUnlocked.Add(skill.Name);
-                    }
-                );
+                        (
+                            (IPlayerSkill)
+                                Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
+                        ).Name
+                )
+                .ToArray();
 
             Label skillLabel = this.battleEnd.rootVisualElement.Query<Label>("Skill");
             skillLabel.text =
-                skillsUnlocked.Count == 1
+                skillNames.Length == 1
                     // Only one skill.
-                    ? $"Sait taidon {skillsUnlocked[0]}"
+                    ? $"Sait taidon {skillNames[0]}"
                     // Multiple skills.
-                    : $"Sait taidot {string.Join(", ", skillsUnlocked)}";
+                    : $"Sait taidot {string.Join(", ", skillNames)}";
             // Show if unlocked any skills.
             skillLabel.style.display =
-                skillsUnlocked.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;
+                skillNames.Length > 0 ? DisplayStyle.Flex : DisplayStyle.None;
 
             // Hide battle stats.
             this.battleStats.rootVisualElement.visible = false;

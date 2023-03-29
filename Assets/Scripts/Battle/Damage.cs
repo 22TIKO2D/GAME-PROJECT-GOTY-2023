@@ -30,11 +30,11 @@ namespace Battle
         [SerializeField]
         private float fadeSpeed;
 
-        private TextMeshProUGUI textMesh;
+        private TMP_Text textMesh;
 
         private void Awake()
         {
-            this.textMesh = this.GetComponent<TextMeshProUGUI>();
+            this.textMesh = this.GetComponent<TMP_Text>();
         }
 
         private void Start()

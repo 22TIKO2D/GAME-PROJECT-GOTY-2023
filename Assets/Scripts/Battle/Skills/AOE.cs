@@ -8,8 +8,6 @@ namespace Battle.Skill
     {
         public string Name => "Korjaa kaikkia";
 
-        public uint Exp => 100;
-
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
             yield return player.Roundtrip(

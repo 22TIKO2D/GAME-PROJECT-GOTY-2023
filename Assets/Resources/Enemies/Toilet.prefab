@@ -96,3 +96,6 @@ MonoBehaviour:
   maxHealth: 200
   speed: 2
   value: 10
+  time: 15
+  skills:
+  - Heal

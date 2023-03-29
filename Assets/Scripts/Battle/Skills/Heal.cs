@@ -8,8 +8,6 @@ namespace Battle.Skill
     {
         public string Name => "Innostu";
 
-        public uint Exp => 20;
-
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
             // Heal the player by 20%.

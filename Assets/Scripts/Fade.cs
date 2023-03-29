@@ -52,7 +52,8 @@ namespace Game
         /// <summary>Convert linear audio to decibels.
         private float Linear2dB(float amount)
         {
-            return Mathf.Approximately(amount, 0) ? -144 : (Mathf.Log10(amount) * 20);
+            amount = Mathf.Clamp01(amount);
+            return Mathf.Approximately(amount, 0) ? -80 : (Mathf.Log10(amount) * 20);
         }
 
         /// <summary>Get or instantiate a fade.</summary>
