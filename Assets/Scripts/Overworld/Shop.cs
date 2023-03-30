@@ -50,7 +50,7 @@ namespace Overworld
             this.shopView.Clear();
 
             // Set the money text.
-            this.moneyLabel.text = $"Sinulla on ${Game.PlayerStats.Money} rahaa";
+            this.moneyLabel.text = $"Sinulla on {Game.PlayerStats.Money}€ rahaa";
 
             products
                 .ToList()
@@ -75,11 +75,11 @@ namespace Overworld
 
                                 // Update the text.
                                 this.moneyLabel.text =
-                                    $"Sinulla on ${Game.PlayerStats.Money} rahaa";
+                                    $"Sinulla on {Game.PlayerStats.Money}€ rahaa";
                             }
                         });
                         itemButton.text =
-                            $"{item.Name} (${item.Value})\npalauttaa {item.Health} motia";
+                            $"{item.Name} ({item.Value}€)\npalauttaa {item.Health} motia";
                         this.shopView.Add(itemButton);
                     }
                 );
