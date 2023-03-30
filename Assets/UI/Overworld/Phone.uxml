@@ -8,6 +8,7 @@
                     <ui:Button text="Apuva!" display-tooltip-when-elided="true" name="Apuva" class="app-icon" />
                     <ui:Button text="Moti" display-tooltip-when-elided="true" name="Stats" class="app-icon" />
                     <ui:Button text="Tavarat" display-tooltip-when-elided="true" name="Items" class="app-icon" style="white-space: nowrap;" />
+                    <ui:Button text="Asetukset" display-tooltip-when-elided="true" name="Settings" class="app-icon" style="font-size: 40px; white-space: nowrap;" />
                     <ui:Button text="Sulje" display-tooltip-when-elided="true" name="Shutdown" class="app-icon" />
                 </ui:GroupBox>
                 <ui:ScrollView touch-scroll-type="Elastic" name="App" />

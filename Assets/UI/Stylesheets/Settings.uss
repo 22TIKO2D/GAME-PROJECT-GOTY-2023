@@ -1,0 +1,18 @@
+.unity-base-slider__drag-container {
+    margin-left: 10px;
+}
+
+.unity-base-slider__tracker {
+    height: 30px;
+    margin-top: -15px;
+}
+
+.unity-base-slider__dragger {
+    height: 60px;
+    width: 30px;
+    margin-top: -30px;
+}
+
+.unity-group-box__label {
+    -unity-font-style: bold;
+}

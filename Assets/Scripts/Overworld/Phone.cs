@@ -27,6 +27,10 @@ namespace Overworld
         [SerializeField]
         private Canvas canvas;
 
+        /// <summary>Settings dialog.</summary>
+        [SerializeField]
+        private Game.Settings settings;
+
         private void Start()
         {
             this.player = GameObject.FindWithTag("Player").GetComponent<Player>();
@@ -62,6 +66,16 @@ namespace Overworld
 
             // Show items when this button is clicked.
             rootVisual.Query<Button>("Items").First().clicked += this.ShowItems;
+
+            // Show the settings dialog when settings button is clicked.
+            rootVisual.Query<Button>("Settings").First().clicked += () =>
+            {
+                // Hide the phone.
+                this.SetVisible(false);
+
+                // And show the settings.
+                this.settings.SetVisible(true);
+            };
 
             // Hide on start.
             this.SetVisible(false);
