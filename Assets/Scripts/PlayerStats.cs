@@ -42,10 +42,10 @@ namespace Game
         public static uint Time { get; set; } = 0;
 
         /// <summary>The after dialog NPC's name.</summary>
-        public static string AfterDialogName { get; set; } = "";
+        public static string AfterDialogName { get; set; } = null;
 
         /// <summary>The after dialog NPC's text.</summary>
-        public static string AfterDialogDesc { get; set; } = "";
+        public static string AfterDialogDesc { get; set; } = null;
 
         /// <summary>Add a new item for the player.</summary>
         public static void AddItem(string name, uint count = 1)
@@ -110,8 +110,8 @@ namespace Game
             Items = new Dictionary<string, uint>();
             Money = 10; // Start with some money.
             Time = 0;
-            AfterDialogName = "";
-            AfterDialogDesc = "";
+            AfterDialogName = null;
+            AfterDialogDesc = null;
         }
 
         /// <summary>Save file's name.</summary>
