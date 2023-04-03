@@ -13,13 +13,17 @@ namespace Game
         public static string[] BattleEnemies { get; private set; }
 
         /// <summary>Start a battle with specific enemies.</summary>
-        public static IEnumerator Battle(string[] enemies)
+        public static IEnumerator Battle(string[] enemies, string afterName, string afterDesc)
         {
             // Store player position.
             PlayerStats.Position = GameObject.FindWithTag("Player").transform.position;
 
             // Save before starting the battle.
             PlayerStats.Save();
+
+            // Set after save.
+            Game.PlayerStats.AfterDialogName = afterName;
+            Game.PlayerStats.AfterDialogDesc = afterDesc;
 
             // Disable all event systems.
             GameObject

@@ -43,9 +43,9 @@ namespace Overworld
             // Start the battle when player wants to help.
             this.rootVisual.Query<Button>("Help").First().clicked += () =>
             {
-                Game.PlayerStats.AfterDialogName = this.afterName;
-                Game.PlayerStats.AfterDialogDesc = this.afterDesc;
-                StartCoroutine(Game.State.Battle(this.battleEnemies));
+                StartCoroutine(
+                    Game.State.Battle(this.battleEnemies, this.afterName, this.afterDesc)
+                );
             };
         }
 
