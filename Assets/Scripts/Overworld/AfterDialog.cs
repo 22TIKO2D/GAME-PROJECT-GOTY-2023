@@ -27,9 +27,7 @@ namespace Overworld
             };
 
             // Check if after dialog is set.
-            if (
-                Game.PlayerStats.AfterDialogName == null || Game.PlayerStats.AfterDialogDesc == null
-            )
+            if (Game.PlayerStats.AfterDialogName == "" || Game.PlayerStats.AfterDialogDesc == "")
             {
                 // Hide by default.
                 rootVisual.visible = false;
@@ -41,8 +39,8 @@ namespace Overworld
                 rootVisual.Query<Label>("Desc").First().text = Game.PlayerStats.AfterDialogDesc;
 
                 // Reset the after dialog.
-                Game.PlayerStats.AfterDialogName = null;
-                Game.PlayerStats.AfterDialogDesc = null;
+                Game.PlayerStats.AfterDialogName = "";
+                Game.PlayerStats.AfterDialogDesc = "";
 
                 // Show the dialog.
                 rootVisual.visible = true;
