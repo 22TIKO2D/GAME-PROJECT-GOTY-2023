@@ -51,6 +51,10 @@
     background-color: lightgreen;
 }
 
+.health-bar.enemy.unity-progress-bar .unity-progress-bar__progress {
+    background-color: pink;
+}
+
 .current-turn.unity-progress-bar .unity-progress-bar__progress {
     background-color: lightblue;
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -134,6 +133,10 @@ namespace Battle
                 // Create health bar.
                 data.healthBar = new ProgressBar();
                 data.healthBar.AddToClassList("health-bar");
+                if (data.actor.gameObject.tag == "Enemy")
+                {
+                    data.healthBar.AddToClassList("enemy");
+                }
                 data.healthBar.lowValue = 0;
                 data.healthBar.highValue = data.actor.MaxHealth;
                 healthGroup.Add(data.healthBar);
