@@ -13,6 +13,12 @@ namespace Overworld
         /// <summary>Enemies seen in the battle.</summary>
         private string[] battleEnemies;
 
+        /// <summary>NPC's name in the after dialog.</summary>
+        private string afterName;
+
+        /// <summary>NPC's description in the after dialog.</summary>
+        private string afterDesc;
+
         /// <summary>The main canvas.</summary>
         [SerializeField]
         private Canvas canvas;
@@ -36,11 +42,18 @@ namespace Overworld
 
             // Start the battle when player wants to help.
             this.rootVisual.Query<Button>("Help").First().clicked += () =>
+            {
+                Game.PlayerStats.AfterDialogName = this.afterName;
+                Game.PlayerStats.AfterDialogDesc = this.afterDesc;
                 StartCoroutine(Game.State.Battle(this.battleEnemies));
+            };
         }
 
-        public void Show(string name, string desc, string[] enemies)
+        public void Show(string name, string desc, string afterDesc, string[] enemies)
         {
+            this.afterName = name;
+            this.afterDesc = afterDesc;
+
             // Calculate the difficulty.
             ushort difficulty = (ushort)(
                 enemies

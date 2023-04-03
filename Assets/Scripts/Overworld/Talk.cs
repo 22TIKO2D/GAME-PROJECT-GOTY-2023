@@ -9,8 +9,11 @@ namespace Overworld
         /// <summary>Name of the NPC.</summary>
         private string npcName;
 
-        /// <summary>Description for the NPC.</summary>
+        /// <summary>Description for the NPC dialog.</summary>
         private string npcDesc;
+
+        /// <summary>Description for the NPC after dialog.</summary>
+        private string npcAfterDesc;
 
         /// <summary>Enemies in the battle.</summary>
         private string[] npcEnemies;
@@ -38,13 +41,22 @@ namespace Overworld
             // Show the dialog when clicked.
             this.talkButton
                 .GetComponent<Button>()
-                .onClick.AddListener(() => dialog.Show(npcName, npcDesc, npcEnemies));
+                .onClick.AddListener(
+                    () =>
+                        dialog.Show(this.npcName, this.npcDesc, this.npcAfterDesc, this.npcEnemies)
+                );
 
             this.Hide();
         }
 
         /// <summary>Show the talk button.</summary>
-        public void Show(GameObject target, string name, string desc, string[] enemies)
+        public void Show(
+            GameObject target,
+            string name,
+            string desc,
+            string afterDesc,
+            string[] enemies
+        )
         {
             // Target the NPC.
             this.targetNpc = target;
@@ -52,6 +64,7 @@ namespace Overworld
             // Set info.
             this.npcName = name;
             this.npcDesc = desc;
+            this.npcAfterDesc = afterDesc;
             this.npcEnemies = enemies;
 
             // Show the button.

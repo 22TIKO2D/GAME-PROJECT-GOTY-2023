@@ -41,6 +41,12 @@ namespace Game
         /// <summary>The game time in minutes.</summary>
         public static uint Time { get; set; } = 0;
 
+        /// <summary>The after dialog NPC's name.</summary>
+        public static string AfterDialogName { get; set; } = "";
+
+        /// <summary>The after dialog NPC's text.</summary>
+        public static string AfterDialogDesc { get; set; } = "";
+
         /// <summary>Add a new item for the player.</summary>
         public static void AddItem(string name, uint count = 1)
         {
@@ -91,6 +97,8 @@ namespace Game
             public Item[] items;
             public uint money;
             public uint time;
+            public string afterName;
+            public string afterDesc;
         }
 
         /// <summary>Reset the player stats to their default values.</summary>
@@ -102,6 +110,8 @@ namespace Game
             Items = new Dictionary<string, uint>();
             Money = 10; // Start with some money.
             Time = 0;
+            AfterDialogName = "";
+            AfterDialogDesc = "";
         }
 
         /// <summary>Save file's name.</summary>
@@ -142,6 +152,8 @@ namespace Game
                         .ToArray(),
                     money = Money,
                     time = Time,
+                    afterName = AfterDialogName,
+                    afterDesc = AfterDialogDesc,
                 };
 
                 // Write to the file.
@@ -198,6 +210,8 @@ namespace Game
                         );
                     Money = saveData.money;
                     Time = saveData.time;
+                    AfterDialogName = saveData.afterName;
+                    AfterDialogDesc = saveData.afterDesc;
                 }
             }
         }

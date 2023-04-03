@@ -21,6 +21,10 @@ namespace Overworld
         [SerializeField]
         private string description;
 
+        /// <summary>Description for the after dialog.</summary>
+        [SerializeField]
+        private string afterDescription;
+
         /// <summary>Button used to talk to the player.</summary>
         private Talk talkButton;
 
@@ -38,6 +42,7 @@ namespace Overworld
                     this.gameObject,
                     this.Name,
                     this.description,
+                    this.afterDescription,
                     this.battleEnemies
                 );
             }

@@ -102,6 +102,7 @@ MonoBehaviour:
   - PC
   npcName: "Kiinte\xE4 Ukko"
   description: "Minut l\xF6yd\xE4t aina samasta paikasta."
+  afterDescription: Kiitos kun autoit!
 --- !u!58 &1690976529514181681
 CircleCollider2D:
   m_ObjectHideFlags: 0
