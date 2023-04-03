@@ -36,6 +36,11 @@
     background-color: white;
 }
 
+.unity-label {
+    -unity-text-align: middle-center;
+    color: white;
+}
+
 .unity-progress-bar__title, .unity-button.unity-text-element {
     color: black;
     font-size: 40px;
@@ -52,8 +57,6 @@
 
 .group-label.unity-label {
     -unity-font-style: bold;
-    -unity-text-align: middle-center;
-    color: white;
     margin-bottom: 10px;
 }
 

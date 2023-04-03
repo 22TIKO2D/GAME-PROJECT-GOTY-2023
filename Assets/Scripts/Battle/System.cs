@@ -137,6 +137,14 @@ namespace Battle
                 data.healthBar.lowValue = 0;
                 data.healthBar.highValue = data.actor.MaxHealth;
                 healthGroup.Add(data.healthBar);
+
+                if (data.actor.gameObject.tag == "Player")
+                {
+                    // Add additional text if player was added.
+                    // We presume that player is the first actor.
+                    timesGroup.Add(new Label());
+                    healthGroup.Add(new Label("Korjausta jäljellä"));
+                }
             });
 
             // Initialize time bars.
