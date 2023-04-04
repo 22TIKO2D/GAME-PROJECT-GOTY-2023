@@ -96,6 +96,4 @@ MonoBehaviour:
   maxHealth: 200
   speed: 4
   value: 30
-  time: 40
-  skills:
-  - AOE
+  time: 100

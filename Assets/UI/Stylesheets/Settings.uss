@@ -13,6 +13,19 @@
     margin-top: -30px;
 }
 
-.unity-group-box__label {
+.container > .unity-group-box__label {
     -unity-font-style: bold;
+}
+
+.unity-group-box__label, .unity-base-slider__label {
+    margin: 10px;
+    padding: 0;
+}
+
+.unity-button.speed {
+    width: 150px;
+}
+
+.unity-button.speed.active {
+    background-color: pink;
 }

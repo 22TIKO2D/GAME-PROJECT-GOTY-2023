@@ -13,7 +13,12 @@ namespace Game
         public static string[] BattleEnemies { get; private set; }
 
         /// <summary>Start a battle with specific enemies.</summary>
-        public static IEnumerator Battle(string[] enemies, string afterName, string afterDesc)
+        public static IEnumerator Battle(
+            string[] enemies,
+            string afterName,
+            string afterDesc,
+            string skill
+        )
         {
             // Store player position.
             PlayerStats.Position = GameObject.FindWithTag("Player").transform.position;
@@ -24,6 +29,7 @@ namespace Game
             // Set after save.
             Game.PlayerStats.AfterDialogName = afterName;
             Game.PlayerStats.AfterDialogDesc = afterDesc;
+            Game.PlayerStats.SkillGain = skill;
 
             // Disable all event systems.
             GameObject
@@ -39,6 +45,9 @@ namespace Game
 
         /// <summary>Switch to the overworld scene.</summary>
         public static IEnumerator Overworld() => ChangeScene("Overworld");
+
+        /// <summary>Switch to the main menu scene.</summary>
+        public static IEnumerator MainMenu() => ChangeScene("MainMenu");
 
         /// <summary>Change the scene with a fade effect.</summary>
         private static IEnumerator ChangeScene(string name)

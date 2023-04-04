@@ -47,6 +47,12 @@ namespace Game
         /// <summary>The after dialog NPC's text.</summary>
         public static string AfterDialogDesc { get; set; } = "";
 
+        /// <summary>The skill gained from battle.</summary>
+        public static string SkillGain { get; set; } = "";
+
+        /// <summary>The current dialog random NPC will show.</summary>
+        public static ushort Dialog { get; set; } = 0;
+
         /// <summary>Add a new item for the player.</summary>
         public static void AddItem(string name, uint count = 1)
         {
@@ -99,6 +105,7 @@ namespace Game
             public uint time;
             public string afterName;
             public string afterDesc;
+            public ushort dialog;
         }
 
         /// <summary>Reset the player stats to their default values.</summary>
@@ -112,6 +119,7 @@ namespace Game
             Time = 0;
             AfterDialogName = "";
             AfterDialogDesc = "";
+            Dialog = 0;
         }
 
         /// <summary>Save file's name.</summary>
@@ -154,6 +162,7 @@ namespace Game
                     time = Time,
                     afterName = AfterDialogName,
                     afterDesc = AfterDialogDesc,
+                    dialog = Dialog,
                 };
 
                 // Write to the file.
@@ -212,9 +221,14 @@ namespace Game
                     Time = saveData.time;
                     AfterDialogName = saveData.afterName;
                     AfterDialogDesc = saveData.afterDesc;
+                    Dialog = saveData.dialog;
                 }
             }
         }
+
+        /// <summary>Remove the save file.</summary>
+        public static void RemoveSave() =>
+            File.Delete(Path.Join(Application.persistentDataPath, SaveFile));
 
         /// <summary>Wether the save file exists or not.</summary>
         public static bool SavePresent =>

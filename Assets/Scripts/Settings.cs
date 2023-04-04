@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UIElements;
@@ -30,7 +31,7 @@ namespace Game
                 (value) =>
                 {
                     // Set volume.
-                    this.mixer.SetFloat("MusicVolume", this.Linear2dB(value.newValue));
+                    this.mixer.SetFloat("MusicVolume", Linear2dB(value.newValue));
 
                     // Save to player prefs.
                     PlayerPrefs.SetFloat("MusicVolume", value.newValue);
@@ -39,6 +40,38 @@ namespace Game
 
             // Set the volume.
             musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+
+            // Get speed buttons.
+            string[] buttonNames = { "SpeedHalf", "SpeedOne", "SpeedTwo", "SpeedThree" };
+            float[] buttonSpeeds = { 0.5f, 1.0f, 2.0f, 3.0f };
+            Button[] buttons = buttonNames
+                .Select((name) => this.rootVisual.Query<Button>(name).First())
+                .ToArray();
+
+            // Get current saved speed setting.
+            float currentSpeed = PlayerPrefs.GetFloat("BattleSpeed", 1.0f);
+
+            // Set click callbacks.
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                int iCopy = i; // Copy by value.
+                buttons[i].clicked += () =>
+                {
+                    for (int j = 0; j < buttons.Length; j++)
+                    {
+                        // Active if this is the current button.
+                        buttons[j].EnableInClassList("active", iCopy == j);
+                    }
+
+                    PlayerPrefs.SetFloat("BattleSpeed", buttonSpeeds[iCopy]);
+                };
+
+                // If the speed matches, set this button as active.
+                buttons[i].EnableInClassList(
+                    "active",
+                    Mathf.Approximately(buttonSpeeds[i], currentSpeed)
+                );
+            }
 
             // Hide when closed.
             this.rootVisual.Query<Button>("Close").First().clicked += () =>
@@ -54,7 +87,7 @@ namespace Game
         }
 
         /// <summary>Convert linear audio to decibels.
-        private float Linear2dB(float amount)
+        public static float Linear2dB(float amount)
         {
             amount = Mathf.Clamp01(amount);
             return Mathf.Approximately(amount, 0) ? -80 : (Mathf.Log10(amount) * 20);

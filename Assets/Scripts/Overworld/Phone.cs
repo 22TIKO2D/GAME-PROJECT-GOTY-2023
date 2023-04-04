@@ -107,6 +107,10 @@ namespace Overworld
                 .ForEach(
                     (npc) =>
                     {
+                        // If we have already beaten this enemy.
+                        if (Game.PlayerStats.Skills.Contains(npc.Skill))
+                            return;
+
                         // Create button for this NPC.
                         Button npcButton = new Button(() =>
                         {
@@ -114,25 +118,31 @@ namespace Overworld
                             this.SetVisible(false);
                         });
 
+                        // This is a static NPC if it has a skill.
+                        if (npc.Skill != "")
+                            npcButton.AddToClassList("apuva");
+
                         // Get the difficulty.
                         string difficulty = Math.Clamp(
                             (
-                                npc.Enemies
-                                    .ToList()
-                                    .Select(
-                                        (enemy) =>
-                                            // Not very efficient to load the resources every time
-                                            // we calculate the difficulty, but good enough.
-                                            Resources
-                                                .Load<GameObject>("Enemies/" + enemy)
-                                                .GetComponent<Battle.Enemy>()
-                                    )
-                                    // Sum the difficulty of the enemies.
-                                    .Sum((enemy) => enemy.Difficulty)
-                                // 5 ratings.
-                                * 5
+                                (
+                                    npc.Enemies
+                                        .ToList()
+                                        .Select(
+                                            (enemy) =>
+                                                // Not very efficient to load the resources every time
+                                                // we calculate the difficulty, but good enough.
+                                                Resources
+                                                    .Load<GameObject>("Enemies/" + enemy)
+                                                    .GetComponent<Battle.Enemy>()
+                                        )
+                                        // Sum the difficulty of the enemies.
+                                        .Sum((enemy) => enemy.Difficulty)
+                                    // 5 ratings.
+                                    * 5
+                                )
                                 // Divided by the player's power.
-                                / Game.PlayerStats.Power
+                                / (Game.PlayerStats.Power * 2)
                             ),
                             0,
                             4

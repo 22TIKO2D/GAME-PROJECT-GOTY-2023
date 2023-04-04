@@ -52,12 +52,6 @@ namespace Battle
         /// <summary>The amount of time it takes to beat this enemy.</summary>
         public uint Time => this.time;
 
-        [SerializeField]
-        private string[] skills;
-
-        /// <summary>Skills that the player will gain by defeating this enemy.</summary>
-        public string[] Skills => this.skills;
-
         /// <summary>Difficulty of this enemy.</summary>
         public uint Difficulty => this.damage * this.speed * this.maxHealth;
 

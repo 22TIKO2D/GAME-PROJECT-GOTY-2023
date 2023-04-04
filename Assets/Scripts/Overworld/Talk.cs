@@ -18,6 +18,9 @@ namespace Overworld
         /// <summary>Enemies in the battle.</summary>
         private string[] npcEnemies;
 
+        /// <summary>Skill to gain after battle.</summary>
+        private string npcSkill;
+
         /// <summary>Child button.</summary>
         [SerializeField]
         private GameObject talkButton;
@@ -43,7 +46,13 @@ namespace Overworld
                 .GetComponent<Button>()
                 .onClick.AddListener(
                     () =>
-                        dialog.Show(this.npcName, this.npcDesc, this.npcAfterDesc, this.npcEnemies)
+                        dialog.Show(
+                            this.npcName,
+                            this.npcDesc,
+                            this.npcAfterDesc,
+                            this.npcEnemies,
+                            this.npcSkill
+                        )
                 );
 
             this.Hide();
@@ -55,7 +64,8 @@ namespace Overworld
             string name,
             string desc,
             string afterDesc,
-            string[] enemies
+            string[] enemies,
+            string skill
         )
         {
             // Target the NPC.
@@ -66,6 +76,7 @@ namespace Overworld
             this.npcDesc = desc;
             this.npcAfterDesc = afterDesc;
             this.npcEnemies = enemies;
+            this.npcSkill = skill;
 
             // Show the button.
             this.talkButton.SetActive(true);

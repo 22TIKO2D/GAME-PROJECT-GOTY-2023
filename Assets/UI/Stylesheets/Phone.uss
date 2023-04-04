@@ -35,3 +35,7 @@
     border-radius: 25px;
     white-space: normal;
 }
+
+.unity-button.apuva {
+    background-color: pink;
+}

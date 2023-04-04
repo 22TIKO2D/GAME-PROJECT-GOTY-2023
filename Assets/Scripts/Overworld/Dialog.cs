@@ -19,6 +19,9 @@ namespace Overworld
         /// <summary>NPC's description in the after dialog.</summary>
         private string afterDesc;
 
+        /// <summary>Skill to gain after battle.</summary>
+        private string skill;
+
         /// <summary>The main canvas.</summary>
         [SerializeField]
         private Canvas canvas;
@@ -44,34 +47,42 @@ namespace Overworld
             this.rootVisual.Query<Button>("Help").First().clicked += () =>
             {
                 StartCoroutine(
-                    Game.State.Battle(this.battleEnemies, this.afterName, this.afterDesc)
+                    Game.State.Battle(
+                        this.battleEnemies,
+                        this.afterName,
+                        this.afterDesc,
+                        this.skill
+                    )
                 );
             };
         }
 
-        public void Show(string name, string desc, string afterDesc, string[] enemies)
+        public void Show(string name, string desc, string afterDesc, string[] enemies, string skill)
         {
             this.afterName = name;
             this.afterDesc = afterDesc;
+            this.skill = skill;
 
             // Calculate the difficulty.
             ushort difficulty = (ushort)(
-                enemies
-                    .ToList()
-                    .Select(
-                        (enemy) =>
-                            // Not very efficient to load the resources every time
-                            // we calculate the difficulty, but good enough.
-                            Resources
-                                .Load<GameObject>("Enemies/" + enemy)
-                                .GetComponent<Battle.Enemy>()
-                    )
-                    // Sum the difficulty of the enemies.
-                    .Sum((enemy) => enemy.Difficulty)
-                // 5 stars.
-                * 5
+                (
+                    enemies
+                        .ToList()
+                        .Select(
+                            (enemy) =>
+                                // Not very efficient to load the resources every time
+                                // we calculate the difficulty, but good enough.
+                                Resources
+                                    .Load<GameObject>("Enemies/" + enemy)
+                                    .GetComponent<Battle.Enemy>()
+                        )
+                        // Sum the difficulty of the enemies.
+                        .Sum((enemy) => enemy.Difficulty)
+                    // 5 stars.
+                    * 5
+                )
                 // Divided by the player's power.
-                / Game.PlayerStats.Power
+                / (Game.PlayerStats.Power * 2)
             );
 
             // Set the difficulty level.

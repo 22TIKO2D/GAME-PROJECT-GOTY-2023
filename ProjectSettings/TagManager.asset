@@ -47,9 +47,9 @@ TagManager:
   - name: Ground
     uniqueID: 365551371
     locked: 0
-  - name: Buildings
-    uniqueID: 3487216941
-    locked: 0
   - name: Characters
     uniqueID: 2414958367
+    locked: 0
+  - name: Environment
+    uniqueID: 3487216941
     locked: 0

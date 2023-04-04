@@ -107,7 +107,12 @@ namespace Overworld
                 }
 
                 // If first touch was not over any UI element.
-                if (this.firstTouch == FirstTouch.Clean)
+                if (
+                    this.firstTouch == FirstTouch.Clean
+                    // Only use valid values. Fixes problems when touching outside of the game's viewport in Unity editor.
+                    && float.IsNormal(this.startPosition.x)
+                    && float.IsNormal(this.startPosition.y)
+                )
                 {
                     // Show self and nob.
                     this.image.enabled = true;

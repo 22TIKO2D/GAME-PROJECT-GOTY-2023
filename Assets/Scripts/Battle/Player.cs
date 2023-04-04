@@ -132,6 +132,9 @@ namespace Battle
                 cancelButton.text = "Peruuta";
                 this.targetGroup.Add(cancelButton);
 
+                // Padding to align with the other elements.
+                this.targetGroup.Add(new Label("Korjaa"));
+
                 // Create target buttons.
                 this.targetButtons = new Button[this.enemies.Length];
                 for (int i = 0; i < this.enemies.Length; i++)
@@ -223,6 +226,30 @@ namespace Battle
                 group == VisibleGroup.Item ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
+        /// <summary>Target an enemy and call an action for the target.</summary>
+        public IEnumerator TargetEnemy(Func<int, IEnumerator> action)
+        {
+            this.ShowGroup(VisibleGroup.Target);
+
+            // Wait until the player has chosen a target.
+            yield return new WaitUntil(() => this.target != null);
+
+            // Canceled.
+            if (this.target == 0)
+            {
+                this.action = null;
+            }
+            else
+            {
+                yield return action(this.target.Value - 1);
+
+                // Make sure.
+                this.CheckDead();
+            }
+
+            this.target = null;
+        }
+
         public override IEnumerator Turn()
         {
             while (this.action == null)
@@ -235,31 +262,15 @@ namespace Battle
                 switch (this.action.Value)
                 {
                     case Action.Attack:
-                        this.ShowGroup(VisibleGroup.Target);
-
-                        // Wait until the player has chosen a target.
-                        yield return new WaitUntil(() => this.target != null);
-
-                        // Canceled.
-                        if (this.target == 0)
-                        {
-                            this.action = null;
-                        }
-                        else
-                        {
-                            yield return this.Roundtrip(
-                                () =>
-                                    // Deal damage to the target enemy.
-                                    this.enemies[this.target.Value - 1].InflictDamage(
-                                        Game.PlayerStats.Damage
-                                    )
-                            );
-
-                            // Make sure.
-                            this.CheckDead();
-                        }
-
-                        this.target = null;
+                        // Target an enemy and deal damage to it.
+                        yield return this.TargetEnemy(
+                            (target) =>
+                                this.Roundtrip(
+                                    () =>
+                                        // Deal damage to the target enemy.
+                                        this.enemies[target].InflictDamage(Game.PlayerStats.Damage)
+                                )
+                        );
                         break;
 
                     case Action.Skill:

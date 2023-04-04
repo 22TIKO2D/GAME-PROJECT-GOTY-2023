@@ -46,14 +46,7 @@ namespace Game
             );
 
             // Fade the volume.
-            this.audioMixer.SetFloat("Volume", this.Linear2dB(1 - this.fadeAmount));
-        }
-
-        /// <summary>Convert linear audio to decibels.
-        private float Linear2dB(float amount)
-        {
-            amount = Mathf.Clamp01(amount);
-            return Mathf.Approximately(amount, 0) ? -80 : (Mathf.Log10(amount) * 20);
+            this.audioMixer.SetFloat("Volume", Settings.Linear2dB(1 - this.fadeAmount));
         }
 
         /// <summary>Get or instantiate a fade.</summary>

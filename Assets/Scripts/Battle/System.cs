@@ -44,7 +44,6 @@ namespace Battle
         private UIDocument battleEnd;
 
         /// <summary>Speed at which time progresses.</summary>
-        [SerializeField]
         private double speed = 1.0;
 
         /// <summary>Amount of enemies in the battle.</summary>
@@ -55,6 +54,9 @@ namespace Battle
 
         private void Awake()
         {
+            // Get the saved speed.
+            this.speed = PlayerPrefs.GetFloat("BattleSpeed", 1.0f) * 0.5f;
+
             this.battleEndBg = this.battleEnd.rootVisualElement.Query<VisualElement>("Bg");
 
             // Hide the end screen at the beginning.
@@ -145,7 +147,7 @@ namespace Battle
                 {
                     // Add additional text if player was added.
                     // We presume that player is the first actor.
-                    timesGroup.Add(new Label());
+                    timesGroup.Add(new Label("Ongelmat"));
                     healthGroup.Add(new Label("Korjausta jäljellä"));
                 }
             });
@@ -323,44 +325,47 @@ namespace Battle
 
                 infoLabel.text =
                     $"Sait {expGain} kokemusta, {moneyGain}€ rahaa, sekä siihen kului {timeGain} minuuttia.";
+
+                // If this was a static NPC show the static dialog as provided.
+                if (Game.PlayerStats.SkillGain == "")
+                    // And go to the next static dialog.
+                    Game.PlayerStats.Dialog++;
             }
             else
             {
                 // Nothing will be gained if lost the battle.
                 infoLabel.text = $"Tuhlasit {timeGain} minuuttia aikaa";
+
+                // Don't show the after dialog if player died.
+                Game.PlayerStats.AfterDialogName = "";
+                Game.PlayerStats.AfterDialogDesc = "";
             }
 
-            // Skills that the player gained.
-            string[] skillGain = enemies
-                .SelectMany((enemy) => enemy.Skills)
-                // Skills that the player doesn't yet have.
-                .Where((skill) => !Game.PlayerStats.Skills.Contains(skill))
-                .ToArray();
-
-            // Add the skills.
-            Game.PlayerStats.Skills = Game.PlayerStats.Skills.Concat(skillGain).ToList();
-
-            // The actual skill names.
-            string[] skillNames = skillGain
-                .Select(
-                    (skill) =>
-                        (
-                            (IPlayerSkill)
-                                Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
-                        ).Name
-                )
-                .ToArray();
-
             Label skillLabel = this.battleEnd.rootVisualElement.Query<Label>("Skill");
-            skillLabel.text =
-                skillNames.Length == 1
-                    // Only one skill.
-                    ? $"Sait taidon {skillNames[0]}"
-                    // Multiple skills.
-                    : $"Sait taidot {string.Join(", ", skillNames)}";
-            // Show if unlocked any skills.
-            skillLabel.style.display =
-                skillNames.Length > 0 ? DisplayStyle.Flex : DisplayStyle.None;
+
+            // Gain the skill.
+            if (Game.PlayerStats.SkillGain != "")
+            {
+                Game.PlayerStats.Skills.Add(Game.PlayerStats.SkillGain);
+
+                // The actual skill.
+                IPlayerSkill skill = (IPlayerSkill)
+                    Activator.CreateInstance(
+                        Type.GetType($"Battle.Skill.{Game.PlayerStats.SkillGain}")
+                    );
+
+                // Set the text that we gained a skill.
+                skillLabel.text = $"Sait taidon {skill.Name}";
+                skillLabel.style.display = DisplayStyle.Flex;
+            }
+            else
+            {
+                // Hide the useless skill text.
+                skillLabel.style.display = DisplayStyle.None;
+            }
+
+            // Reset the skill gain.
+            Game.PlayerStats.SkillGain = "";
 
             // Hide battle stats.
             this.battleStats.rootVisualElement.visible = false;
