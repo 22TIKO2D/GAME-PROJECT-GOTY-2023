@@ -10,6 +10,9 @@ namespace Game
     /// <summary>Stats for the player.</summary>
     public static class PlayerStats
     {
+        /// <summary>Name of the player.</summary>
+        public static string Name { get; set; } = "";
+
         /// <summary>Good experience collected by the player.</summary>
         public static uint Exp { get; set; } = 0;
 
@@ -97,6 +100,7 @@ namespace Game
                 public uint count;
             }
 
+            public string name;
             public uint exp;
             public Vector2 position;
             public string[] skills;
@@ -111,6 +115,7 @@ namespace Game
         /// <summary>Reset the player stats to their default values.</summary>
         public static void Reset()
         {
+            Name = "";
             Exp = 0;
             Position = Vector2.zero;
             Skills = new List<string>();
@@ -150,6 +155,7 @@ namespace Game
                 // Get the values.
                 SaveData saveData = new SaveData
                 {
+                    name = Name,
                     exp = Exp,
                     position = Position,
                     skills = Skills.ToArray(),
@@ -205,6 +211,7 @@ namespace Game
                     Reset();
 
                     // Set the values.
+                    Name = saveData.name;
                     Exp = saveData.exp;
                     if (saveData.position != null)
                         Position = saveData.position;

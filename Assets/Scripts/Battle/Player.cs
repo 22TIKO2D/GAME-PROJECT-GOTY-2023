@@ -9,7 +9,7 @@ namespace Battle
     /// <summary>Player actor in the battle.</summary>
     public class Player : Actor
     {
-        public override string Name => "Pelaaja";
+        public override string Name => Game.PlayerStats.Name;
 
         /// <summary>UI containing battle stats.</summary>
         [SerializeField]

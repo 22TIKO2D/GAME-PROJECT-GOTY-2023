@@ -169,7 +169,8 @@ namespace Overworld
             this.ResetApp();
 
             // Add info labels.
-            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.Exp} kokemusta."));
+            this.app.Add(new Label($"Sinun nimesi on {Game.PlayerStats.Name}.")); // Name
+            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.Exp} kokemusta.")); // Experience
             this.app.Add(new Label($"Sinulla on {Game.PlayerStats.Money}€ rahaa.")); // Money
             this.app.Add(new Label($"Sinulla on {Game.PlayerStats.MaxHealth} motivaatiota.")); // Health
             this.app.Add(
