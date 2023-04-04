@@ -193,7 +193,7 @@ namespace Overworld
                             ).Name
                     )
                     .ToArray();
-                this.app.Add(new Label($"Sinun taitosi: {string.Join(", ", skillNames)}")); // Skills
+                this.app.Add(new Label($"Sinun taitosi: {string.Join(",\n", skillNames)}")); // Skills
             }
         }
 
