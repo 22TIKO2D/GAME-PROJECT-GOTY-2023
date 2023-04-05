@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -30,6 +31,10 @@ namespace Overworld
         /// <summary>Settings dialog.</summary>
         [SerializeField]
         private Game.Settings settings;
+
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
 
         private void Start()
         {
@@ -77,6 +82,16 @@ namespace Overworld
                 this.settings.SetVisible(true);
             };
 
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                rootVisual.Query<Button>("Shutdown").First().text = table["Shutdown"].Value;
+                rootVisual.Query<Button>("Apuva").First().text = table["Apuva"].Value;
+                rootVisual.Query<Button>("Stats").First().text = table["Stats"].Value;
+                rootVisual.Query<Button>("Items").First().text = table["Items"].Value;
+                rootVisual.Query<Button>("Settings").First().text = table["Settings"].Value;
+            };
+
             // Hide on start.
             this.SetVisible(false);
         }
@@ -88,7 +103,7 @@ namespace Overworld
 
             // Add a close/back button.
             Button closeButton = new Button(() => this.ShowApps(true));
-            closeButton.text = "Sulje";
+            closeButton.text = this.translation.GetTable()["Close"].Value;
             this.app.Add(closeButton);
 
             // Show the app view.
@@ -123,38 +138,33 @@ namespace Overworld
                             npcButton.AddToClassList("apuva");
 
                         // Get the difficulty.
-                        string difficulty = Math.Clamp(
-                            (
-                                (
-                                    npc.Enemies
-                                        .ToList()
-                                        .Select(
-                                            (enemy) =>
-                                                // Not very efficient to load the resources every time
-                                                // we calculate the difficulty, but good enough.
-                                                Resources
-                                                    .Load<GameObject>("Enemies/" + enemy)
-                                                    .GetComponent<Battle.Enemy>()
+                        string difficulty = this.translation.GetTable()[
+                            "Difficulty "
+                                + Math.Clamp(
+                                    (
+                                        (
+                                            npc.Enemies
+                                                .ToList()
+                                                .Select(
+                                                    (enemy) =>
+                                                        // Not very efficient to load the resources every time
+                                                        // we calculate the difficulty, but good enough.
+                                                        Resources
+                                                            .Load<GameObject>("Enemies/" + enemy)
+                                                            .GetComponent<Battle.Enemy>()
+                                                )
+                                                // Sum the difficulty of the enemies.
+                                                .Sum((enemy) => enemy.Difficulty)
+                                            // 5 ratings.
+                                            * 5
                                         )
-                                        // Sum the difficulty of the enemies.
-                                        .Sum((enemy) => enemy.Difficulty)
-                                    // 5 ratings.
-                                    * 5
+                                        // Divided by the player's power.
+                                        / (Game.PlayerStats.Power * 2)
+                                    ),
+                                    0,
+                                    4
                                 )
-                                // Divided by the player's power.
-                                / (Game.PlayerStats.Power * 2)
-                            ),
-                            0,
-                            4
-                        ) switch
-                        {
-                            0 => "Helppo",
-                            1 => "Sopiva",
-                            2 => "Kohtuullinen",
-                            3 => "Vaikea",
-                            4 => "Mahdoton",
-                            _ => "???",
-                        };
+                        ].Value;
 
                         npcButton.text = $"{npc.Name} ({difficulty})";
 
@@ -169,31 +179,55 @@ namespace Overworld
             this.ResetApp();
 
             // Add info labels.
-            this.app.Add(new Label($"Sinun nimesi on {Game.PlayerStats.Name}.")); // Name
-            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.Exp} kokemusta.")); // Experience
-            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.Money}€ rahaa.")); // Money
-            this.app.Add(new Label($"Sinulla on {Game.PlayerStats.MaxHealth} motivaatiota.")); // Health
             this.app.Add(
                 new Label(
-                    $"Sinä korjaat ongelmia keskimäärin {Game.PlayerStats.Damage} pisteen tehokkuudella."
+                    this.translation.GetTable()["Name"].GetLocalizedString(Game.PlayerStats.Name)
+                )
+            ); // Name
+            this.app.Add(
+                new Label(
+                    this.translation.GetTable()["Exp"].GetLocalizedString(Game.PlayerStats.Exp)
+                )
+            ); // Experience
+            this.app.Add(
+                new Label(
+                    this.translation.GetTable()["Money"].GetLocalizedString(Game.PlayerStats.Money)
+                )
+            ); // Money
+            this.app.Add(
+                new Label(
+                    this.translation.GetTable()["Max Health"].GetLocalizedString(
+                        Game.PlayerStats.MaxHealth
+                    )
+                )
+            ); // Health
+            this.app.Add(
+                new Label(
+                    this.translation.GetTable()["Damage"].GetLocalizedString(
+                        Game.PlayerStats.Damage
+                    )
                 )
             ); // Damage
-            this.app.Add(new Label($"Sinun nopeutesi on {Game.PlayerStats.Speed}.")); // Speed
+            this.app.Add(
+                new Label(
+                    this.translation.GetTable()["Phone/Speed"].GetLocalizedString(
+                        Game.PlayerStats.Speed
+                    )
+                )
+            ); // Speed
 
             // If player has some skills.
             if (Game.PlayerStats.Skills.Count > 0)
             {
                 // Get the names of the skills.
                 string[] skillNames = Game.PlayerStats.Skills
-                    .Select(
-                        (skill) =>
-                            (
-                                (Battle.IPlayerSkill)
-                                    Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
-                            ).Name
-                    )
+                    .Select((skill) => this.translation.GetTable()["Skills/" + skill].Value)
                     .ToArray();
-                this.app.Add(new Label($"Sinun taitosi: {string.Join(",\n", skillNames)}")); // Skills
+                this.app.Add(
+                    new Label(
+                        $"{this.translation.GetTable()["Skills"].Value}\n{string.Join(",\n", skillNames)}"
+                    )
+                ); // Skills
             }
         }
 
@@ -215,7 +249,11 @@ namespace Overworld
                         // Show the item name, its count, and how much health it restores.
                         this.app.Add(
                             new Label(
-                                $"{item.Name} (x{itemPair.Value})\npalauttaa {item.Health} motia"
+                                this.translation.GetTable()["Item Count"].GetLocalizedString(
+                                    item.Name,
+                                    itemPair.Value,
+                                    item.Health
+                                )
                             )
                         );
                     }

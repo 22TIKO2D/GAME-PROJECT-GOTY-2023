@@ -1,0 +1,360 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: StringTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: bb210606e4a6ddd469abc5c9ea8e47a5, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5325306575037136965
+  m_TableData:
+  - m_Id: 195749552128
+    m_Localized: Continue the game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346538975232
+    m_Localized: Start a new game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498024652800
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7329228857344
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10456149598208
+    m_Localized: Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10483681009664
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10946295963648
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10977249927168
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11613966245888
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12225588043776
+    m_Localized: Give your name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12547601539072
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12635279269888
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15006931689472
+    m_Localized: You have ${0} money.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 16876899213312
+    m_Localized: '{0} (${1})
+
+      restores {2} motivation'
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 17835683553280
+    m_Localized: Coffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17968106119168
+    m_Localized: Mountain Dew
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18056568184832
+    m_Localized: Snickers bar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191123222528
+    m_Localized: Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19280944242688
+    m_Localized: Shutdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19457033707520
+    m_Localized: Apuva!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19520506109952
+    m_Localized: Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20167490084864
+    m_Localized: Your name is {0}.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 20372117594112
+    m_Localized: You have {0} experience.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 20606872788992
+    m_Localized: You have {0} motivation.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 20798116274176
+    m_Localized: You fix problems with an average efficiency of {0} points.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 21139922690048
+    m_Localized: Your speed is {0}.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 21269384077312
+    m_Localized: 'Your skills:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21733391540224
+    m_Localized: Fix all
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21833589268480
+    m_Localized: Get excited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21945078063104
+    m_Localized: Efficient fixing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22315498020864
+    m_Localized: '{0} (x{1})
+
+      restores {2} motivation'
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 24097905254400
+    m_Localized: Easy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24132323713024
+    m_Localized: Apt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24168239538176
+    m_Localized: Moderate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24307758866432
+    m_Localized: Hard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24355246776320
+    m_Localized: Impossible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24932731133952
+    m_Localized: Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25051673206784
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25076142776320
+    m_Localized: Don't help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25530083909632
+    m_Localized: Okay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26402633359360
+    m_Localized: You won the game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26458249830400
+    m_Localized: You lost the game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26553443753984
+    m_Localized: 'Congratulations!
+
+      You got a lot of experience ({0}) and skills.'
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 26819949830144
+    m_Localized: 'You didn''t get all the skills.
+
+      Better luck next time.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27622827696128
+    m_Localized: Fix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27778193104896
+    m_Localized: Skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28393921126400
+    m_Localized: Problems
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28500959764480
+    m_Localized: Fixing left to do
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28910491607040
+    m_Localized: Problem fixed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28974890950656
+    m_Localized: Problem was not fixed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29354840367104
+    m_Localized: You received {0} experience, ${1} money, and it took {2} minutes.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 29657501343744
+    m_Localized: You wasted {0} minutes.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 29868634218496
+    m_Localized: You received {0} skill.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136965
+  - m_Id: 31082381910016
+    m_Localized: Action
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31352566390784
+    m_Localized: Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31442077032448
+    m_Localized: Motivation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32721079705600
+    m_Localized: Car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32796392628224
+    m_Localized: Tighten the screws
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32983244677120
+    m_Localized: Computer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33085904461824
+    m_Localized: Remove viruses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33186886524928
+    m_Localized: Toilet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33412544274432
+    m_Localized: Seal the pipes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34347442053120
+    m_Localized: My name is Kalle. Do you want to help me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34524064194560
+    m_Localized: Hi there! I need your help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34680956329984
+    m_Localized: Good morning! Could you help me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34838418890752
+    m_Localized: Oh help me!!!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35129721692160
+    m_Localized: You'll always find me in the same place.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35293609926656
+    m_Localized: Thanks for your help!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37641883295744
+    m_Localized: This is the 1st time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37734585802752
+    m_Localized: This is the 2nd time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37738738163712
+    m_Localized: This is the 3rd time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37741057613824
+    m_Localized: This is the 4th time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37742756306944
+    m_Localized: This is the 5th time.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37958922346496
+    m_Localized: Thanks!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38014463320064
+    m_Localized: Thank you for your help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38082872418304
+    m_Localized: Thank you!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38144218308608
+    m_Localized: Glad you could help!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44320544858112
+    m_Localized: Back to the map
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5325306575037136965
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0020d512a60d000000209575590f00000020159c571200000020d5408712000000205570ea120000002055e9bd120000002095053a130000002055bb4b14000000209574261800000020d5b4b21a00000020d52cf91a0000002055552a1b0000

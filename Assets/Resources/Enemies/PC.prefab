@@ -89,11 +89,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4011b52a8e181a1cba60b90725fe89ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Tietokone
-  fix: Poista viiruksia
+  enemyName:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 32983244677120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  fix:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 33085904461824
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   damage: 10
   expGain: 10
   maxHealth: 30
   speed: 7
   value: 5
   time: 30
+  references:
+    version: 2
+    RefIds: []

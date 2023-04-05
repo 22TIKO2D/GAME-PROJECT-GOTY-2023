@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Battle
 {
@@ -52,6 +53,10 @@ namespace Battle
         /// <summary>Background element in the battle end screen.</summary>
         private VisualElement battleEndBg;
 
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
+
         private void Awake()
         {
             // Get the saved speed.
@@ -65,6 +70,7 @@ namespace Battle
 
             // Go back to the map with the back button.
             Button backButton = this.battleEnd.rootVisualElement.Query<Button>("Back");
+            backButton.text = this.translation.GetTable()["Back"].Value;
             backButton.clicked += () => StartCoroutine(Game.State.Overworld());
         }
 
@@ -147,8 +153,8 @@ namespace Battle
                 {
                     // Add additional text if player was added.
                     // We presume that player is the first actor.
-                    timesGroup.Add(new Label("Ongelmat"));
-                    healthGroup.Add(new Label("Korjausta jäljellä"));
+                    timesGroup.Add(new Label(this.translation.GetTable()["Problems"].Value));
+                    healthGroup.Add(new Label(this.translation.GetTable()["Remain"].Value));
                 }
             });
 
@@ -270,9 +276,9 @@ namespace Battle
                                 this.battleEnd.rootVisualElement.Query<GroupBox>("Problem");
 
                             // Choose the text based on if the player lost or won.
-                            problemGroup.text = isPlayerDead
-                                ? "Ongelma ei ratkennut"
-                                : "Ongelma korjattu";
+                            problemGroup.text = this.translation.GetTable()[
+                                isPlayerDead ? "Not Fixed" : "Fixed"
+                            ].Value;
                             problemGroup.AddToClassList(isPlayerDead ? "lost" : "win");
 
                             // Battle ended.
@@ -323,8 +329,11 @@ namespace Battle
                 // Only get money if player won.
                 Game.PlayerStats.Money += moneyGain;
 
-                infoLabel.text =
-                    $"Sait {expGain} kokemusta, {moneyGain}€ rahaa, sekä siihen kului {timeGain} minuuttia.";
+                infoLabel.text = this.translation.GetTable()["After Battle"].GetLocalizedString(
+                    expGain,
+                    moneyGain,
+                    timeGain
+                );
 
                 // If this was a static NPC show the static dialog as provided.
                 if (Game.PlayerStats.SkillGain == "")
@@ -334,7 +343,7 @@ namespace Battle
             else
             {
                 // Nothing will be gained if lost the battle.
-                infoLabel.text = $"Tuhlasit {timeGain} minuuttia aikaa";
+                infoLabel.text = this.translation.GetTable()["Waste"].GetLocalizedString(timeGain);
 
                 // Don't show the after dialog if player died.
                 Game.PlayerStats.AfterDialogName = "";
@@ -348,14 +357,10 @@ namespace Battle
             {
                 Game.PlayerStats.Skills.Add(Game.PlayerStats.SkillGain);
 
-                // The actual skill.
-                IPlayerSkill skill = (IPlayerSkill)
-                    Activator.CreateInstance(
-                        Type.GetType($"Battle.Skill.{Game.PlayerStats.SkillGain}")
-                    );
-
                 // Set the text that we gained a skill.
-                skillLabel.text = $"Sait taidon {skill.Name}";
+                skillLabel.text = this.translation.GetTable()["Receive Skill"].GetLocalizedString(
+                    this.translation.GetTable()["Skills/" + Game.PlayerStats.SkillGain].Value
+                );
                 skillLabel.style.display = DisplayStyle.Flex;
             }
             else

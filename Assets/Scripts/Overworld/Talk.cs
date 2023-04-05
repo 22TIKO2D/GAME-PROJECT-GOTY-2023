@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -10,10 +11,10 @@ namespace Overworld
         private string npcName;
 
         /// <summary>Description for the NPC dialog.</summary>
-        private string npcDesc;
+        private LocalizedString npcDesc;
 
         /// <summary>Description for the NPC after dialog.</summary>
-        private string npcAfterDesc;
+        private LocalizedString npcAfterDesc;
 
         /// <summary>Enemies in the battle.</summary>
         private string[] npcEnemies;
@@ -48,8 +49,8 @@ namespace Overworld
                     () =>
                         dialog.Show(
                             this.npcName,
-                            this.npcDesc,
-                            this.npcAfterDesc,
+                            this.npcDesc == null ? "" : this.npcDesc.GetLocalizedString(),
+                            this.npcAfterDesc == null ? "" : this.npcAfterDesc.GetLocalizedString(),
                             this.npcEnemies,
                             this.npcSkill
                         )
@@ -62,8 +63,8 @@ namespace Overworld
         public void Show(
             GameObject target,
             string name,
-            string desc,
-            string afterDesc,
+            LocalizedString desc,
+            LocalizedString afterDesc,
             string[] enemies,
             string skill
         )

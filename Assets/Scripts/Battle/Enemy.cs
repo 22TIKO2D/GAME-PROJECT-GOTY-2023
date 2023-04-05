@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Battle
 {
@@ -8,15 +9,15 @@ namespace Battle
     {
         /// <summary>Name of this enemy.</summary>
         [SerializeField]
-        private string enemyName;
+        private LocalizedString enemyName;
 
-        public override string Name => this.enemyName;
+        public override string Name => this.enemyName.GetLocalizedString();
 
         [SerializeField]
-        private string fix;
+        private LocalizedString fix;
 
         /// <summary>The fix text.</summary>
-        public string Fix => fix;
+        public string Fix => fix.GetLocalizedString();
 
         /// <summary>The amount of damage this enemy deals to the player.</summary>
         [SerializeField]

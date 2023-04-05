@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1880008929
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6e61843376609b13da1545a76e985c97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,9 +103,28 @@ MonoBehaviour:
   - Toilet
   - PC
   npcName: Suvi
-  description: "Minut l\xF6yd\xE4t aina samasta paikasta."
-  afterDescription: Kiitos kun autoit!
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 35129721692160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  afterDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 35293609926656
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   skill: AOE
+  references:
+    version: 2
+    RefIds: []
 --- !u!58 &1690976529514181681
 CircleCollider2D:
   m_ObjectHideFlags: 0

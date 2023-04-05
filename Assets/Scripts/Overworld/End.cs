@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -15,6 +16,10 @@ namespace Overworld
         [SerializeField]
         private Canvas canvas;
 
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
+
         private void Start()
         {
             VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
@@ -23,6 +28,12 @@ namespace Overworld
             {
                 // Return back to the main menu when the player beats the game.
                 StartCoroutine(Game.State.MainMenu());
+            };
+
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                rootVisual.Query<Button>("Ok").First().text = table["Ok"].Value;
             };
 
             // See if less than 10 hours has passed.
@@ -48,12 +59,14 @@ namespace Overworld
                         .Count() == Game.PlayerStats.Skills.Count();
 
                 // Set the win text and description.
-                rootVisual.Query<Label>("Win").First().text = hasWon
-                    ? "Voitit pelin"
-                    : "Hävisit pelin";
+                rootVisual.Query<Label>("Win").First().text = this.translation.GetTable()[
+                    hasWon ? "Win" : "Lose"
+                ].Value;
                 rootVisual.Query<Label>("Desc").First().text = hasWon
-                    ? $"Onneksi olkoon!\nSait paljon kokemusta ({Game.PlayerStats.Exp}) ja taitoja."
-                    : "Et saanut kerättyä kaikkia taitoja.\nParempi onni ensi kerralla.";
+                    ? this.translation.GetTable()["Victory"].GetLocalizedString(
+                        Game.PlayerStats.Exp
+                    )
+                    : this.translation.GetTable()["Defeat"].Value;
 
                 // Show the dialog.
                 rootVisual.visible = true;

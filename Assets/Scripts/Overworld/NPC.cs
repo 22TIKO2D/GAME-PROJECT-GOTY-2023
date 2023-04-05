@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -6,22 +7,22 @@ namespace Overworld
     public class NPC : MonoBehaviour
     {
         /// <summary>Dialog seen when encountering random NPCs for a first few times.</summary>
-        private static readonly string[] staticDialog =
+        private static readonly LocalizedString[] staticDialog =
         {
-            "Tämä on kerta 1.",
-            "Tämä on kerta 2.",
-            "Tämä on kerta 3.",
-            "Tämä on kerta 4.",
-            "Tämä on kerta 5.",
+            new LocalizedString("StringTable", "Random Dialog 1"),
+            new LocalizedString("StringTable", "Random Dialog 2"),
+            new LocalizedString("StringTable", "Random Dialog 3"),
+            new LocalizedString("StringTable", "Random Dialog 4"),
+            new LocalizedString("StringTable", "Random Dialog 5"),
         };
 
         /// <summary>Dialog seen when encountering random NPCs after all static dialogs are seen.</summary>
-        private static readonly string[] randomDialog =
+        private static readonly LocalizedString[] randomDialog =
         {
-            "Kiitos!",
-            "Kiitos avusta.",
-            "Kiitän teitä!",
-            "Mukava kun autoit!",
+            new LocalizedString("StringTable", "Random Dialog After 1"),
+            new LocalizedString("StringTable", "Random Dialog After 2"),
+            new LocalizedString("StringTable", "Random Dialog After 3"),
+            new LocalizedString("StringTable", "Random Dialog After 4"),
         };
 
         [SerializeField]
@@ -38,11 +39,11 @@ namespace Overworld
 
         /// <summary>Description for the dialog.</summary>
         [SerializeField]
-        private string description;
+        private LocalizedString description;
 
         /// <summary>Description for the after dialog.</summary>
         [SerializeField]
-        private string afterDescription;
+        private LocalizedString afterDescription;
 
         /// <summary>Button used to talk to the player.</summary>
         private Talk talkButton;

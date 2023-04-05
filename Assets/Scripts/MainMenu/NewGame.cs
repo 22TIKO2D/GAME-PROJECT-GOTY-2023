@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace MainMenu
 {
@@ -16,6 +17,10 @@ namespace MainMenu
         [SerializeField]
         private Canvas mainCanvas;
 
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
+
         private void Start()
         {
             this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
@@ -25,6 +30,18 @@ namespace MainMenu
 
             // Start a new game.
             this.rootVisual.Query<Button>("Start").First().clicked += this.StartNewGame;
+
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                this.rootVisual.Query<TextField>("Name").First().label = table["Give Name"].Value;
+                this.rootVisual.Query<Button>("Cancel").First().text = table["Cancel"].Value;
+                this.rootVisual.Query<Button>("Start").First().text = table["Start"].Value;
+                this.rootVisual.Query<GroupBox>("NewGame").First().text = table[
+                    // Get from the NewGame button.
+                    "MainMenu/Canvas/NewGame/Text (TMP)"
+                ].Value;
+            };
 
             // Hide at the start.
             this.SetVisible(false);
@@ -66,7 +83,7 @@ namespace MainMenu
                         Game.PlayerStats.Exp = 9999;
 
                         // Change the name to indicate a god mode.
-                        Game.PlayerStats.Name = "Jumala " + Game.PlayerStats.Name;
+                        Game.PlayerStats.Name = "<" + Game.PlayerStats.Name + ">";
                     }
                 }
 

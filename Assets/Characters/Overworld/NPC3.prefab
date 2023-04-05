@@ -102,9 +102,28 @@ MonoBehaviour:
   battleEnemies:
   - Car
   npcName: Urho
-  description: "Minut l\xF6yd\xE4t aina samasta paikasta."
-  afterDescription: Kiitos kun autoit!
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 35129721692160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  afterDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 35293609926656
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   skill: Double
+  references:
+    version: 2
+    RefIds: []
 --- !u!58 &1690976529514181681
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -5,8 +5,6 @@ namespace Battle.Skill
     /// <summary>Skill that does double damage, but also damages the player.</summary>
     public class Double : IPlayerSkill
     {
-        public string Name => "Tehokas korjaus";
-
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
             // Target an enemy.

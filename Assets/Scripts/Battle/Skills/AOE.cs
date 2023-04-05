@@ -6,8 +6,6 @@ namespace Battle.Skill
     /// <summary>Skill that hits every enemy.</summary>
     public class AOE : IPlayerSkill
     {
-        public string Name => "Korjaa kaikkia";
-
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
             yield return player.Roundtrip(

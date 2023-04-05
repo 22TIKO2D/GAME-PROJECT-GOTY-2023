@@ -46,4 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 8
   health: 35
-  itemName: Mountain Dew
+  itemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 17968106119168
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

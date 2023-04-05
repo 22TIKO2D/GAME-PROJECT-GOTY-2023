@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Game
 {
@@ -18,9 +19,9 @@ namespace Game
         public uint Health => this.health;
 
         [SerializeField]
-        private string itemName;
+        private LocalizedString itemName;
 
         /// <summary>The name of this item.</summary>
-        public string Name => this.itemName;
+        public string Name => this.itemName.GetLocalizedString();
     }
 }

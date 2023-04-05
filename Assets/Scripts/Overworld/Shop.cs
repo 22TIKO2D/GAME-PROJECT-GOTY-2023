@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -19,6 +20,10 @@ namespace Overworld
         /// <summary>The main canvas.</summary>
         [SerializeField]
         private Canvas canvas;
+
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
 
         private void Start()
         {
@@ -42,6 +47,17 @@ namespace Overworld
                 // Show the canvas again.
                 this.canvas.enabled = true;
             };
+
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                this.rootVisual.Query<Label>("Buy").First().text = table[
+                    // Get from the Buy button.
+                    "Overworld/Canvas/Buy/Button/Text (TMP)"
+                ].Value;
+                this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
+                this.moneyLabel.text = table["Money"].GetLocalizedString(Game.PlayerStats.Money);
+            };
         }
 
         public void Show(string[] products)
@@ -50,7 +66,9 @@ namespace Overworld
             this.shopView.Clear();
 
             // Set the money text.
-            this.moneyLabel.text = $"Sinulla on {Game.PlayerStats.Money}€ rahaa";
+            this.moneyLabel.text = this.translation.GetTable()["Money"].GetLocalizedString(
+                Game.PlayerStats.Money
+            );
 
             products
                 .ToList()
@@ -74,12 +92,16 @@ namespace Overworld
                                 Game.PlayerStats.Money -= item.Value;
 
                                 // Update the text.
-                                this.moneyLabel.text =
-                                    $"Sinulla on {Game.PlayerStats.Money}€ rahaa";
+                                this.moneyLabel.text = this.translation.GetTable()[
+                                    "Money"
+                                ].GetLocalizedString(Game.PlayerStats.Money);
                             }
                         });
-                        itemButton.text =
-                            $"{item.Name} ({item.Value}€)\npalauttaa {item.Health} motia";
+                        itemButton.text = this.translation.GetTable()["Item"].GetLocalizedString(
+                            item.Name,
+                            item.Value,
+                            item.Health
+                        );
                         this.shopView.Add(itemButton);
                     }
                 );

@@ -2,14 +2,14 @@
     <Style src="project://database/Assets/UI/Stylesheets/BattleStats.uss?fileID=7433441132597879392&amp;guid=1028b7630aaf81d8f94a14630fc75930&amp;type=3#BattleStats" />
     <ui:GroupBox class="battle-stats" style="height: 600px;">
         <ui:GroupBox class="container">
-            <ui:Label text="Vuoro" display-tooltip-when-elided="true" class="group-label" />
+            <ui:Label text="Vuoro" display-tooltip-when-elided="true" name="TurnLabel" class="group-label" />
             <ui:GroupBox name="TurnBox">
                 <ui:ProgressBar value="0.25" title="Player" high-value="1" />
                 <ui:ProgressBar value="1" title="Enemy" high-value="1" class="current-turn" />
             </ui:GroupBox>
         </ui:GroupBox>
         <ui:GroupBox class="container">
-            <ui:Label text="Motivaatio" display-tooltip-when-elided="true" class="group-label" />
+            <ui:Label text="Motivaatio" display-tooltip-when-elided="true" name="HealthLabel" class="group-label" />
             <ui:GroupBox name="HealthBox">
                 <ui:ProgressBar value="50" title="50/100" class="health-bar" />
                 <ui:ProgressBar value="75" title="75/100" class="health-bar" />

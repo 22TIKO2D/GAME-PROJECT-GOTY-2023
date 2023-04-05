@@ -107673,6 +107673,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1522796802}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!1001 &275153461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108413,6 +108416,7 @@ GameObject:
   - component: {fileID: 577642567}
   - component: {fileID: 577642569}
   - component: {fileID: 577642568}
+  - component: {fileID: 577642570}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -108537,6 +108541,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577642566}
   m_CullTransparentMesh: 1
+--- !u!114 &577642570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577642566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69beb381e244f92449b8c4cf954630e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjects:
+  - rid: 5325306575037136962
+  references:
+    version: 2
+    RefIds:
+    - rid: 5325306575037136962
+      type: {class: TrackedUGuiGraphic, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 577642568}
+        m_TrackedProperties:
+          items:
+          - rid: 5325306575037136963
+        m_UpdateType: 0
+    - rid: 5325306575037136963
+      type: {class: LocalizedStringProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_Localized:
+          m_TableReference:
+            m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+          m_TableEntryReference:
+            m_KeyId: 11613966245888
+            m_Key: 
+          m_FallbackState: 0
+          m_WaitForCompletion: 0
+          m_LocalVariables: []
+        m_PropertyPath: m_text
 --- !u!1 &601358558
 GameObject:
   m_ObjectHideFlags: 0
@@ -108599,6 +108641,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1522796802}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!1 &808069709
 GameObject:
   m_ObjectHideFlags: 0
@@ -108661,6 +108706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1522796802}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!1001 &864771635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109039,6 +109087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1522796802}
   settings: {fileID: 1366888922}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!20 &1267939712 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8852653251553973351, guid: 126b2995bb00c713da9b8744d9b7cdc7, type: 3}
@@ -109332,6 +109383,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCanvas: {fileID: 1522796802}
   mixer: {fileID: 24100000, guid: f799c74a51ad1c9dda7071646f70667f, type: 2}
+  localizationSettings: {fileID: 11400000, guid: 9b35ca38cea97b02691fa2babf6f50f2, type: 2}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!114 &1366888923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109604,6 +109659,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1522796802}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!1 &1522796799
 GameObject:
   m_ObjectHideFlags: 0

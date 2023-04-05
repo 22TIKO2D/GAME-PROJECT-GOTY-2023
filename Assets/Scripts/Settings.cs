@@ -2,6 +2,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 namespace Game
 {
@@ -17,7 +19,15 @@ namespace Game
 
         /// <summary>Mixer for audio.</summary>
         [SerializeField]
-        AudioMixer mixer;
+        private AudioMixer mixer;
+
+        /// <summary>Localization settings used to change the localization.</summary>
+        [SerializeField]
+        private LocalizationSettings localizationSettings;
+
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
 
         private void Start()
         {
@@ -80,6 +90,28 @@ namespace Game
 
                 // Save settings when closed.
                 PlayerPrefs.Save();
+            };
+
+            // Set locale to finnish.
+            this.rootVisual.Query<Button>("fi").First().clicked += () =>
+                this.localizationSettings.SetSelectedLocale(
+                    this.localizationSettings.GetAvailableLocales().GetLocale("fi")
+                );
+
+            // Set locale to english.
+            this.rootVisual.Query<Button>("en").First().clicked += () =>
+                this.localizationSettings.SetSelectedLocale(
+                    this.localizationSettings.GetAvailableLocales().GetLocale("en")
+                );
+
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                this.rootVisual.Query<GroupBox>("Settings").First().text = table["Settings"].Value;
+                this.rootVisual.Query<GroupBox>("Lang").First().text = table["Language"].Value;
+                this.rootVisual.Query<GroupBox>("Speed").First().text = table["Speed"].Value;
+                this.rootVisual.Query<Slider>("Music").First().label = table["Music"].Value;
+                this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
             };
 
             // Hide at the start.

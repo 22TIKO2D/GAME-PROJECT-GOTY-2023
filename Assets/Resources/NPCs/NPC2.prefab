@@ -101,9 +101,28 @@ MonoBehaviour:
   battleEnemies:
   - Car
   npcName: Pekka
-  description: Morjesta! Tarvitsen apuasi.
-  afterDescription: 
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 34524064194560
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  afterDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   skill: 
+  references:
+    version: 2
+    RefIds: []
 --- !u!58 &1916165469970270594
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -286,7 +286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleStats: {fileID: 2136553038}
   battleEnd: {fileID: 430314371}
-  speed: 0.5
+  translation:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
 --- !u!4 &469933177
 Transform:
   m_ObjectHideFlags: 0
@@ -668,6 +670,10 @@ PrefabInstance:
       propertyPath: battleStats
       value: 
       objectReference: {fileID: 2136553038}
+    - target: {fileID: 5630834979723055983, guid: 2e800ee7d83e613e098c4e0a36537193, type: 3}
+      propertyPath: translation.m_TableReference.m_TableCollectionName
+      value: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+      objectReference: {fileID: 0}
     - target: {fileID: 7323654836256968766, guid: 2e800ee7d83e613e098c4e0a36537193, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

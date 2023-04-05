@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -25,6 +26,10 @@ namespace Overworld
         /// <summary>The main canvas.</summary>
         [SerializeField]
         private Canvas canvas;
+
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
 
         private void Start()
         {
@@ -54,6 +59,16 @@ namespace Overworld
                         this.skill
                     )
                 );
+            };
+
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                this.rootVisual.Query<Label>("DifficultyLabel").First().text = table[
+                    "Difficulty"
+                ].Value;
+                this.rootVisual.Query<Button>("DontHelp").First().text = table["Dont Help"].Value;
+                this.rootVisual.Query<Button>("Help").First().text = table["Help"].Value;
             };
         }
 

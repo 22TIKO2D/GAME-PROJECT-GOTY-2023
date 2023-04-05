@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Overworld
 {
@@ -13,6 +14,10 @@ namespace Overworld
         [SerializeField]
         private Canvas canvas;
 
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
+
         private void Start()
         {
             VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
@@ -24,6 +29,12 @@ namespace Overworld
 
                 // Show the canvas again.
                 this.canvas.enabled = true;
+            };
+
+            // Set translations.
+            this.translation.TableChanged += (table) =>
+            {
+                rootVisual.Query<Button>("Ok").First().text = table["Ok"].Value;
             };
 
             // Check if after dialog is set.

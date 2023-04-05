@@ -1,0 +1,357 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: StringTable_fi
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fi
+  m_SharedData: {fileID: 11400000, guid: bb210606e4a6ddd469abc5c9ea8e47a5, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 5325306575037136964
+  m_TableData:
+  - m_Id: 195749552128
+    m_Localized: "Jatka peli\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346538975232
+    m_Localized: Aloita uusi peli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498024652800
+    m_Localized: Asetukset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7329228857344
+    m_Localized: Kieli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10456149598208
+    m_Localized: Nopeus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10483681009664
+    m_Localized: Musiikki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10946295963648
+    m_Localized: Asetukset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10977249927168
+    m_Localized: Sulje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11613966245888
+    m_Localized: Osta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12225588043776
+    m_Localized: Anna nimesi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12547601539072
+    m_Localized: Peruuta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12635279269888
+    m_Localized: Aloita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15006931689472
+    m_Localized: "Sinulla on {0} \u20AC rahaa."
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 16876899213312
+    m_Localized: "{0} ({1} \u20AC)\npalauttaa {2} motivaatiota"
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 17835683553280
+    m_Localized: Kahvi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17968106119168
+    m_Localized: Mountain Dew
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18056568184832
+    m_Localized: Snickers patukka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191123222528
+    m_Localized: Tavarat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19280944242688
+    m_Localized: Sammuta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19457033707520
+    m_Localized: Apuva!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19520506109952
+    m_Localized: Tiedot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20167490084864
+    m_Localized: Sinun nimesi on {0}.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 20372117594112
+    m_Localized: Sinulla on {0} kokemusta.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 20606872788992
+    m_Localized: Sinulla on {0} motivaatiota.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 20798116274176
+    m_Localized: "Sin\xE4 korjaat ongelmia keskim\xE4\xE4rin {0} pisteen tehokkuudella."
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 21139922690048
+    m_Localized: Sinun nopeutesi on {0}.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 21269384077312
+    m_Localized: 'Sinun taitosi:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21733391540224
+    m_Localized: Korjaa kaikkia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21833589268480
+    m_Localized: Innostu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21945078063104
+    m_Localized: Tehokas korjaus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22315498020864
+    m_Localized: '{0} (x{1})
+
+      palauttaa {2} motivaatiota'
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 24097905254400
+    m_Localized: Helppo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24132323713024
+    m_Localized: Sopiva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24168239538176
+    m_Localized: Kohtuullinen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24307758866432
+    m_Localized: Vaikea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24355246776320
+    m_Localized: Mahdoton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24932731133952
+    m_Localized: Vaikeustaso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25051673206784
+    m_Localized: Auta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25076142776320
+    m_Localized: "\xC4l\xE4 auta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25530083909632
+    m_Localized: "Selv\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26402633359360
+    m_Localized: Voitit pelin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26458249830400
+    m_Localized: "H\xE4visit pelin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26553443753984
+    m_Localized: 'Onneksi olkoon!
+
+      Sait paljon kokemusta ({0}) ja taitoja.'
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 26819949830144
+    m_Localized: "Et saanut ker\xE4tty\xE4 kaikkia taitoja.\nParempi onni ensi kerralla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27622827696128
+    m_Localized: Korjaa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27778193104896
+    m_Localized: Taidot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28393921126400
+    m_Localized: Ongelmat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28500959764480
+    m_Localized: "Korjausta j\xE4ljell\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28910491607040
+    m_Localized: Ongelma korjattu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28974890950656
+    m_Localized: Ongelma ei ratkennut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29354840367104
+    m_Localized: "Sait {0} kokemusta, {1} \u20AC rahaa, sek\xE4 siihen kului {2}
+      minuuttia."
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 29657501343744
+    m_Localized: Tuhlasit {0} minuuttia aikaa.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 29868634218496
+    m_Localized: Sait taidon {0}.
+    m_Metadata:
+      m_Items:
+      - rid: 5325306575037136964
+  - m_Id: 31082381910016
+    m_Localized: Toiminto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31352566390784
+    m_Localized: Vuoro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31442077032448
+    m_Localized: Motivaatio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32721079705600
+    m_Localized: Auto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32796392628224
+    m_Localized: "Kirist\xE4 pultteja"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32983244677120
+    m_Localized: Tietokone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33085904461824
+    m_Localized: Poista viiruksia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33186886524928
+    m_Localized: "WC-p\xF6ntt\xF6"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33412544274432
+    m_Localized: "Tiivist\xE4 putkia"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34347442053120
+    m_Localized: Minun nimeni on Kalle. Haluatko auttaa minua?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34524064194560
+    m_Localized: Morjesta! Tarvitsen apuasi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34680956329984
+    m_Localized: Huomenta! Voisitko auttaa minua?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34838418890752
+    m_Localized: Voi apua!!!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35129721692160
+    m_Localized: "Minut l\xF6yd\xE4t aina samasta paikasta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35293609926656
+    m_Localized: Kiitos kun autoit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37641883295744
+    m_Localized: "T\xE4m\xE4 on kerta 1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37734585802752
+    m_Localized: "T\xE4m\xE4 on kerta 2."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37738738163712
+    m_Localized: "T\xE4m\xE4 on kerta 3."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37741057613824
+    m_Localized: "T\xE4m\xE4 on kerta 4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37742756306944
+    m_Localized: "T\xE4m\xE4 on kerta 5."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37958922346496
+    m_Localized: Kiitos!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38014463320064
+    m_Localized: Kiitos avusta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38082872418304
+    m_Localized: "Kiit\xE4n teit\xE4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38144218308608
+    m_Localized: Mukava kun autoit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44320544858112
+    m_Localized: Takaisin kartalle
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5325306575037136964
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0020d512a60d000000209575590f00000020159c571200000020d5408712000000205570ea120000002055e9bd120000002095053a130000002055bb4b14000000209574261800000020d5b4b21a00000020d52cf91a0000002055552a1b0000

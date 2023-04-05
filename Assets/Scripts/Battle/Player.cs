@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Localization;
 
 namespace Battle
 {
@@ -69,6 +70,10 @@ namespace Battle
         /// <summary>Label for action text.</summary>
         private Label actionLabel;
 
+        // <summary>String table used for translations.</summary>
+        [SerializeField]
+        private LocalizedStringTable translation;
+
         protected override void Awake()
         {
             // Initialize values.
@@ -105,15 +110,15 @@ namespace Battle
             actionGroup.Add(this.baseGroup);
 
             Button attackButton = new Button(() => this.action = Action.Attack);
-            attackButton.text = "Korjaa";
+            attackButton.text = this.translation.GetTable()["Fix"].Value;
             this.baseGroup.Add(attackButton);
 
             Button skillsButton = new Button(() => this.action = Action.Skill);
-            skillsButton.text = "Taidot";
+            skillsButton.text = this.translation.GetTable()["Player/Skills"].Value;
             this.baseGroup.Add(skillsButton);
 
             Button itemsButton = new Button(() => this.action = Action.Item);
-            itemsButton.text = "Tavarat";
+            itemsButton.text = this.translation.GetTable()["Items"].Value;
             this.baseGroup.Add(itemsButton);
 
             { // Target group.
@@ -129,11 +134,11 @@ namespace Battle
 
                 // Create cancel button.
                 Button cancelButton = new Button(() => this.target = 0);
-                cancelButton.text = "Peruuta";
+                cancelButton.text = this.translation.GetTable()["Cancel"].Value;
                 this.targetGroup.Add(cancelButton);
 
                 // Padding to align with the other elements.
-                this.targetGroup.Add(new Label("Korjaa"));
+                this.targetGroup.Add(new Label(this.translation.GetTable()["Fix"].Value));
 
                 // Create target buttons.
                 this.targetButtons = new Button[this.enemies.Length];
@@ -152,7 +157,7 @@ namespace Battle
 
                 // Create cancel button.
                 Button cancelButton = new Button(() => this.skill = 0);
-                cancelButton.text = "Peruuta";
+                cancelButton.text = this.translation.GetTable()["Cancel"].Value;
                 this.skillGroup.Add(cancelButton);
 
                 // Create skill buttons.
@@ -160,7 +165,9 @@ namespace Battle
                 {
                     ushort skill = (ushort)(i + 1);
                     Button skillButton = new Button(() => this.skill = skill);
-                    skillButton.text = this.skills[i].Name;
+                    skillButton.text = this.translation.GetTable()[
+                        "Skills/" + this.skills[i].GetType().Name
+                    ].Value;
                     this.skillGroup.Add(skillButton);
                 }
             }
@@ -173,6 +180,13 @@ namespace Battle
                 this.BuildItemGroup();
             }
 
+            // Set translations.
+            this.actionLabel.text = this.translation.GetTable()["Action"].Value;
+            this.battleStats.rootVisualElement.Query<Label>("TurnLabel").First().text =
+                this.translation.GetTable()["Turn"].Value;
+            this.battleStats.rootVisualElement.Query<Label>("HealthLabel").First().text =
+                this.translation.GetTable()["Health"].Value;
+
             this.ShowGroup(VisibleGroup.None);
         }
 
@@ -183,7 +197,7 @@ namespace Battle
 
             // Create cancel button.
             Button cancelButton = new Button(() => this.item = "");
-            cancelButton.text = "Peruuta";
+            cancelButton.text = this.translation.GetTable()["Cancel"].Value;
             this.itemGroup.Add(cancelButton);
 
             // Get all the items that the player possesses.
@@ -200,8 +214,9 @@ namespace Battle
                             .GetComponent<Game.Item>();
 
                         Button itemButton = new Button(() => this.item = itemKey);
-                        itemButton.text =
-                            $"{item.Name} (x{itemPair.Value})\npalauttaa {item.Health} motia";
+                        itemButton.text = this.translation.GetTable()[
+                            "Item Count"
+                        ].GetLocalizedString(item.Name, itemPair.Value, item.Health);
                         this.itemGroup.Add(itemButton);
                     }
                 );

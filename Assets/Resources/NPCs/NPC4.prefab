@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1880008929
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2af3090c0aa6aaa2a95ca113c50ed436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,7 +102,28 @@ MonoBehaviour:
   - PC
   - PC
   npcName: Mari
-  description: Voi apua!!!
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
+    m_TableEntryReference:
+      m_KeyId: 34838418890752
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  afterDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  skill: 
+  references:
+    version: 2
+    RefIds: []
 --- !u!58 &1916165469970270594
 CircleCollider2D:
   m_ObjectHideFlags: 0

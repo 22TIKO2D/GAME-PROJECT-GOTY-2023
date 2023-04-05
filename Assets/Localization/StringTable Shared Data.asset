@@ -1,0 +1,340 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: StringTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: StringTable
+  m_TableCollectionNameGuidString: bb210606e4a6ddd469abc5c9ea8e47a5
+  m_Entries:
+  - m_Id: 195749552128
+    m_Key: MainMenu/Canvas/Continue/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346538975232
+    m_Key: MainMenu/Canvas/NewGame/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498024652800
+    m_Key: MainMenu/Canvas/Settings/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7329228857344
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10456149598208
+    m_Key: Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10483681009664
+    m_Key: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10946295963648
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10977249927168
+    m_Key: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11613966245888
+    m_Key: Overworld/Canvas/Buy/Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12225588043776
+    m_Key: Give Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12547601539072
+    m_Key: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12635279269888
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15006931689472
+    m_Key: Money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16876899213312
+    m_Key: Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17835683553280
+    m_Key: Coffee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17968106119168
+    m_Key: MountainDew
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18056568184832
+    m_Key: Snickers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19191123222528
+    m_Key: Items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19280944242688
+    m_Key: Shutdown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19457033707520
+    m_Key: Apuva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19520506109952
+    m_Key: Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20167490084864
+    m_Key: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20372117594112
+    m_Key: Exp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20606872788992
+    m_Key: Max Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20798116274176
+    m_Key: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21139922690048
+    m_Key: Phone/Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21269384077312
+    m_Key: Skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21733391540224
+    m_Key: Skills/AOE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21833589268480
+    m_Key: Skills/Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21945078063104
+    m_Key: Skills/Double
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22315498020864
+    m_Key: Item Count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24097905254400
+    m_Key: Difficulty 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24132323713024
+    m_Key: Difficulty 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24168239538176
+    m_Key: Difficulty 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24307758866432
+    m_Key: Difficulty 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24355246776320
+    m_Key: Difficulty 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24932731133952
+    m_Key: Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25051673206784
+    m_Key: Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25076142776320
+    m_Key: Dont Help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25530083909632
+    m_Key: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26402633359360
+    m_Key: Win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26458249830400
+    m_Key: Lose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26553443753984
+    m_Key: Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26819949830144
+    m_Key: Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27622827696128
+    m_Key: Fix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27778193104896
+    m_Key: Player/Skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28393921126400
+    m_Key: Problems
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28500959764480
+    m_Key: Remain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28910491607040
+    m_Key: Fixed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28974890950656
+    m_Key: Not Fixed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29354840367104
+    m_Key: After Battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29657501343744
+    m_Key: Waste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29868634218496
+    m_Key: Receive Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31082381910016
+    m_Key: Action
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31352566390784
+    m_Key: Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31442077032448
+    m_Key: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32721079705600
+    m_Key: Enemy/Car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32796392628224
+    m_Key: Fix/Car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32983244677120
+    m_Key: Enemy/PC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33085904461824
+    m_Key: Fix/PC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33186886524928
+    m_Key: Enemy/Toilet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33412544274432
+    m_Key: Fix/Toilet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34347442053120
+    m_Key: NPC1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34524064194560
+    m_Key: NPC2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34680956329984
+    m_Key: NPC3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34838418890752
+    m_Key: NPC4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35129721692160
+    m_Key: StaticNPC1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35293609926656
+    m_Key: StaticNPC1After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37641883295744
+    m_Key: Random Dialog 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37734585802752
+    m_Key: Random Dialog 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37738738163712
+    m_Key: Random Dialog 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37741057613824
+    m_Key: Random Dialog 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37742756306944
+    m_Key: Random Dialog 5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37958922346496
+    m_Key: Random Dialog After 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38014463320064
+    m_Key: Random Dialog After 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38082872418304
+    m_Key: Random Dialog After 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38144218308608
+    m_Key: Random Dialog After 4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44320544858112
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5325306575037136921
+  references:
+    version: 2
+    RefIds:
+    - rid: 5325306575037136921
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1680704562335
