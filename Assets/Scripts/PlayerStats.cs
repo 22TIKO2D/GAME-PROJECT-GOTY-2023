@@ -56,6 +56,9 @@ namespace Game
         /// <summary>The current dialog random NPC will show.</summary>
         public static ushort Dialog { get; set; } = 0;
 
+        /// <summary>If the player has seen the tutorial or not.</summary>
+        public static bool SeenTutorial { get; set; } = false;
+
         /// <summary>Add a new item for the player.</summary>
         public static void AddItem(string name, uint count = 1)
         {
@@ -110,6 +113,7 @@ namespace Game
             public string afterName;
             public string afterDesc;
             public ushort dialog;
+            public bool tutorial;
         }
 
         /// <summary>Reset the player stats to their default values.</summary>
@@ -125,6 +129,7 @@ namespace Game
             AfterDialogName = "";
             AfterDialogDesc = "";
             Dialog = 0;
+            SeenTutorial = false;
         }
 
         /// <summary>Save file's name.</summary>
@@ -169,6 +174,7 @@ namespace Game
                     afterName = AfterDialogName,
                     afterDesc = AfterDialogDesc,
                     dialog = Dialog,
+                    tutorial = SeenTutorial,
                 };
 
                 // Write to the file.
@@ -229,6 +235,7 @@ namespace Game
                     AfterDialogName = saveData.afterName;
                     AfterDialogDesc = saveData.afterDesc;
                     Dialog = saveData.dialog;
+                    SeenTutorial = saveData.tutorial;
                 }
             }
         }

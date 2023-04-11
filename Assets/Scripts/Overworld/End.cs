@@ -20,6 +20,14 @@ namespace Overworld
         [SerializeField]
         private LocalizedStringTable translation;
 
+        /// <summary>Audio played on victory.</summary>
+        [SerializeField]
+        private AudioClip victoryClip;
+
+        /// <summary>Audio played on defeat.</summary>
+        [SerializeField]
+        private AudioClip defeatClip;
+
         private void Start()
         {
             VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
@@ -76,6 +84,12 @@ namespace Overworld
 
                 // Remove the save so player won't be able to continue the game.
                 Game.PlayerStats.RemoveSave();
+
+                // Play victory/defeat sound.
+                AudioSource audioSource = this.GetComponent<AudioSource>();
+                // Set the audio clip accordingly.
+                audioSource.clip = hasWon ? this.victoryClip : this.defeatClip;
+                audioSource.Play();
             }
         }
     }

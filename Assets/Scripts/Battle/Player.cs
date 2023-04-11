@@ -74,22 +74,27 @@ namespace Battle
         [SerializeField]
         private LocalizedStringTable translation;
 
+        /// <summary>A state that the tutorial is in.</summary>
+        private enum TutorialStage
+        {
+            None,
+            Attack,
+            Item,
+            Skill,
+            Done,
+        }
+
+        /// <summary>The current state of the tutorial.</summary>
+        private TutorialStage tutorialStage;
+
+        /// <summary>The target choosing attack button.</summary>
+        private Button attackButton;
+
         protected override void Awake()
         {
             // Initialize values.
             this.Speed = Game.PlayerStats.Speed;
             this.MaxHealth = Game.PlayerStats.MaxHealth;
-
-            // Initialize skills.
-            this.skills = Game.PlayerStats.Skills
-                .Select(
-                    (skill) =>
-                        (
-                            (Battle.IPlayerSkill)
-                                Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
-                        )
-                )
-                .ToArray();
 
             base.Awake();
         }
@@ -109,9 +114,9 @@ namespace Battle
             this.baseGroup = new GroupBox();
             actionGroup.Add(this.baseGroup);
 
-            Button attackButton = new Button(() => this.action = Action.Attack);
-            attackButton.text = this.translation.GetTable()["Fix"].Value;
-            this.baseGroup.Add(attackButton);
+            this.attackButton = new Button(() => this.action = Action.Attack);
+            this.attackButton.text = this.translation.GetTable()["Fix"].Value;
+            this.baseGroup.Add(this.attackButton);
 
             Button skillsButton = new Button(() => this.action = Action.Skill);
             skillsButton.text = this.translation.GetTable()["Player/Skills"].Value;
@@ -155,21 +160,8 @@ namespace Battle
                 this.skillGroup = new GroupBox();
                 actionGroup.Add(this.skillGroup);
 
-                // Create cancel button.
-                Button cancelButton = new Button(() => this.skill = 0);
-                cancelButton.text = this.translation.GetTable()["Cancel"].Value;
-                this.skillGroup.Add(cancelButton);
-
-                // Create skill buttons.
-                for (int i = 0; i < this.skills.Length; i++)
-                {
-                    ushort skill = (ushort)(i + 1);
-                    Button skillButton = new Button(() => this.skill = skill);
-                    skillButton.text = this.translation.GetTable()[
-                        "Skills/" + this.skills[i].GetType().Name
-                    ].Value;
-                    this.skillGroup.Add(skillButton);
-                }
+                // Build the group.
+                this.BuildSkillGroup();
             }
 
             { // Item group.
@@ -187,7 +179,76 @@ namespace Battle
             this.battleStats.rootVisualElement.Query<Label>("HealthLabel").First().text =
                 this.translation.GetTable()["Health"].Value;
 
+            this.HealthChange.AddListener(
+                (change) =>
+                {
+                    // A hacky way to check if the skill was used.
+                    // Works because the tutorial skill `Double` also damages the player.
+                    if (
+                        this.tutorialStage == TutorialStage.Skill
+                        && this.skill != null
+                        && change < 0
+                    )
+                        // Advance to the next stage of the tutorial.
+                        this.SetTutorial(TutorialStage.Done);
+                }
+            );
+
+            // Start the tutorial if player has not seen it yet.
+            this.SetTutorial(
+                Game.PlayerStats.SeenTutorial ? TutorialStage.None : TutorialStage.Attack
+            );
+
             this.ShowGroup(VisibleGroup.None);
+        }
+
+        /// <summary>Set the tutorial stage.</summary>
+        private void SetTutorial(TutorialStage stage)
+        {
+            Label tutorialLabel = this.battleStats.rootVisualElement.Query<Label>("Tutorial");
+
+            switch (stage)
+            {
+                case TutorialStage.None:
+                    this.attackButton.SetEnabled(true);
+                    tutorialLabel.text = "";
+                    tutorialLabel.visible = false;
+                    break;
+
+                case TutorialStage.Attack:
+                    this.attackButton.SetEnabled(true);
+                    tutorialLabel.text = this.translation.GetTable()["Tutorial/Attack"].Value;
+                    break;
+
+                case TutorialStage.Item:
+                    this.attackButton.SetEnabled(false);
+                    tutorialLabel.text = this.translation.GetTable()["Tutorial/Item"].Value;
+
+                    // Add tutorial item.
+                    Game.PlayerStats.AddItem("Coffee");
+
+                    // Rebuild the group.
+                    this.BuildItemGroup();
+                    break;
+
+                case TutorialStage.Skill:
+                    this.attackButton.SetEnabled(false);
+                    tutorialLabel.text = this.translation.GetTable()["Tutorial/Skill"].Value;
+
+                    // Add tutorial skill.
+                    Game.PlayerStats.Skills.Add("Double");
+
+                    // Rebuild the group.
+                    this.BuildSkillGroup();
+                    break;
+
+                case TutorialStage.Done:
+                    this.attackButton.SetEnabled(true);
+                    tutorialLabel.text = this.translation.GetTable()["Tutorial/Done"].Value;
+                    break;
+            }
+
+            this.tutorialStage = stage;
         }
 
         /// <summary>Build the item group.</summary>
@@ -220,6 +281,39 @@ namespace Battle
                         this.itemGroup.Add(itemButton);
                     }
                 );
+        }
+
+        /// <summary>Build the skill group.</summary>
+        private void BuildSkillGroup()
+        {
+            // Initialize skills.
+            this.skills = Game.PlayerStats.Skills
+                .Select(
+                    (skill) =>
+                        (
+                            (Battle.IPlayerSkill)
+                                Activator.CreateInstance(Type.GetType($"Battle.Skill.{skill}"))
+                        )
+                )
+                .ToArray();
+
+            this.skillGroup.Clear();
+
+            // Create cancel button.
+            Button cancelButton = new Button(() => this.skill = 0);
+            cancelButton.text = this.translation.GetTable()["Cancel"].Value;
+            this.skillGroup.Add(cancelButton);
+
+            // Create skill buttons.
+            for (int i = 0; i < this.skills.Length; i++)
+            {
+                ushort skill = (ushort)(i + 1);
+                Button skillButton = new Button(() => this.skill = skill);
+                skillButton.text = this.translation.GetTable()[
+                    "Skills/" + this.skills[i].GetType().Name
+                ].Value;
+                this.skillGroup.Add(skillButton);
+            }
         }
 
         /// <summary>Show the specific group.</summary>
@@ -280,11 +374,15 @@ namespace Battle
                         // Target an enemy and deal damage to it.
                         yield return this.TargetEnemy(
                             (target) =>
-                                this.Roundtrip(
-                                    () =>
-                                        // Deal damage to the target enemy.
-                                        this.enemies[target].InflictDamage(Game.PlayerStats.Damage)
-                                )
+                                this.Roundtrip(() =>
+                                {
+                                    // Deal damage to the target enemy.
+                                    this.enemies[target].InflictDamage(Game.PlayerStats.Damage);
+
+                                    // Advance to the next stage of the tutorial.
+                                    if (this.tutorialStage == TutorialStage.Attack)
+                                        this.SetTutorial(TutorialStage.Item);
+                                })
                         );
                         break;
 
@@ -337,6 +435,10 @@ namespace Battle
 
                             // Heal the player by the amount this item restores.
                             this.Heal(item.Health);
+
+                            // Advance to the next stage of the tutorial.
+                            if (this.tutorialStage == TutorialStage.Item)
+                                this.SetTutorial(TutorialStage.Skill);
 
                             yield return new WaitForSeconds(0.5f);
                         }

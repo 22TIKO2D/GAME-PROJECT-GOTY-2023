@@ -89,4 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9b7fbf58f5745518dc09148c3f729e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtSound: {fileID: 8300000, guid: 7fc19404474bafd05874a3709b162acd, type: 3}
   battleStats: {fileID: 0}
+  translation:
+    m_TableReference:
+      m_TableCollectionName: 

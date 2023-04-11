@@ -19,6 +19,7 @@
 .main-box {
     width: 800px;
     height: auto;
+    max-height: 600px;
     background-color: black;
     color: white;
     padding: 10px;

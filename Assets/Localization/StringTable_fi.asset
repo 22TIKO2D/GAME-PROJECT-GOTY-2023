@@ -81,12 +81,8 @@ MonoBehaviour:
     m_Localized: Kahvi
     m_Metadata:
       m_Items: []
-  - m_Id: 17968106119168
-    m_Localized: Mountain Dew
-    m_Metadata:
-      m_Items: []
-  - m_Id: 18056568184832
-    m_Localized: Snickers patukka
+  - m_Id: 2140186342768640
+    m_Localized: Porkkana
     m_Metadata:
       m_Items: []
   - m_Id: 19191123222528
@@ -273,7 +269,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 33085904461824
-    m_Localized: Poista viiruksia
+    m_Localized: Poista viruksia
     m_Metadata:
       m_Items: []
   - m_Id: 33186886524928
@@ -346,6 +342,48 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 44320544858112
     m_Localized: Takaisin kartalle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2154147767304192
+    m_Localized: "\xC4\xE4ni"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2182168184274944
+    m_Localized: "Ensinn\xE4kin voit korjata ongelmia k\xE4ytt\xE4m\xE4ll\xE4 \"Korjaa\"-painiketta
+      ja valitsemalla sitten ongelman, jota haluat korjata. Kokeile sit\xE4, kun
+      sinun vuorosi tulee!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2182653674962944
+    m_Localized: "Hienoa! Seuraavaksi voit k\xE4ytt\xE4\xE4 tavaroita, jotka palauttavat
+      motivaatiotasi, \"Tavarat\"-valikosta. Kokeile nyt juoda kahvia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2183197097377792
+    m_Localized: "Loistavaa! Kokeile nyt k\xE4ytt\xE4\xE4 taitoa \"Tehokas korjaus\",
+      joka l\xF6ytyy \"Taidot\"-valikon alta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2183878097158144
+    m_Localized: "Hienoa! Osaat nyt k\xE4ytt\xE4\xE4 kaikkia pelin perusmekaniikkoja.
+      Ei muuta kuin korjaamaan ongelmia!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186862029881344
+    m_Localized: "Kyll\xE4"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186869160198144
+    m_Localized: Ei
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2187811217653760
+    m_Localized: "Jotta peli tulisi sinulle tutummaksi, haluatko n\xE4hd\xE4 opastuksen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2190735805169664
+    m_Localized: "Onnittelut! Olet nyt suorittanut opastuksen ja valmis aloittamaan
+      pelin. T\xE4m\xE4 korjaustilanne ei vaikuta peliin mill\xE4\xE4n tavalla."
     m_Metadata:
       m_Items: []
   references:

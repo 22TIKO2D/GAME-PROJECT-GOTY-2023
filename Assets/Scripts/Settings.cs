@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Audio;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
@@ -17,6 +18,9 @@ namespace Game
         [SerializeField]
         private Canvas mainCanvas;
 
+        /// <summary>Event system used by the canvas.</summary>
+        private EventSystem eventSystem;
+
         /// <summary>Mixer for audio.</summary>
         [SerializeField]
         private AudioMixer mixer;
@@ -31,6 +35,8 @@ namespace Game
 
         private void Start()
         {
+            this.eventSystem = EventSystem.current;
+
             this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
 
             // Get the music slider.
@@ -50,6 +56,24 @@ namespace Game
 
             // Set the volume.
             musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+
+            // Get the music slider.
+            Slider soundSlider = this.rootVisual.Query<Slider>("Sound");
+
+            // Chagne music volume when slider chages.
+            soundSlider.RegisterValueChangedCallback(
+                (value) =>
+                {
+                    // Set volume.
+                    this.mixer.SetFloat("SoundVolume", Linear2dB(value.newValue));
+
+                    // Save to player prefs.
+                    PlayerPrefs.SetFloat("SoundVolume", value.newValue);
+                }
+            );
+
+            // Set the volume.
+            soundSlider.value = PlayerPrefs.GetFloat("SoundVolume", 0.5f);
 
             // Get speed buttons.
             string[] buttonNames = { "SpeedHalf", "SpeedOne", "SpeedTwo", "SpeedThree" };
@@ -111,6 +135,7 @@ namespace Game
                 this.rootVisual.Query<GroupBox>("Lang").First().text = table["Language"].Value;
                 this.rootVisual.Query<GroupBox>("Speed").First().text = table["Speed"].Value;
                 this.rootVisual.Query<Slider>("Music").First().label = table["Music"].Value;
+                this.rootVisual.Query<Slider>("Sound").First().label = table["Sound"].Value;
                 this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
             };
 
@@ -130,6 +155,7 @@ namespace Game
         {
             this.rootVisual.visible = visible;
             this.mainCanvas.enabled = !visible;
+            this.eventSystem.enabled = !visible;
         }
     }
 }

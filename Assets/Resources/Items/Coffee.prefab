@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073a7f440ab65d502b9264f5693f08a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 5
-  health: 20
+  value: 15
+  health: 40
   itemName:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5

@@ -75,14 +75,6 @@ MonoBehaviour:
     m_Key: Coffee
     m_Metadata:
       m_Items: []
-  - m_Id: 17968106119168
-    m_Key: MountainDew
-    m_Metadata:
-      m_Items: []
-  - m_Id: 18056568184832
-    m_Key: Snickers
-    m_Metadata:
-      m_Items: []
   - m_Id: 19191123222528
     m_Key: Items
     m_Metadata:
@@ -325,6 +317,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 44320544858112
     m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2140186342768640
+    m_Key: Carrot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2154147767304192
+    m_Key: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2182168184274944
+    m_Key: Tutorial/Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2182653674962944
+    m_Key: Tutorial/Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2183197097377792
+    m_Key: Tutorial/Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2183878097158144
+    m_Key: Tutorial/Done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186862029881344
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186869160198144
+    m_Key: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2187811217653760
+    m_Key: Intro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2190735805169664
+    m_Key: Tutorial
     m_Metadata:
       m_Items: []
   m_Metadata:

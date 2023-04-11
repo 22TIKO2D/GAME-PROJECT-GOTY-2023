@@ -10,6 +10,10 @@ namespace Overworld
         [SerializeField]
         private GameObject buyButton;
 
+        /// <summary>Padding when clamping the button to screen edges.</summary>
+        [SerializeField]
+        private Vector2 padding;
+
         /// <summary>Main camera to adjust the button's position to.</summary>
         [SerializeField]
         private Camera mainCamera;
@@ -65,11 +69,25 @@ namespace Overworld
             if (this.targetMachine != null)
             {
                 // Set the button at the target's coordinates.
-                this.transform.position =
+                Vector2 newPosition =
                     RectTransformUtility.WorldToScreenPoint(
                         this.mainCamera,
                         this.targetMachine.transform.position
                     ) + this.offset;
+
+                // Clamp to the screen size.
+                newPosition.x = Mathf.Clamp(
+                    newPosition.x,
+                    this.padding.x,
+                    Screen.width - this.padding.x
+                );
+                newPosition.y = Mathf.Clamp(
+                    newPosition.y,
+                    this.padding.y,
+                    Screen.height - this.padding.y
+                );
+
+                this.transform.position = newPosition;
             }
         }
     }

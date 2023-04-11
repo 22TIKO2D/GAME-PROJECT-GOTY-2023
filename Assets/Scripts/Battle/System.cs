@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +55,14 @@ namespace Battle
         // <summary>String table used for translations.</summary>
         [SerializeField]
         private LocalizedStringTable translation;
+
+        /// <summary>Audio played on victory.</summary>
+        [SerializeField]
+        private AudioClip victoryClip;
+
+        /// <summary>Audio played on defeat.</summary>
+        [SerializeField]
+        private AudioClip defeatClip;
 
         private void Awake()
         {
@@ -329,11 +336,14 @@ namespace Battle
                 // Only get money if player won.
                 Game.PlayerStats.Money += moneyGain;
 
-                infoLabel.text = this.translation.GetTable()["After Battle"].GetLocalizedString(
-                    expGain,
-                    moneyGain,
-                    timeGain
-                );
+                // Set the after battle information prompt.
+                infoLabel.text = Game.PlayerStats.SeenTutorial
+                    ? this.translation.GetTable()["After Battle"].GetLocalizedString(
+                        expGain,
+                        moneyGain,
+                        timeGain
+                    )
+                    : this.translation.GetTable()["Tutorial"].Value;
 
                 // If this was a static NPC show the static dialog as provided.
                 if (Game.PlayerStats.SkillGain == "")
@@ -353,7 +363,7 @@ namespace Battle
             Label skillLabel = this.battleEnd.rootVisualElement.Query<Label>("Skill");
 
             // Gain the skill.
-            if (Game.PlayerStats.SkillGain != "")
+            if (!isPlayerDead && Game.PlayerStats.SkillGain != "")
             {
                 Game.PlayerStats.Skills.Add(Game.PlayerStats.SkillGain);
 
@@ -379,8 +389,22 @@ namespace Battle
             this.battleEndBg.visible = true;
             this.battleEndBg.style.opacity = 1;
 
+            // This was a tutorial.
+            if (!Game.PlayerStats.SeenTutorial)
+            {
+                // Reset stats to their initial state.
+                Game.PlayerStats.Reset();
+                Game.PlayerStats.SeenTutorial = true;
+            }
+
             // Save after the battle.
             Game.PlayerStats.Save();
+
+            // Play victory/defeat sound.
+            AudioSource audioSource = this.GetComponent<AudioSource>();
+            // Set the audio clip accordingly.
+            audioSource.clip = isPlayerDead ? this.defeatClip : this.victoryClip;
+            audioSource.Play();
         }
     }
 }

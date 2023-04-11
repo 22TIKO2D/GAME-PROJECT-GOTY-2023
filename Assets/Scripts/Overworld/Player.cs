@@ -30,6 +30,13 @@ namespace Overworld
         [SerializeField]
         private Camera mainCamera;
 
+        /// <summary>Audio source used to player footstep sounds.</summary>
+        private AudioSource footstepSource;
+
+        /// <summary>Footstep sounds to be played randomly when walking.</summary>
+        [SerializeField]
+        private AudioClip[] footstepSounds;
+
         /// <summary>Target object.</summary>
         public GameObject Target { private get; set; } = null;
 
@@ -41,6 +48,8 @@ namespace Overworld
 
         private void Start()
         {
+            this.footstepSource = this.GetComponent<AudioSource>();
+
             this.rb2d = this.GetComponent<Rigidbody2D>();
 
             this.targetArrow = this.transform.Find("Target").gameObject;
@@ -54,6 +63,23 @@ namespace Overworld
         {
             // Move player to the direction of the joystick.
             this.rb2d.velocity = this.joystick.Direction * this.moveSpeed;
+
+            // When moving and sound is not playing.
+            if (
+                !(
+                    Mathf.Approximately(this.rb2d.velocity.x, 0.0f)
+                    || Mathf.Approximately(this.rb2d.velocity.y, 0.0f)
+                ) && !this.footstepSource.isPlaying
+            )
+            {
+                // Select a random sound.
+                this.footstepSource.clip = this.footstepSounds[
+                    Random.Range(0, this.footstepSounds.Length)
+                ];
+
+                // Play the clip.
+                this.footstepSource.Play();
+            }
         }
 
         private void Update()

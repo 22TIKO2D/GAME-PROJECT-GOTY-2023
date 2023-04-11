@@ -74,7 +74,7 @@ namespace MainMenu
                     );
 
                     // God mode.
-                    if (hash == "8bd33ca56aad8232f3c2b5969113165222bda18b0be6918cf4201297f116d91f")
+                    if (hash == "d21277cab5cbb0c09bb36c634a0f3478a7c50e9cbdc612ca2e38cf22c452d229")
                     {
                         // Add some money.
                         Game.PlayerStats.Money = 9999;

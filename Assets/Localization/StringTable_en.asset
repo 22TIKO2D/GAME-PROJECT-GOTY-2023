@@ -83,12 +83,8 @@ MonoBehaviour:
     m_Localized: Coffee
     m_Metadata:
       m_Items: []
-  - m_Id: 17968106119168
-    m_Localized: Mountain Dew
-    m_Metadata:
-      m_Items: []
-  - m_Id: 18056568184832
-    m_Localized: Snickers bar
+  - m_Id: 2140186342768640
+    m_Localized: Carrot
     m_Metadata:
       m_Items: []
   - m_Id: 19191123222528
@@ -349,6 +345,47 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 44320544858112
     m_Localized: Back to the map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2154147767304192
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2182168184274944
+    m_Localized: First, you can fix problems by using the "Fix" button and then selecting
+      the problem you want to fix. Try it out when it's your turn!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2182653674962944
+    m_Localized: Great! Next, you can use items from the "Items" menu to restore
+      your motivation. Now try drinking some coffee.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2183197097377792
+    m_Localized: Brilliant! Now try using the skill "Efficient fixing", which can
+      be found under the "Skills" menu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2183878097158144
+    m_Localized: Great! You now know how to use all the basic mechanics of the game.
+      Let's get to work on fixing problems!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186862029881344
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186869160198144
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2187811217653760
+    m_Localized: To familiarise yourself with the game would you like to see a tutorial?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2190735805169664
+    m_Localized: Congratulations! You have now completed the tutorial and are ready
+      to start the game. This fixing situation does not affect the game in any way.
     m_Metadata:
       m_Items: []
   references:

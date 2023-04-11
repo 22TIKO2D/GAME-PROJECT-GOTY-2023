@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -10,6 +11,10 @@ namespace Battle
     /// <summary>Agnostic actor for the battle that can be an enemy or the player.</summary>
     public abstract class Actor : MonoBehaviour
     {
+        /// <summary>Sound played when hurt.</summary>
+        [SerializeField]
+        private AudioClip hurtSound;
+
         private uint health;
 
         /// <summary>Health points for this actor.</summary>
@@ -77,9 +82,6 @@ namespace Battle
 
             // Listen to the health change events.
             this.HealthChange.AddListener(this.OnHealthChange);
-
-            // Get the starting position.
-            this.startPosition = this.transform.position;
         }
 
         protected virtual void Awake()
@@ -94,17 +96,20 @@ namespace Battle
             this.colorAmount -= Time.deltaTime * colorChangeSpeed;
             this.image.color = Color.Lerp(Color.white, this.targetColor, this.colorAmount);
 
-            // Move forward or backward.
-            this.offset = Mathf.Clamp(
-                this.offset + this.moveDir * Time.deltaTime * moveSpeed,
-                0.0f,
-                1.0f
-            );
+            if (!Mathf.Approximately(this.moveDir, 0.0f))
+            {
+                // Move forward or backward.
+                this.offset = Mathf.Clamp(
+                    this.offset + this.moveDir * Time.deltaTime * moveSpeed,
+                    0.0f,
+                    1.0f
+                );
 
-            // Based on the starting position.
-            this.transform.position =
-                startPosition
-                + Vector2.left * this.transform.localScale.x * Mathf.Lerp(0, moveRange, offset);
+                // Based on the starting position.
+                this.transform.position =
+                    startPosition
+                    + Vector2.left * this.transform.localScale.x * Mathf.Lerp(0, moveRange, offset);
+            }
         }
 
         /// <summary>Apply damage to the actor's health.</summary>
@@ -115,6 +120,25 @@ namespace Battle
 
             // Prevent health from going to zero.
             this.Health -= (uint)Mathf.Min(Random.Range(minAmount, maxAmount), this.Health);
+
+            // Try to get the audio source, and if it doesn't exist add a new one.
+            AudioSource audioSource;
+            if (!this.gameObject.TryGetComponent<AudioSource>(out audioSource))
+            {
+                audioSource = this.gameObject.AddComponent<AudioSource>();
+
+                // Play only once the hurt sound.
+                audioSource.clip = this.hurtSound;
+                audioSource.loop = false;
+
+                // Set the mixer group.
+                audioSource.outputAudioMixerGroup = Resources
+                    .Load<AudioMixer>("MainMixer")
+                    .FindMatchingGroups("Sound")[0];
+            }
+
+            // Play the hurt sound.
+            audioSource.Play();
         }
 
         /// <summary>Heal the actor by increasing health.</summary>
@@ -127,6 +151,9 @@ namespace Battle
         /// <summary>Move forward, do action, and move back.</summary>
         public IEnumerator Roundtrip(Action action)
         {
+            // Get the starting position.
+            this.startPosition = this.transform.position;
+
             // Move forward.
             this.moveDir = 1.0f;
             yield return new WaitForSeconds(0.5f);

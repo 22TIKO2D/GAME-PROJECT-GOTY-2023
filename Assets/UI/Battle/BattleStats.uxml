@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Stylesheets/BattleStats.uss?fileID=7433441132597879392&amp;guid=1028b7630aaf81d8f94a14630fc75930&amp;type=3#BattleStats" />
-    <ui:GroupBox class="battle-stats" style="height: 600px;">
+    <ui:GroupBox class="battle-stats" style="height: 600px; left: 5%;">
         <ui:GroupBox class="container">
             <ui:Label text="Vuoro" display-tooltip-when-elided="true" name="TurnLabel" class="group-label" />
             <ui:GroupBox name="TurnBox">
@@ -22,4 +22,5 @@
             </ui:ScrollView>
         </ui:GroupBox>
     </ui:GroupBox>
+    <ui:Label text="Aloita korjaamalla ongelma tästä." display-tooltip-when-elided="true" name="Tutorial" style="position: absolute; font-size: 50px; left: 66%; bottom: 200px; width: 500px; white-space: normal; -unity-text-align: upper-left; height: 400px; -unity-font-style: italic; color: rgb(109, 238, 231);" />
 </ui:UXML>
