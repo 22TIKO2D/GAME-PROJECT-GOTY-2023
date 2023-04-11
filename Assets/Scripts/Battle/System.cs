@@ -392,8 +392,11 @@ namespace Battle
             // This was a tutorial.
             if (!Game.PlayerStats.SeenTutorial)
             {
+                // Keep the player's name the same.
+                string playerName = Game.PlayerStats.Name;
                 // Reset stats to their initial state.
                 Game.PlayerStats.Reset();
+                Game.PlayerStats.Name = playerName;
                 Game.PlayerStats.SeenTutorial = true;
             }
 

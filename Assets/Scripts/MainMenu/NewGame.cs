@@ -84,6 +84,9 @@ namespace MainMenu
 
                         // Change the name to indicate a god mode.
                         Game.PlayerStats.Name = "<" + Game.PlayerStats.Name + ">";
+
+                        // God doesn't need tutorials.
+                        Game.PlayerStats.SeenTutorial = true;
                     }
                 }
 
