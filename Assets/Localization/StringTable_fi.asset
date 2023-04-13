@@ -378,7 +378,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2187811217653760
-    m_Localized: "Jotta peli tulisi sinulle tutummaksi, haluatko n\xE4hd\xE4 opastuksen?"
+    m_Localized: "Tervetuloa Apuva-festivaaleille! Tavoitteesi on saada 3 taitoa
+      Apuva-hahmoilta. Festivaali p\xE4\xE4ttyy klo 19:00.\n\nJotta peli tulisi sinulle
+      tutummaksi, haluatko n\xE4hd\xE4 opastuksen?"
     m_Metadata:
       m_Items: []
   - m_Id: 2190735805169664

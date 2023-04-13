@@ -34,6 +34,12 @@ namespace Game
         /// <summary>Skills the player possesses.</summary>
         public static List<string> Skills { get; set; } = new List<string>();
 
+        /// <summary>Skill upgrades the player possesses.</summary>
+        public static List<string> SkillUpgrades { get; set; } = new List<string>();
+
+        /// <summary>NPC's that player has helped.</summary>
+        public static List<string> Beaten { get; set; } = new List<string>();
+
         /// <summary>Items that the player possesses.</summary>
         public static Dictionary<string, uint> Items { get; private set; } =
             new Dictionary<string, uint>();
@@ -107,6 +113,8 @@ namespace Game
             public uint exp;
             public Vector2 position;
             public string[] skills;
+            public string[] skillUpgrades;
+            public string[] beaten;
             public Item[] items;
             public uint money;
             public uint time;
@@ -123,6 +131,8 @@ namespace Game
             Exp = 0;
             Position = Vector2.zero;
             Skills = new List<string>();
+            SkillUpgrades = new List<string>();
+            Beaten = new List<string>();
             Items = new Dictionary<string, uint>();
             Money = 10; // Start with some money.
             Time = 0;
@@ -164,6 +174,8 @@ namespace Game
                     exp = Exp,
                     position = Position,
                     skills = Skills.ToArray(),
+                    skillUpgrades = SkillUpgrades.ToArray(),
+                    beaten = Beaten.ToArray(),
                     items = Items
                         .ToList()
                         // Convert to `SaveData.Item` struct.
@@ -223,6 +235,10 @@ namespace Game
                         Position = saveData.position;
                     if (saveData.skills != null)
                         Skills = new List<string>(saveData.skills);
+                    if (saveData.skillUpgrades != null)
+                        SkillUpgrades = new List<string>(saveData.skillUpgrades);
+                    if (saveData.beaten != null)
+                        Beaten = new List<string>(saveData.beaten);
                     if (saveData.items != null)
                         Items = new Dictionary<string, uint>(
                             saveData.items.Select(

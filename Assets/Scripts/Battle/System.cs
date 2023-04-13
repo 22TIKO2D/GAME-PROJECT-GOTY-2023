@@ -365,13 +365,25 @@ namespace Battle
             // Gain the skill.
             if (!isPlayerDead && Game.PlayerStats.SkillGain != "")
             {
-                Game.PlayerStats.Skills.Add(Game.PlayerStats.SkillGain);
+                // Gain upgrade if the player already has this skill.
+                if (Game.PlayerStats.Skills.Contains(Game.PlayerStats.SkillGain))
+                    Game.PlayerStats.SkillUpgrades.Add(Game.PlayerStats.SkillGain);
+                else
+                    Game.PlayerStats.Skills.Add(Game.PlayerStats.SkillGain);
 
                 // Set the text that we gained a skill.
                 skillLabel.text = this.translation.GetTable()["Receive Skill"].GetLocalizedString(
                     this.translation.GetTable()["Skills/" + Game.PlayerStats.SkillGain].Value
+                        + ( // Skill has been upgraded.
+                            Game.PlayerStats.SkillUpgrades.Contains(Game.PlayerStats.SkillGain)
+                                ? "+"
+                                : ""
+                        )
                 );
                 skillLabel.style.display = DisplayStyle.Flex;
+
+                // Beat this enemy.
+                Game.PlayerStats.Beaten.Add(Game.PlayerStats.AfterDialogName);
             }
             else
             {

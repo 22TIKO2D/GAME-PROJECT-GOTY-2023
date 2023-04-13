@@ -380,7 +380,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2187811217653760
-    m_Localized: To familiarise yourself with the game would you like to see a tutorial?
+    m_Localized: 'Welcome to the Apuva Festival! Your goal is to get 3 skills from
+      the Apuva characters. The festival ends at 19:00.
+
+
+      To familiarise yourself
+      with the game would you like to see a tutorial?'
     m_Metadata:
       m_Items: []
   - m_Id: 2190735805169664

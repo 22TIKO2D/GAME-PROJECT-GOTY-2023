@@ -309,9 +309,11 @@ namespace Battle
             {
                 ushort skill = (ushort)(i + 1);
                 Button skillButton = new Button(() => this.skill = skill);
-                skillButton.text = this.translation.GetTable()[
-                    "Skills/" + this.skills[i].GetType().Name
-                ].Value;
+                string skillName = this.skills[i].GetType().Name;
+                skillButton.text =
+                    this.translation.GetTable()["Skills/" + skillName].Value
+                    // Skill has been upgraded.
+                    + (Game.PlayerStats.SkillUpgrades.Contains(skillName) ? "+" : "");
                 this.skillGroup.Add(skillButton);
             }
         }
@@ -400,7 +402,11 @@ namespace Battle
                         else
                         {
                             // Use the skill.
-                            yield return this.skills[(uint)this.skill - 1].Use(this, this.enemies);
+                            yield return this.skills[(uint)this.skill - 1].Use(
+                                this,
+                                // Include only alive enemies.
+                                this.enemies.Where((enemy) => !enemy.IsDead).ToArray()
+                            );
 
                             // Make sure.
                             this.CheckDead();

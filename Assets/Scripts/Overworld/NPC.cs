@@ -63,7 +63,9 @@ namespace Overworld
         {
             // If player and player doesn't have the skill this NPC gives.
             if (
-                collider.gameObject.tag == "Player" && !Game.PlayerStats.Skills.Contains(this.skill)
+                collider.gameObject.tag == "Player"
+                // Not beaten yet.
+                && !Game.PlayerStats.Beaten.Contains(this.Name)
             )
             {
                 // Show the talk button.

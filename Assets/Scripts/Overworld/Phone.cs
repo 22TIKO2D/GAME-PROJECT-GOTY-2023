@@ -122,8 +122,8 @@ namespace Overworld
                 .ForEach(
                     (npc) =>
                     {
-                        // If we have already beaten this enemy.
-                        if (Game.PlayerStats.Skills.Contains(npc.Skill))
+                        // If player has already beaten this NPC.
+                        if (Game.PlayerStats.Beaten.Contains(npc.Name))
                             return;
 
                         // Create button for this NPC.
@@ -221,7 +221,12 @@ namespace Overworld
             {
                 // Get the names of the skills.
                 string[] skillNames = Game.PlayerStats.Skills
-                    .Select((skill) => this.translation.GetTable()["Skills/" + skill].Value)
+                    .Select(
+                        (skill) =>
+                            this.translation.GetTable()["Skills/" + skill].Value
+                            // Skill has been upgraded.
+                            + (Game.PlayerStats.SkillUpgrades.Contains(skill) ? "+" : "")
+                    )
                     .ToArray();
                 this.app.Add(
                     new Label(

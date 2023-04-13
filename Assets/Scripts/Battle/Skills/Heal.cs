@@ -8,8 +8,13 @@ namespace Battle.Skill
     {
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
-            // Heal the player by 20%.
-            player.Heal(Game.PlayerStats.MaxHealth / 5);
+            // Upgraded?
+            if (Game.PlayerStats.SkillUpgrades.Contains("Heal"))
+                // Heal the player by 50%.
+                player.Heal(Game.PlayerStats.MaxHealth / 2);
+            else
+                // Heal the player by 20%.
+                player.Heal(Game.PlayerStats.MaxHealth / 5);
 
             yield return new WaitForSeconds(0.5f);
         }

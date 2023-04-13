@@ -15,8 +15,17 @@ namespace Battle.Skill
                         .ToList()
                         .ForEach(
                             (enemy) =>
-                                // Evenly divide damage between enemies.
-                                enemy.InflictDamage(Game.PlayerStats.Damage / (uint)enemies.Length)
+                            {
+                                // Upgraded?
+                                if (Game.PlayerStats.SkillUpgrades.Contains("AOE"))
+                                    // Do full damage to all enemies.
+                                    enemy.InflictDamage(Game.PlayerStats.Damage);
+                                else
+                                    // Evenly divide damage between enemies.
+                                    enemy.InflictDamage(
+                                        Game.PlayerStats.Damage / (uint)enemies.Length
+                                    );
+                            }
                         )
             );
         }
