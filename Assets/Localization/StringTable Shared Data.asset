@@ -79,10 +79,6 @@ MonoBehaviour:
     m_Key: Items
     m_Metadata:
       m_Items: []
-  - m_Id: 19280944242688
-    m_Key: Shutdown
-    m_Metadata:
-      m_Items: []
   - m_Id: 19457033707520
     m_Key: Apuva
     m_Metadata:

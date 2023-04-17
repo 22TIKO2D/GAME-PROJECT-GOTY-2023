@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Stylesheets/BattleStats.uss?fileID=7433441132597879392&amp;guid=1028b7630aaf81d8f94a14630fc75930&amp;type=3#BattleStats" />
+    <Style src="project://database/Assets/UI/Stylesheets/Dialog.uss?fileID=7433441132597879392&amp;guid=5ed269f6c9cd2eb119bae8fe4ea73601&amp;type=3#Dialog" />
     <ui:GroupBox class="battle-stats" style="height: 600px; left: 5%;">
         <ui:GroupBox class="container">
             <ui:Label text="Vuoro" display-tooltip-when-elided="true" name="TurnLabel" class="group-label" />

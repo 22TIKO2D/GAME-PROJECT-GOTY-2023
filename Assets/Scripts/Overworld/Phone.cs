@@ -60,8 +60,8 @@ namespace Overworld
             this.buttons = rootVisual.Query<GroupBox>("Buttons");
             this.app = rootVisual.Query<ScrollView>("App");
 
-            // Hide when shutdown.
-            rootVisual.Query<Button>("Shutdown").First().clicked += () => this.SetVisible(false);
+            // Hide when closed.
+            rootVisual.Query<Button>("Close").First().clicked += () => this.SetVisible(false);
 
             // Show Apuva! when this button is clicked.
             rootVisual.Query<Button>("Apuva").First().clicked += this.ShowApuva;
@@ -85,11 +85,21 @@ namespace Overworld
             // Set translations.
             this.translation.TableChanged += (table) =>
             {
-                rootVisual.Query<Button>("Shutdown").First().text = table["Shutdown"].Value;
-                rootVisual.Query<Button>("Apuva").First().text = table["Apuva"].Value;
-                rootVisual.Query<Button>("Stats").First().text = table["Stats"].Value;
-                rootVisual.Query<Button>("Items").First().text = table["Items"].Value;
-                rootVisual.Query<Button>("Settings").First().text = table["Settings"].Value;
+                rootVisual.Query<Button>("Close").First().Query<Label>().First().text = table[
+                    "Close"
+                ].Value;
+                rootVisual.Query<Button>("Apuva").First().Query<Label>().First().text = table[
+                    "Apuva"
+                ].Value;
+                rootVisual.Query<Button>("Stats").First().Query<Label>().First().text = table[
+                    "Stats"
+                ].Value;
+                rootVisual.Query<Button>("Items").First().Query<Label>().First().text = table[
+                    "Items"
+                ].Value;
+                rootVisual.Query<Button>("Settings").First().Query<Label>().First().text = table[
+                    "Settings"
+                ].Value;
             };
 
             // Hide on start.
@@ -103,6 +113,7 @@ namespace Overworld
 
             // Add a close/back button.
             Button closeButton = new Button(() => this.ShowApps(true));
+            closeButton.AddToClassList("close");
             closeButton.text = this.translation.GetTable()["Close"].Value;
             this.app.Add(closeButton);
 

@@ -16,6 +16,21 @@
     width: 200px;
     height: 200px;
     font-size: 50px;
+    border-width: 0px;
+    border-radius: 25%;
+    background-color: transparent;
+    color: white;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: black;
+    -unity-font-style: bold;
+    overflow: visible;
+    margin-bottom: 50px;
+}
+
+.app-icon.unity-button .unity-label {
+    bottom: -185px;
+    white-space: nowrap;
+    font-size: 40px;
 }
 
 #Buttons, #App {
@@ -30,12 +45,24 @@
 }
 
 .unity-button {
-    padding: 10px 5px;
-    margin: 10px 0;
-    border-radius: 25px;
     white-space: normal;
+    margin: 4px;
+    padding: 6px;
+    font-size: 60px;
+    color: black;
+    border-radius: 20px;
+    border-width: 10px;
+    background-color: white;
+    border-color: #e6e6e6;
 }
 
 .unity-button.apuva {
     background-color: pink;
+    border-color: #ff8da0;
+}
+
+.unity-button.close {
+    color: white;
+    background-color: #05b3b4;
+    border-color: #048383;
 }

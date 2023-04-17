@@ -27,9 +27,9 @@
     margin: 5px 0px;
     -unity-font-style: bold;
     white-space: normal;
-    background-color: #888;
-    border-color: #6e6e6e;
-    color: white;
+    background-color: #ccc;
+    border-color: #b3b3b3;
+    color: black;
     border-radius: 20px;
     border-width: 10px;
     font-size: 40px;
@@ -38,6 +38,8 @@
 
 .unity-progress-bar__progress {
     background-color: white;
+    border-width: 10px;
+    border-color: #e6e6e6;
 }
 
 .unity-label {
@@ -52,15 +54,18 @@
 }
 
 .health-bar.unity-progress-bar .unity-progress-bar__progress {
-    background-color: lightgreen;
+    background-color: #90ee90;
+    border-color: #64e764;
 }
 
 .health-bar.enemy.unity-progress-bar .unity-progress-bar__progress {
-    background-color: pink;
+    background-color: #ffc0cb;
+    border-color: #ff8da0;
 }
 
 .current-turn.unity-progress-bar .unity-progress-bar__progress {
-    background-color: lightblue;
+    background-color: #add8e6;
+    border-color: #86c5da;
 }
 
 .group-label.unity-label {

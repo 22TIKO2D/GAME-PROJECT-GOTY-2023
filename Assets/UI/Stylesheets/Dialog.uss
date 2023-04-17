@@ -5,12 +5,14 @@
     padding: 4px;
     margin: 0px;
     font-size: 50px;
-    border-radius: 20px;
     background-color: white;
     color: black;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color: #e6e6e6;
 }
 
-.yes, .no, .button {
+.unity-button.yes, .unity-button.no, .unity-button.button {
     flex-basis: 1px;
     flex: 1 0;
     margin: 4px;
@@ -21,17 +23,43 @@
     border-width: 10px;
 }
 
-.button {
+.unity-button.button {
     background-color: #888;
     border-color: #6e6e6e;
 }
 
-.yes {
+.unity-button.yes {
     background-color: #05b3b4;
     border-color: #048383;
 }
 
-.no {
+.unity-button.no {
     background-color: #c37a30;
     border-color: #9a6026;
+}
+
+.unity-repeat-button {
+    display: none;
+}
+
+.unity-scroller__slider {
+    margin: 0px;
+}
+
+.unity-scroller .unity-base-slider__tracker {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.unity-scroller .unity-base-slider__dragger {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.unity-text-field .unity-base-field__input {
+    background-color: #eee;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color: #d4d4d4;
+    margin: 10px;
 }

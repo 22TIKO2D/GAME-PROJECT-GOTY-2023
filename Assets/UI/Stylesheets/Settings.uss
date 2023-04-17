@@ -3,14 +3,22 @@
 }
 
 .unity-base-slider__tracker {
-    height: 30px;
-    margin-top: -15px;
+    height: 50px;
+    margin-top: -25px;
+    background-color: #888;
+    border-color: #6e6e6e;
+    border-width: 10px;
+    border-radius: 20px;
 }
 
 .unity-base-slider__dragger {
-    height: 60px;
-    width: 30px;
-    margin-top: -30px;
+    height: 100px;
+    width: 50px;
+    margin-top: -50px;
+    border-radius: 20px;
+    border-width: 10px;
+    background-color: #ccc;
+    border-color: #b3b3b3;
 }
 
 .container > .unity-group-box__label {
@@ -24,11 +32,27 @@
 
 .unity-button.speed {
     width: 150px;
+    border-width: 10px;
+    border-radius: 20px;
     background-color: #888;
+    border-color: #6e6e6e;
     color: white;
 }
 
 .unity-button.speed.active {
     background-color: pink;
+    border-color: #ff8da0;
     color: black;
+}
+
+#Lang {
+    height: 200px;
+    padding: 10px;
+    align-items: center;
+    flex-direction: row;
+    background-color: #888;
+    border-color: #6e6e6e;
+    border-width: 10px;
+    border-radius: 20px;
+    color: white;
 }

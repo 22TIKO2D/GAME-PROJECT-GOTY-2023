@@ -1,15 +1,26 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Stylesheets/Phone.uss?fileID=7433441132597879392&amp;guid=6f7f42c91df0b76999d5013a0e6ef511&amp;type=3#Phone" />
-    <ui:VisualElement name="PhoneButton" style="background-image: url(&apos;project://database/Assets/UI/Overworld/PhoneButton.png?fileID=2800000&amp;guid=2ae6922ce487e822097b1637a2ebadfc&amp;type=3#PhoneButton&apos;); width: 135px; height: 254px; position: absolute; left: 60px; top: 40px;" />
+    <Style src="project://database/Assets/UI/Stylesheets/Dialog.uss?fileID=7433441132597879392&amp;guid=5ed269f6c9cd2eb119bae8fe4ea73601&amp;type=3#Dialog" />
+    <ui:VisualElement name="PhoneButton" style="background-image: url(&apos;project://database/Assets/UI/Overworld/PhoneButton.png?fileID=21300000&amp;guid=b0fe1129fe276f2b1b3fdcd44d4f54d3&amp;type=3#PhoneButton&apos;); width: 135px; height: 254px; position: absolute; left: 60px; top: 40px;" />
     <ui:VisualElement name="Phone" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);">
-        <ui:VisualElement style="width: 600px; height: 1000px; background-color: rgb(113, 113, 113); border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; font-size: 60px; position: absolute; left: 50%; top: 50%; translate: -50% -50%;">
+        <ui:VisualElement style="width: 600px; height: 1000px; border-top-left-radius: 100px; border-bottom-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; font-size: 60px; position: absolute; left: 50%; top: 50%; translate: -50% -50%; background-image: url(&apos;project://database/Assets/UI/Battle/Background.png?fileID=2800000&amp;guid=e2d271bf62913b8878b4a895a6c44e8e&amp;type=3#Background&apos;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgb(94, 94, 94);">
             <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/Overworld/Phone.png?fileID=2800000&amp;guid=12ae80c033bd621d3878e0ba7e902e6d&amp;type=3#Phone&apos;); -unity-slice-left: 50; -unity-slice-top: 100; -unity-slice-right: 50; -unity-slice-bottom: 100; flex-grow: 1; flex-shrink: 0; padding-left: 50px; padding-right: 50px; padding-top: 100px; padding-bottom: 50px; max-width: 100%; max-height: 100%;">
                 <ui:GroupBox name="Buttons" class="buttons">
-                    <ui:Button text="Apuva!" display-tooltip-when-elided="true" name="Apuva" class="app-icon" />
-                    <ui:Button text="Tiedot" display-tooltip-when-elided="true" name="Stats" class="app-icon" />
-                    <ui:Button text="Tavarat" display-tooltip-when-elided="true" name="Items" class="app-icon" style="white-space: nowrap;" />
-                    <ui:Button text="Asetukset" display-tooltip-when-elided="true" name="Settings" class="app-icon" style="font-size: 40px; white-space: nowrap;" />
-                    <ui:Button text="Sammuta" display-tooltip-when-elided="true" name="Shutdown" class="app-icon" style="font-size: 40px; white-space: nowrap;" />
+                    <ui:Button display-tooltip-when-elided="true" name="Apuva" class="app-icon" style="background-image: url(&apos;project://database/Assets/UI/Overworld/Apuva.png?fileID=2800000&amp;guid=a6226c4f08e6bd809b6c11a6f30420fd&amp;type=3#Apuva&apos;);">
+                        <ui:Label text="Apuva!" display-tooltip-when-elided="true" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="Stats" class="app-icon" style="background-image: url(&apos;project://database/Assets/UI/Overworld/Stats.png?fileID=2800000&amp;guid=7f50352e962387bfebd010ecdda8144d&amp;type=3#Stats&apos;);">
+                        <ui:Label text="Tiedot" display-tooltip-when-elided="true" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="Items" class="app-icon" style="background-image: url(&apos;project://database/Assets/UI/Overworld/Items.png?fileID=2800000&amp;guid=ccf991d62696c35d1b730a88dc37bbd6&amp;type=3#Items&apos;);">
+                        <ui:Label text="Tavarat" display-tooltip-when-elided="true" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="Settings" class="app-icon" style="background-image: url(&apos;project://database/Assets/UI/Overworld/Settings.png?fileID=2800000&amp;guid=9466dfccdc17cbaf49cc823772cfbb5c&amp;type=3#Settings&apos;);">
+                        <ui:Label text="Asetukset" display-tooltip-when-elided="true" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="Close" class="app-icon" style="background-image: url(&apos;project://database/Assets/UI/Overworld/Close.png?fileID=2800000&amp;guid=7ccf21a1b6e3e69c1bd0ead23c3b060e&amp;type=3#Close&apos;);">
+                        <ui:Label text="Sulje" display-tooltip-when-elided="true" />
+                    </ui:Button>
                 </ui:GroupBox>
                 <ui:ScrollView touch-scroll-type="Elastic" name="App" />
             </ui:VisualElement>
