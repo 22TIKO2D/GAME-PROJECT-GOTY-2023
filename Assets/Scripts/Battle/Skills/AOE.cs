@@ -12,6 +12,8 @@ namespace Battle.Skill
                 () =>
                     // Deal damage to all enemies.
                     enemies
+                        // Only alive enemies.
+                        .Where((enemy) => !enemy.IsDead)
                         .ToList()
                         .ForEach(
                             (enemy) =>

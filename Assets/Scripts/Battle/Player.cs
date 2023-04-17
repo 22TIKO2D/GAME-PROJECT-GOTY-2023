@@ -402,11 +402,7 @@ namespace Battle
                         else
                         {
                             // Use the skill.
-                            yield return this.skills[(uint)this.skill - 1].Use(
-                                this,
-                                // Include only alive enemies.
-                                this.enemies.Where((enemy) => !enemy.IsDead).ToArray()
-                            );
+                            yield return this.skills[(uint)this.skill - 1].Use(this, this.enemies);
 
                             // Make sure.
                             this.CheckDead();

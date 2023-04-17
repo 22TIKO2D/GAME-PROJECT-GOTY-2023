@@ -12,18 +12,15 @@ namespace Battle.Skill
                 (target) =>
                     player.Roundtrip(() =>
                     {
-                        uint multiplier = (uint)(
-                            // Upgraded?
-                            Game.PlayerStats.SkillUpgrades.Contains("Double")
-                                ? 4 // Quadruple damage / quarter health.
-                                : 2 // Double damage / half health.
-                        );
+                        bool upgraded = Game.PlayerStats.SkillUpgrades.Contains("Double");
 
                         // And deal double damage to it.
-                        enemies[target].InflictDamage(Game.PlayerStats.Damage * multiplier);
+                        enemies[target].InflictDamage(
+                            Game.PlayerStats.Damage * (uint)(upgraded ? 4 : 2)
+                        );
 
                         // Also deal damage to the player.
-                        player.InflictDamage(Game.PlayerStats.Damage / multiplier);
+                        player.InflictDamage(Game.PlayerStats.MaxHealth / 4);
                     })
             );
         }
