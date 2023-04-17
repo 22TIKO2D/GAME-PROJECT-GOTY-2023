@@ -12,11 +12,10 @@ namespace Battle.Skill
                 (target) =>
                     player.Roundtrip(() =>
                     {
-                        bool upgraded = Game.PlayerStats.SkillUpgrades.Contains("Double");
-
                         // And deal double damage to it.
                         enemies[target].InflictDamage(
-                            Game.PlayerStats.Damage * (uint)(upgraded ? 4 : 2)
+                            Game.PlayerStats.Damage
+                                * (uint)(Game.PlayerStats.SkillUpgrades.Contains("Double") ? 4 : 2)
                         );
 
                         // Also deal damage to the player.

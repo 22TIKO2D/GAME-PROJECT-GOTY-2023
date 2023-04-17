@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 .bg {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
@@ -17,14 +12,7 @@
 }
 
 .main-box {
-    width: 800px;
-    height: auto;
-    max-height: 800px;
-    background-color: black;
-    color: white;
-    padding: 10px;
     -unity-text-align: middle-center;
-    border-radius: 40px;
 }
 
 .main-box > .unity-group-box__label {
@@ -36,7 +24,7 @@
 }
 
 .main-box.win > .unity-group-box__label {
-    color: lightgreen;
+    color: green;
 }
 
 .unity-label {
@@ -45,20 +33,4 @@
 
 .unity-label {
     margin: 5px 0;
-}
-
-.unity-button {
-    margin: 5px 0;
-}
-
-.unity-button {
-    background-color: skyblue;
-    color: black;
-    border-width: 0;
-    padding: 10px;
-    border-radius: 30px;
-}
-
-.unity-button:hover, .unity-button:active {
-    background-color: white;
 }

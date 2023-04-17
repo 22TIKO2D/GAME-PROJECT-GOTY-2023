@@ -1,12 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Stylesheets/BattleEnd.uss?fileID=7433441132597879392&amp;guid=1015d8a9d75d66bc689cba9f8a40c31b&amp;type=3#BattleEnd" />
+    <Style src="project://database/Assets/UI/Stylesheets/Dialog.uss?fileID=7433441132597879392&amp;guid=5ed269f6c9cd2eb119bae8fe4ea73601&amp;type=3#Dialog" />
     <ui:VisualElement name="Bg" class="bg">
-        <ui:GroupBox text="Ongelma korjattu" name="Problem" class="main-box">
+        <ui:GroupBox text="Ongelma korjattu" name="Problem" class="dialog-box main-box">
             <ui:ScrollView>
                 <ui:Label text="Sekä kyvyn" display-tooltip-when-elided="true" name="Skill" />
                 <ui:Label text="Sait 10 kokemuspistettä" display-tooltip-when-elided="true" name="Info" />
             </ui:ScrollView>
-            <ui:Button text="Takaisin kartalle" display-tooltip-when-elided="true" name="Back" />
+            <ui:Button text="Takaisin kartalle" display-tooltip-when-elided="true" name="Back" class="yes" />
         </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>

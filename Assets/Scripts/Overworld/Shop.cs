@@ -97,6 +97,7 @@ namespace Overworld
                                 ].GetLocalizedString(Game.PlayerStats.Money);
                             }
                         });
+                        itemButton.AddToClassList("button");
                         itemButton.text = this.translation.GetTable()["Item"].GetLocalizedString(
                             item.Name,
                             item.Value,

@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Stylesheets/Shop.uss?fileID=7433441132597879392&amp;guid=cda9fcf896f6a0de0a9fab471c237ada&amp;type=3#Shop" />
+    <Style src="project://database/Assets/UI/Stylesheets/Dialog.uss?fileID=7433441132597879392&amp;guid=5ed269f6c9cd2eb119bae8fe4ea73601&amp;type=3#Dialog" />
     <ui:VisualElement style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center;">
-        <ui:VisualElement style="width: 800px; height: auto; font-size: 60px; background-color: rgb(233, 233, 233); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+        <ui:VisualElement class="dialog-box">
             <ui:Label text="Osta" display-tooltip-when-elided="true" name="Buy" style="-unity-font-style: bold; -unity-text-align: upper-center; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 80px;" />
             <ui:Label text="Sinulla on 0€ rahaa" display-tooltip-when-elided="true" name="Money" style="-unity-text-align: upper-center;" />
             <ui:ScrollView touch-scroll-type="Elastic" name="Shop" style="padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; max-height: 500px;">
@@ -9,7 +10,7 @@
                 <ui:Button text="Tavara 2" display-tooltip-when-elided="true" />
                 <ui:Button text="Tavara 3" display-tooltip-when-elided="true" />
             </ui:ScrollView>
-            <ui:Button text="Sulje" display-tooltip-when-elided="true" name="Close" style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
+            <ui:Button text="Sulje" display-tooltip-when-elided="true" name="Close" class="button" style="min-height: 100px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

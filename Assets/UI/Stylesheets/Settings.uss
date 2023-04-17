@@ -24,8 +24,11 @@
 
 .unity-button.speed {
     width: 150px;
+    background-color: #888;
+    color: white;
 }
 
 .unity-button.speed.active {
     background-color: pink;
+    color: black;
 }

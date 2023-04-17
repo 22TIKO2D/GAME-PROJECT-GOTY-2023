@@ -1,0 +1,37 @@
+.dialog-box {
+    width: 800px;
+    height: auto;
+    max-height: 800px;
+    padding: 4px;
+    margin: 0px;
+    font-size: 50px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+}
+
+.yes, .no, .button {
+    flex-basis: 1px;
+    flex: 1 0;
+    margin: 4px;
+    padding: 6px;
+    font-size: 60px;
+    color: white;
+    border-radius: 20px;
+    border-width: 10px;
+}
+
+.button {
+    background-color: #888;
+    border-color: #6e6e6e;
+}
+
+.yes {
+    background-color: #05b3b4;
+    border-color: #048383;
+}
+
+.no {
+    background-color: #c37a30;
+    border-color: #9a6026;
+}

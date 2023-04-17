@@ -11,7 +11,7 @@
     flex: 1 0;
 }
 
-.unity-progress-bar, .unity-button {
+.unity-progress-bar {
     border-width: 0px;
     border-radius: 10px;
     width: 100%;
@@ -19,17 +19,21 @@
 }
 
 .unity-progress-bar__background {
-    background-color: darkgray;
+    background-color: #888;
 }
 
 .unity-button {
-    background-color: lightgray;
+    width: 100%;
+    margin: 5px 0px;
     -unity-font-style: bold;
     white-space: normal;
-}
-
-.unity-button:hover, .unity-button:active {
-    background-color: white;
+    background-color: #888;
+    border-color: #6e6e6e;
+    color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    font-size: 40px;
+    padding: 10px 0px;
 }
 
 .unity-progress-bar__progress {
@@ -41,7 +45,7 @@
     color: white;
 }
 
-.unity-progress-bar__title, .unity-button.unity-text-element {
+.unity-progress-bar__title {
     color: black;
     font-size: 40px;
     padding: 20px 0px;

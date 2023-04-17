@@ -19,6 +19,7 @@
             <ui:Label text="Toiminto" display-tooltip-when-elided="true" name="ActionLabel" class="group-label" />
             <ui:ScrollView name="ActionBox" touch-scroll-type="Clamped">
                 <ui:Button text="Toiminto" display-tooltip-when-elided="true" />
+                <ui:Button text="Toiminto" display-tooltip-when-elided="true" />
             </ui:ScrollView>
         </ui:GroupBox>
     </ui:GroupBox>
