@@ -256,7 +256,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32721079705600
-    m_Localized: Car
+    m_Localized: Broken car
     m_Metadata:
       m_Items: []
   - m_Id: 32796392628224
@@ -264,7 +264,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32983244677120
-    m_Localized: Computer
+    m_Localized: Slow computer
     m_Metadata:
       m_Items: []
   - m_Id: 33085904461824
@@ -272,7 +272,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 33186886524928
-    m_Localized: Toilet
+    m_Localized: Leaking toilet
     m_Metadata:
       m_Items: []
   - m_Id: 33412544274432
@@ -280,63 +280,92 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34347442053120
-    m_Localized: My name is Kalle. Do you want to help me?
+    m_Localized: Can I borrow you for a moment?
     m_Metadata:
       m_Items: []
   - m_Id: 34524064194560
-    m_Localized: Hi there! I need your help.
+    m_Localized: I've got a situation here. Can I get some backup?
     m_Metadata:
       m_Items: []
   - m_Id: 34680956329984
-    m_Localized: Good morning! Could you help me?
+    m_Localized: Aint this a construction site? Nothing seems to work. Any ideas?
     m_Metadata:
       m_Items: []
   - m_Id: 34838418890752
-    m_Localized: Oh help me!!!
+    m_Localized: Strange how it just will not work. Can ya help me out?
     m_Metadata:
       m_Items: []
   - m_Id: 35129721692160
-    m_Localized: You'll always find me in the same place.
+    m_Localized: Top of the morning to you! Would you mind helping me?
     m_Metadata:
       m_Items: []
   - m_Id: 35293609926656
-    m_Localized: Thanks for your help!
+    m_Localized: "Congratulations on solving the problem! If you do not have a job,
+      active job searching is your way to find one. Active job search means that
+      you actively send job applications to different places. Who would\u2019ve known.
+      The more applications you send, the better. Remember though, it\u2019s quality
+      over quantity! Try to find the balance and pace that works for you. Take this
+      skill and use it well!"
     m_Metadata:
       m_Items: []
   - m_Id: 37641883295744
-    m_Localized: This is the 1st time.
+    m_Localized: "Thank you for your help. I know that those organizers do their
+      best, but every year they forget important things. Job this, job that, it\u2019s
+      important that you get one, blah blah. Remember to pay attention to where you\u2019re
+      applying to. Not all job applications are equal. Some can be missing even crucial
+      details. The job description and salary, for example, are very important. And
+      if you\u2019re in an interview and those two things suddenly begin to change\u2026
+      You probably need to think if that place is really for you. Finding a job shouldn\u2019t
+      be your main goal. Try to find a quality job."
     m_Metadata:
       m_Items: []
   - m_Id: 37734585802752
-    m_Localized: This is the 2nd time.
+    m_Localized: "Thank you for your help! I didn\u2019t really think about helping
+      with the festival, but this just happened to break in the middle of everything\u2026
+      Hmm\u2026 What haven\u2019t you heard yet\u2026 Of course! You probably know
+      how everyone says that you should search up basic information about the employer
+      for the job interview? It feels really boring, doesn\u2019t it? Listen, this
+      is important for you, too. It tells you about the job. You\u2019re not supposed
+      to feel miserable at a job. Find one where you actually do want to work."
     m_Metadata:
       m_Items: []
   - m_Id: 37738738163712
-    m_Localized: This is the 3rd time.
+    m_Localized: "Thank you! I probably would\u2019ve had issues with this for a
+      long time without your help. You seem to have a knack for this. What would
+      you say if I asked for your email address? We could keep in touch in case something
+      like this happens again. And who knows, maybe my small business needs your
+      kind of employees. Why do you look confused? Don\u2019t you know about hidden
+      jobs? Not all jobs are public. Up to 80% of all jobs are hidden ones. Employers
+      are more likely to hire people who they already know instead of a complete
+      stranger. Do networking. It\u2019s useful. Try to look for a job in places
+      other than job advertisement sites. Contact interesting places. I know it sounds
+      weird, but leaving an impression is a big plus in job hunting. Here\u2019s
+      my business card. Contact me if you\u2019re interested in some extra work."
     m_Metadata:
       m_Items: []
   - m_Id: 37741057613824
-    m_Localized: This is the 4th time.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37742756306944
-    m_Localized: This is the 5th time.
+    m_Localized: "Thank you for your help. Job hunting and everything around it can
+      be stressful. Give yourself opportunities to rest as well. You shouldn\u2019t
+      be too nervous over a job interview either. It\u2019s not an interrogation.
+      You get to know more about your possible future employer and they get to know
+      more about you. Be yourself. You won\u2019t succeed every time and that\u2019s
+      okay. Try your best."
     m_Metadata:
       m_Items: []
   - m_Id: 37958922346496
-    m_Localized: Thanks!
+    m_Localized: Jeez! Good job!
     m_Metadata:
       m_Items: []
   - m_Id: 38014463320064
-    m_Localized: Thank you for your help.
+    m_Localized: Thanks. Things are rolling again.
     m_Metadata:
       m_Items: []
   - m_Id: 38082872418304
-    m_Localized: Thank you!
+    m_Localized: You're like a machine. Thanks!
     m_Metadata:
       m_Items: []
   - m_Id: 38144218308608
-    m_Localized: Glad you could help!
+    m_Localized: I thank you for your support fellow snowman :D
     m_Metadata:
       m_Items: []
   - m_Id: 44320544858112
@@ -376,17 +405,187 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2187811217653760
-    m_Localized: 'Welcome to the Apuva Festival! Your goal is to get 3 skills from
-      the Apuva characters. The festival ends at 19:00.
-
-
-      To familiarise yourself
-      with the game would you like to see a tutorial?'
+    m_Localized: "The Apuva-festival is about to begin! In this annual job festival
+      you help the residents of this village and learn about the job market. In the
+      Apuva-app, the residents of this village can report their problems, which you
+      can solve. You can also find the festival\u2019s organizers there. You\u2019ll
+      recognize them from their pink passes. They\u2019ll give out useful information
+      and tools for solving problems, so do visit them. You will gain points by solving
+      problems and at the end of the festival we will award the most diligent participant.
+      Good luck in the festival!\n\nThe festival ends at 19:00.\n\nTo familiarise
+      yourself with the game would you like to see a tutorial?"
     m_Metadata:
       m_Items: []
   - m_Id: 2190735805169664
     m_Localized: Congratulations! You have now completed the tutorial and are ready
       to start the game. This fixing situation does not affect the game in any way.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012307364868096
+    m_Localized: Vandalised house
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012630313693184
+    m_Localized: Renovate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5013521506824192
+    m_Localized: Snow pile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5013849035829248
+    m_Localized: Shovel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5014884391383040
+    m_Localized: Dirty car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5014986635931648
+    m_Localized: Wash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015410071891968
+    m_Localized: Burning grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015527692759040
+    m_Localized: Extinguish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5016031520944128
+    m_Localized: Angry Karen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5016142066020352
+    m_Localized: Argue against
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5024963391975424
+    m_Localized: Golden snowman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5028143123197952
+    m_Localized: "See, you can do it. This isn\u2019t necessarily as difficult as
+      you might think. Have you thought about job applications? They sound scary
+      at first, but it becomes easier as you gain experience. Pay attention to the
+      text. Basic grammar mistakes don\u2019t give off a great first impression.
+      Your resume is a list of facts. The job application is your chance to show
+      something about yourself as a person. The most important thing is still that
+      you show your interest and motivation towards the place you\u2019re applying
+      for. Take this skill. You\u2019ve earned it."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5028867085234176
+    m_Localized: Hello! I need your help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5030659055480832
+    m_Localized: "Congratulations! Even though you didn\u2019t seem to have trouble
+      with this task, don\u2019t assume that everything will be solved this easily.
+      Time flies and so do the problems with it. Keep yourself updated on the new
+      things in your field. Even if you don\u2019t have a job, improve on the skill
+      of your profession. If you\u2019re not in a state where you can improve, try
+      to at least stay up to speed. And don\u2019t forget about social skills! Even
+      if you don\u2019t like social situations, you should at least be able to survive
+      them. You will need to interact at least with your coworkers. Take this skill
+      to show your proficiency."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5030883937284096
+    m_Localized: My goodness, I have a problem! I need your help fast!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5031499866632192
+    m_Localized: "Great job! You couldn\u2019t just maybe do it, you did it. Be confident.
+      Companies like confident employees. Even if you aren\u2019t like that, you
+      can pretend to be a bit more confident than you actually are. Your strengths
+      are more important than your weaknesses when you\u2019re applying for a job.
+      Employers want to know what you bring to the company and team. Everyone has
+      weaknesses. Your strengths are how you stand out. I probably have talked about
+      this for long enough. Take this skill!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5031681027010560
+    m_Localized: Help needed here! Would you be available to help?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032121852555264
+    m_Localized: "See, you survived it! Do you know where you can find jobs? It might
+      seem a bit difficult at first, but don\u2019t worry. There are many websites
+      where employers post job advertisements. Ty\xF6markkinatori.fi, duunitori.fi,
+      kuntarekry.fi, oikotie.fi, it\u2019s a long list. Keep an eye on as many sites
+      as you can. Not all advertisements can be found in every website. I think that\u2019s
+      it. You can take your skill here."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032253834719232
+    m_Localized: Oh no! Will you help me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032529417269248
+    m_Localized: "Good job! You probably did not need to prepare for this, but preparing
+      itself is usually a good idea. You get asked questions in job interviews. You
+      should prepare in advance by thinking about the answers to the most common
+      questions. The Internet is a great tool for finding these questions. Don\u2019t
+      panic though if you get asked a question that you don\u2019t know the answer
+      to right away. It's not the end of the world. Oftentimes small research into
+      the company is a big plus in giving a good general view of yourself. You can
+      take this skill!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032549143080960
+    m_Localized: You look like a competent snowman. Would you like to help me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036696881917952
+    m_Localized: At this rate every employer will want you to work for them. Thanks
+      for the help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036706847584256
+    m_Localized: Quite dexterously done. You're quite the master at this ain't ya?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036714430885888
+    m_Localized: Off to the next help request! You're doing good!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036722685276160
+    m_Localized: Fix, solve, sort out! Save every last one of them!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036730876751872
+    m_Localized: I gotta go ask Jesse to cook with me. Thanks for your help.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038735246553088
+    m_Localized: I would have called Sauli, but apparently he's got his hands full.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5042037812162560
+    m_Localized: I demand to speak to your manager! This is unacceptable!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5042586544566272
+    m_Localized: This is not the end! I'll sue you!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5047561739890688
+    m_Localized: The hero of the event! How about you lend me a hand?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5047812613795840
+    m_Localized: Dangnabbit! What to do?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5048054897766400
+    m_Localized: Did you know a jiffy is an actual measurement of time?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5048240227282944
+    m_Localized: You seem to know something about something. Would you be able to
+      help me?
     m_Metadata:
       m_Items: []
   references:

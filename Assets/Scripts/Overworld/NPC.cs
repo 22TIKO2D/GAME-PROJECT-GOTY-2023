@@ -13,7 +13,6 @@ namespace Overworld
             new LocalizedString("StringTable", "Random Dialog 2"),
             new LocalizedString("StringTable", "Random Dialog 3"),
             new LocalizedString("StringTable", "Random Dialog 4"),
-            new LocalizedString("StringTable", "Random Dialog 5"),
         };
 
         /// <summary>Dialog seen when encountering random NPCs after all static dialogs are seen.</summary>
@@ -23,6 +22,10 @@ namespace Overworld
             new LocalizedString("StringTable", "Random Dialog After 2"),
             new LocalizedString("StringTable", "Random Dialog After 3"),
             new LocalizedString("StringTable", "Random Dialog After 4"),
+            new LocalizedString("StringTable", "Random Dialog After 5"),
+            new LocalizedString("StringTable", "Random Dialog After 6"),
+            new LocalizedString("StringTable", "Random Dialog After 7"),
+            new LocalizedString("StringTable", "Random Dialog After 8"),
         };
 
         [SerializeField]
@@ -79,8 +82,13 @@ namespace Overworld
                             Game.PlayerStats.Dialog < staticDialog.Length
                                 // Get the static dialog.
                                 ? staticDialog[Game.PlayerStats.Dialog]
-                                // Choose a random dialog otherwise.
-                                : randomDialog[Random.Range(0, randomDialog.Length)]
+                                : (
+                                    !this.afterDescription.IsEmpty
+                                        // Use after dialog if available.
+                                        ? this.afterDescription
+                                        // Choose a random dialog otherwise.
+                                        : randomDialog[Random.Range(0, randomDialog.Length)]
+                                )
                         )
                         : this.afterDescription,
                     this.battleEnemies,

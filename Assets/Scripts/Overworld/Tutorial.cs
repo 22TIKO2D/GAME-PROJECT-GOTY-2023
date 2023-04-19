@@ -51,6 +51,7 @@ namespace Overworld
             // Set translations.
             this.translation.TableChanged += (table) =>
             {
+                rootVisual.Query<Label>("Name").First().text = table["Golden"].Value;
                 rootVisual.Query<Label>("Desc").First().text = table["Intro"].Value;
                 rootVisual.Query<Button>("No").First().text = table["No"].Value;
                 rootVisual.Query<Button>("Yes").First().text = table["Yes"].Value;

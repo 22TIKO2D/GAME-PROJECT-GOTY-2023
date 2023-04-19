@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1880008929
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c193c6820987307cabecfebb15e62719, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8bea1622e3f37eb5d83123cb79b4170b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleEnemies:
-  - Car
-  npcName: Pekka
+  - Grill
+  - PC
+  npcName: Tahvo
   description:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
@@ -138,4 +139,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2

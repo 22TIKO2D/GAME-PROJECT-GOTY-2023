@@ -100,13 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleEnemies:
-  - Car
-  npcName: Sami
+  - Snow
+  - House
+  - Snow
+  npcName: "Ky\xF6sti"
   description:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
     m_TableEntryReference:
-      m_KeyId: 35129721692160
+      m_KeyId: 5032549143080960
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -115,7 +117,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
     m_TableEntryReference:
-      m_KeyId: 35293609926656
+      m_KeyId: 5032529417269248
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -139,7 +141,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 3
 --- !u!58 &4866390151834531505
 CircleCollider2D:
   m_ObjectHideFlags: 0

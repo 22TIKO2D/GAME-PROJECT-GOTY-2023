@@ -77,10 +77,10 @@ namespace MainMenu
                     if (hash == "d21277cab5cbb0c09bb36c634a0f3478a7c50e9cbdc612ca2e38cf22c452d229")
                     {
                         // Add some money.
-                        Game.PlayerStats.Money = 9999;
+                        Game.PlayerStats.Money = 99999;
 
                         // Add some experience.
-                        Game.PlayerStats.Exp = 9999;
+                        Game.PlayerStats.Exp = 99999;
 
                         // Change the name to indicate a god mode.
                         Game.PlayerStats.Name = "<" + Game.PlayerStats.Name + ">";

@@ -291,10 +291,6 @@ MonoBehaviour:
     m_Key: Random Dialog 4
     m_Metadata:
       m_Items: []
-  - m_Id: 37742756306944
-    m_Key: Random Dialog 5
-    m_Metadata:
-      m_Items: []
   - m_Id: 37958922346496
     m_Key: Random Dialog After 1
     m_Metadata:
@@ -353,6 +349,138 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2190735805169664
     m_Key: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012307364868096
+    m_Key: Enemy/House
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012630313693184
+    m_Key: Fix/House
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5013521506824192
+    m_Key: Enemy/Snow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5013849035829248
+    m_Key: Fix/Snow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5014884391383040
+    m_Key: Enemy/Dirt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5014986635931648
+    m_Key: Fix/Dirt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015410071891968
+    m_Key: Enemy/Grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015527692759040
+    m_Key: Fix/Grill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5016031520944128
+    m_Key: Enemy/Karen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5016142066020352
+    m_Key: Fix/Karen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5024963391975424
+    m_Key: Golden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5028143123197952
+    m_Key: StaticNPC2After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5028867085234176
+    m_Key: StaticNPC2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5030659055480832
+    m_Key: StaticNPC3After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5030883937284096
+    m_Key: StaticNPC3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5031499866632192
+    m_Key: StaticNPC4After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5031681027010560
+    m_Key: StaticNPC4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032121852555264
+    m_Key: StaticNPC5After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032253834719232
+    m_Key: StaticNPC5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032529417269248
+    m_Key: StaticNPC6After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032549143080960
+    m_Key: StaticNPC6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036696881917952
+    m_Key: Random Dialog After 5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036706847584256
+    m_Key: Random Dialog After 6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036714430885888
+    m_Key: Random Dialog After 7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036722685276160
+    m_Key: Random Dialog After 8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036730876751872
+    m_Key: Valtteri After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038735246553088
+    m_Key: Valtteri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5042037812162560
+    m_Key: Karen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5042586544566272
+    m_Key: Karen After
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5047561739890688
+    m_Key: NPC5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5047812613795840
+    m_Key: NPC6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5048054897766400
+    m_Key: NPC7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5048240227282944
+    m_Key: NPC8
     m_Metadata:
       m_Items: []
   m_Metadata:

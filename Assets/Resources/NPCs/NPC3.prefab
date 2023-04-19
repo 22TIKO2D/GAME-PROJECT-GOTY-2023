@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleEnemies:
   - Toilet
-  npcName: Hanna
+  - Toilet
+  npcName: Moona
   description:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
@@ -138,4 +139,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2

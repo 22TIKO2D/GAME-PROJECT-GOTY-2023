@@ -101,13 +101,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleEnemies:
   - Toilet
-  - PC
-  npcName: Hannu
+  - Grill
+  - Snow
+  npcName: Gustaavo
   description:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
     m_TableEntryReference:
-      m_KeyId: 35129721692160
+      m_KeyId: 5032253834719232
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:bb210606e4a6ddd469abc5c9ea8e47a5
     m_TableEntryReference:
-      m_KeyId: 35293609926656
+      m_KeyId: 5032121852555264
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -140,7 +141,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 3
 --- !u!58 &4866390151834531505
 CircleCollider2D:
   m_ObjectHideFlags: 0

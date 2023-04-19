@@ -113,7 +113,7 @@ namespace Battle
                 enemyTransform.anchorMax = Vector2.one;
 
                 // Arbitrary good position.
-                enemyTransform.position = new Vector2(-200, -175 - this.enemyCount * 325);
+                enemyTransform.position = new Vector2(-250, -175 - this.enemyCount * 325);
 
                 // Set canvas as parent.
                 enemyTransform.SetParent(canvas.transform, false);

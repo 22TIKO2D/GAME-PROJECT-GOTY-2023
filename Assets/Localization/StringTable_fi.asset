@@ -253,7 +253,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32721079705600
-    m_Localized: Auto
+    m_Localized: "Rikkin\xE4inen auto"
     m_Metadata:
       m_Items: []
   - m_Id: 32796392628224
@@ -261,7 +261,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 32983244677120
-    m_Localized: Tietokone
+    m_Localized: Hidas tietokone
     m_Metadata:
       m_Items: []
   - m_Id: 33085904461824
@@ -269,7 +269,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 33186886524928
-    m_Localized: "WC-p\xF6ntt\xF6"
+    m_Localized: "Vuotava WC-p\xF6ntt\xF6"
     m_Metadata:
       m_Items: []
   - m_Id: 33412544274432
@@ -277,63 +277,99 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34347442053120
-    m_Localized: Minun nimeni on Kalle. Haluatko auttaa minua?
+    m_Localized: Voisinko lainata sinua hetkeksi?
     m_Metadata:
       m_Items: []
   - m_Id: 34524064194560
-    m_Localized: Morjesta! Tarvitsen apuasi.
+    m_Localized: "Mulla olis yks tilanne p\xE4\xE4ll\xE4. Saisko v\xE4h\xE4 apua?"
     m_Metadata:
       m_Items: []
   - m_Id: 34680956329984
-    m_Localized: Huomenta! Voisitko auttaa minua?
+    m_Localized: "On t\xE4\xE4 yks ty\xF6maa. Ei meinaa mill\xE4\xE4n toimia. Onko
+      ideoita?"
     m_Metadata:
       m_Items: []
   - m_Id: 34838418890752
-    m_Localized: Voi apua!!!
+    m_Localized: "On se kumma kun ei meinaa toimia. Pystyisitk\xF6 auttamaan?"
     m_Metadata:
       m_Items: []
   - m_Id: 35129721692160
-    m_Localized: "Minut l\xF6yd\xE4t aina samasta paikasta."
+    m_Localized: "Morjensta p\xF6yt\xE4\xE4n! Voisitko auttaa minua?"
     m_Metadata:
       m_Items: []
   - m_Id: 35293609926656
-    m_Localized: Kiitos kun autoit!
+    m_Localized: "Onnittelut ongelman ratkaisusta! Jos sinulla ei ole ennest\xE4\xE4n
+      t\xF6it\xE4, aktiivinen ty\xF6nhaku on sinun tiesi l\xF6yt\xE4\xE4 oma paikkasi.
+      Aktiivinen ty\xF6nhaku tarkoittaa ty\xF6hakemusten l\xE4hett\xE4mist\xE4 eri
+      paikkoihin aktiivisesti. Et olisi varmaan ikin\xE4 arvannut sit\xE4. Mit\xE4
+      enemm\xE4n hakemuksia l\xE4het\xE4t eri paikkoihin, sit\xE4 parempi. \xC4l\xE4
+      kuitenkaan unohda laatua! Yrit\xE4 l\xF6yt\xE4\xE4 tasapaino ja tahti, joka
+      sopii sinulle. Ota t\xE4st\xE4 taito! K\xE4yt\xE4 sit\xE4 hyvin!"
     m_Metadata:
       m_Items: []
   - m_Id: 37641883295744
-    m_Localized: "T\xE4m\xE4 on kerta 1."
+    m_Localized: "Kiitos avustasi. Kuule, tied\xE4n, ett\xE4 nuo j\xE4rjest\xE4j\xE4t
+      tekev\xE4t parhaansa, mutta jokainen vuosi he unohtavat t\xE4rkeit\xE4 asioita.
+      Ty\xF6 sit\xE4, ty\xF6 t\xE4t\xE4, on t\xE4rke\xE4\xE4, ett\xE4 saat ty\xF6n,
+      p\xE4l\xE4 p\xE4l\xE4\u2026 Muista kiinnitt\xE4\xE4 huomiota siihen minne haet
+      t\xF6it\xE4. Kaikki ty\xF6paikkailmoitukset eiv\xE4t ole yht\xE4 laadukkaita.
+      Joistain puuttuu olennaisiakin yksityiskohtia. Ty\xF6nkuvaus ja palkka ovat
+      esimerkiksi todella t\xE4rkeit\xE4. Ja jos olet haastattelussa ja nuo kaksi
+      asiaa yht\xE4kki\xE4 alkavat muuttumaan\u2026 Sinun kannattaa mietti\xE4 onko
+      se paikka oikeasti sinulle. Ty\xF6n l\xF6yt\xE4minen ei pit\xE4isi olla p\xE4\xE4tavoitteesi.
+      Yrit\xE4 l\xF6yt\xE4\xE4 paikka, joka on laadukas."
     m_Metadata:
       m_Items: []
   - m_Id: 37734585802752
-    m_Localized: "T\xE4m\xE4 on kerta 2."
+    m_Localized: "Kiitos avusta! En oikein ajatellut avustavani festivaalin kanssa,
+      t\xE4m\xE4 vain sattui menem\xE4\xE4n rikki kesken kaiken\u2026 Mit\xE4k\xF6h\xE4n
+      et v\xE4ltt\xE4m\xE4tt\xE4 ole kuullut viel\xE4\u2026 Tietenkin! Sin\xE4 varmaan
+      tied\xE4t miten kaikki sanovat, ett\xE4 sinun kannattaa hakea tietoa ty\xF6nantajasta
+      ty\xF6haastattelua varten? Se vaikuttaa pakkopullalta, eik\xF6? Kuule, t\xE4m\xE4
+      on my\xF6s t\xE4rke\xE4\xE4 itsesi kannalta. Se kertoo sinulle ty\xF6paikasta.
+      Ty\xF6ss\xE4 ei ole tarkoitus tuntea oloasi surkeaksi. L\xF6yd\xE4 paikka,
+      jossa oikeasti haluat tehd\xE4 t\xF6it\xE4."
     m_Metadata:
       m_Items: []
   - m_Id: 37738738163712
-    m_Localized: "T\xE4m\xE4 on kerta 3."
+    m_Localized: "Kiitti! Olisin varmaan tapellut t\xE4m\xE4n ongelman kanssa viel\xE4
+      pitk\xE4\xE4n ilman apuasi. Olet n\xE4pp\xE4r\xE4 ja n\xE4yt\xE4t tiet\xE4v\xE4n
+      n\xE4ist\xE4 asioista. Mit\xE4 sanoisit jos antaisit s\xE4hk\xF6postiosoitteesi?
+      Pidett\xE4isiin yhteytt\xE4, mik\xE4li jotain t\xE4llaista sattuu uudelleen.
+      Ja kuka sanoo, ehk\xE4 pieni yritykseni tarvitsee kaltaisiasi ty\xF6ntekij\xF6it\xE4.
+      Miksi n\xE4yt\xE4t noin h\xE4mmentyneelt\xE4? Etk\xF6 tied\xE4 piiloty\xF6paikoista?
+      Kaikki ty\xF6paikat eiv\xE4t ole julkisia. Jopa 80% kaikista ty\xF6paikoista
+      ovat piiloty\xF6paikkoja. Ty\xF6nantajat palkkaavat mieluummin ihmisi\xE4,
+      jotka he jo tuntevat ventovieraan sijasta. Verkostoidu. Siit\xE4 on hy\xF6ty\xE4.
+      Etsi t\xF6it\xE4 muualtakin kuin vain ty\xF6nhakusivuilta. Ota yhteytt\xE4
+      kiinnostaviin tahoihin. Tied\xE4n, ett\xE4 se kuulostaa oudolta, mutta mieleen
+      j\xE4\xE4minen on ty\xF6nhaussa plussaa. T\xE4ss\xE4 on k\xE4yntikorttini.
+      Ota yhteytt\xE4, jos olet kiinnostunut mahdollisesta lis\xE4ty\xF6st\xE4."
     m_Metadata:
       m_Items: []
   - m_Id: 37741057613824
-    m_Localized: "T\xE4m\xE4 on kerta 4."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37742756306944
-    m_Localized: "T\xE4m\xE4 on kerta 5."
+    m_Localized: "Kiitos avustasi. Kaikki ty\xF6nhaku ja sit\xE4 ymp\xE4r\xF6iv\xE4t
+      asiat ovat stressaavia. Anna itsellesi tilaisuus my\xF6s lev\xE4t\xE4. Ty\xF6haastatteluakaan
+      ei kannata j\xE4nnitt\xE4\xE4 liikaa. Se ei ole kuulustelu, sin\xE4 saat tiet\xE4\xE4
+      enemm\xE4n ty\xF6nantajasta, ja h\xE4n saa tiet\xE4\xE4 enemm\xE4n sinusta.
+      Ole oma itsesi. Et tule onnistumaan jokaisella kerralla, ja se on ok. Yrit\xE4
+      parhaasi."
     m_Metadata:
       m_Items: []
   - m_Id: 37958922346496
-    m_Localized: Kiitos!
+    m_Localized: "J\xF6sses! Hyv\xE4\xE4 duunia!"
     m_Metadata:
       m_Items: []
   - m_Id: 38014463320064
-    m_Localized: Kiitos avusta.
+    m_Localized: Tattista. Ny homma rullaa taas.
     m_Metadata:
       m_Items: []
   - m_Id: 38082872418304
-    m_Localized: "Kiit\xE4n teit\xE4!"
+    m_Localized: "S\xE4h\xE4n oot kuin kone. Kiitti!"
     m_Metadata:
       m_Items: []
   - m_Id: 38144218308608
-    m_Localized: Mukava kun autoit!
+    m_Localized: Kiitos avustuksestanne arvon lumiukko :D
     m_Metadata:
       m_Items: []
   - m_Id: 44320544858112
@@ -374,14 +410,195 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2187811217653760
-    m_Localized: "Tervetuloa Apuva-festivaaleille! Tavoitteesi on saada 3 taitoa
-      Apuva-hahmoilta. Festivaali p\xE4\xE4ttyy klo 19:00.\n\nJotta peli tulisi sinulle
-      tutummaksi, haluatko n\xE4hd\xE4 opastuksen?"
+    m_Localized: "Apuva-festivaali on avautumaisillaan! T\xE4ss\xE4 vuosittaisessa
+      ty\xF6festivaalissa autatte t\xE4m\xE4n kyl\xE4n asukkaita ja opitte ty\xF6markkinoista.
+      Apuva-sovelluksessa kyl\xE4n asukkaat voivat ilmoittaa ongelmistaan, jotka
+      te voitte ratkaista. Sovelluksesta my\xF6s l\xF6ytyv\xE4t festivaalin j\xE4rjest\xE4j\xE4t.
+      Tunnistatte heid\xE4t vaaleanpunaisista passeista. He jakavat hy\xF6dyllist\xE4
+      informaatiota, ja ty\xF6kaluja ongelmien ratkaisemiseen, joten k\xE4y heid\xE4n
+      pisteill\xE4\xE4n. Ongelmia ratkaisemalla saatte pisteit\xE4, ja festivaalin
+      lopuksi palkitsemme kaikista ahkerimman osallistujan. Onnea festivaaliin!\n\nFestivaali
+      p\xE4\xE4ttyy kello 19:00.\n\nJotta peli tulisi sinulle tutummaksi, haluatko
+      n\xE4hd\xE4 opastuksen?"
     m_Metadata:
       m_Items: []
   - m_Id: 2190735805169664
     m_Localized: "Onnittelut! Olet nyt suorittanut opastuksen ja valmis aloittamaan
       pelin. T\xE4m\xE4 korjaustilanne ei vaikuta peliin mill\xE4\xE4n tavalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012307364868096
+    m_Localized: Vandalisoitu talo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012630313693184
+    m_Localized: Remontoi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5013521506824192
+    m_Localized: Lumikasa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5013849035829248
+    m_Localized: Lapioi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5014884391383040
+    m_Localized: Likainen auto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5014986635931648
+    m_Localized: Pese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015410071891968
+    m_Localized: Palava grilli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5015527692759040
+    m_Localized: Sammuta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5016031520944128
+    m_Localized: Vihainen Karen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5016142066020352
+    m_Localized: "V\xE4it\xE4 vastaan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5024963391975424
+    m_Localized: Kultainen lumiukko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5028143123197952
+    m_Localized: "Onnistuithan sin\xE4. Ei t\xE4m\xE4 v\xE4ltt\xE4m\xE4tt\xE4 ole
+      niin vaikeaa kuin aluksi luulet. Oletko miettinyt ty\xF6hakemuksia? Ne kuulostavat
+      pelottavilta aluksi, mutta siit\xE4 tulee helpompaa kokemuksen karttuessa.
+      Kiinnit\xE4 huomiota tekstin ulkoasuun. Kielioppivirheet eiv\xE4t anna sinusta
+      hyv\xE4\xE4 ensivaikutelmaa. CV:si on lista faktoja. Ty\xF6hakemus on mahdollisuutesi
+      n\xE4ytt\xE4\xE4 itsesi persoonana. T\xE4rkeint\xE4 on kuitenkin, ett\xE4 n\xE4yt\xE4t
+      olevasi kiinnostunut ja motivoitunut juuri hakemastasi paikasta. Ota t\xE4st\xE4
+      taitosi. Olet ansainnut sen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5028867085234176
+    m_Localized: Hei! Tarvitsen apuasi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5030659055480832
+    m_Localized: "Onnittelut! Vaikka sinulla ei n\xE4ytt\xE4nyt juuri olevan ongelmia
+      t\xE4m\xE4n teht\xE4v\xE4n kanssa, \xE4l\xE4 oleta, ett\xE4 kaikki ratkeaa
+      n\xE4in helposti. Aika kiit\xE4\xE4 ja teht\xE4v\xE4t muuttuvat sen mukana.
+      Pysy ajan tasalla alasi asioissa. Vaikkei sinulla olisi t\xF6it\xE4, kehit\xE4
+      ammattitaitojasi. Jos et ole el\xE4m\xE4ntilanteessa, jossa pystyt kehitt\xE4m\xE4\xE4n,
+      yrit\xE4 ainakin pysy\xE4 vauhdin mukana. \xC4l\xE4 unohda sosiaalisia taitoja.
+      Vaikka et pit\xE4isi sosiaalisista tilanteista, sinun pit\xE4\xE4 kuitenkin
+      pysty\xE4 selviytym\xE4\xE4n niist\xE4. Jokaisessa paikassa joudut kanssak\xE4ym\xE4\xE4n
+      ainakin ty\xF6kavereidesi kanssa. Ota t\xE4st\xE4 taito n\xE4ytt\xE4m\xE4\xE4n
+      osaamistasi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5030883937284096
+    m_Localized: "Hyv\xE4nen aika, minulla on ongelma! Tarvitsen nopeasti apuasi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5031499866632192
+    m_Localized: "Hyv\xE4\xE4 ty\xF6t\xE4! Et vain ehk\xE4 osannut sit\xE4, vaan
+      osasit sen. Ole itsevarma, yritykset pit\xE4v\xE4t itsevarmoista ty\xF6ntekij\xF6ist\xE4.
+      Vaikket olisi, voit teeskennell\xE4 olevasi hieman varmempi kuin oikeasti olet.
+      Vahvuutesi ovat t\xE4rke\xE4mpi\xE4 kuin heikkoutesi, kun haet t\xF6it\xE4.
+      Ty\xF6nantajat haluavat tiet\xE4\xE4, mit\xE4 tuot yritykselle ja tiimille.
+      Heikkouksia l\xF6ytyy kaikilta. Vahvuutesi ovat miten erotut joukosta. Olen
+      varmaan jo puhunut tarpeeksi pitk\xE4\xE4n. Ota t\xE4st\xE4 taitosi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5031681027010560
+    m_Localized: "T\xE4\xE4ll\xE4 tarvittaisiin apua! Olisitko sin\xE4 tarjolla auttamaa?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032121852555264
+    m_Localized: "Selviydyith\xE4n siit\xE4! Tied\xE4tk\xF6 mist\xE4 l\xF6yt\xE4\xE4
+      ty\xF6paikkoja? Se saattaa vaikuttaa hankalalta ensin, mutta \xE4l\xE4 murehdi.
+      Netiss\xE4 on monia nettisivuja, joihin ty\xF6nantajat ilmoittavat avoimista
+      ty\xF6paikoista. Ty\xF6markkinatori.fi, duunitori.fi, kuntarekry.fi, oikotie.fi,
+      lista on pitk\xE4. Pid\xE4 silm\xE4ll\xE4 mahdollisimman montaa sivua. Kaikki
+      ilmoitukset eiv\xE4t p\xE4\xE4dy jokaiselle nettisivulle. Se taitaa olla siin\xE4.
+      Voit ottaa t\xE4st\xE4 taitosi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032253834719232
+    m_Localized: Voi ei! Auttaisitko minua?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032529417269248
+    m_Localized: "Hyv\xE4\xE4 ty\xF6t\xE4! Sinun ei varmaan tarvinnut valmistautua
+      t\xE4h\xE4n tilanteeseen, mutta valmistautuminen on usein hyv\xE4 ajatus. Ty\xF6haastatteluissa
+      sinulta kysyt\xE4\xE4n kysymyksi\xE4. Sinun kannattaa valmistautua etuk\xE4teen
+      miettim\xE4ll\xE4 vastauksia yleisimpiin kysymyksiin. Internet on hyv\xE4 ty\xF6kalu
+      n\xE4iden kysymysten l\xF6yt\xE4miseen. \xC4l\xE4 kuitenkaan panikoi, mik\xE4li
+      sinulta kysyt\xE4\xE4n kysymys, johon et v\xE4litt\xF6m\xE4sti tied\xE4 vastausta.
+      Kyseess\xE4 ei ole maailmanloppu. Usein pieni tiedonhaku yrityksest\xE4 on
+      kuitenkin tarpeen hyv\xE4n kuvan itsest\xE4si antamiseksi. Ota t\xE4st\xE4
+      taitosi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5032549143080960
+    m_Localized: "N\xE4yt\xE4t p\xE4tev\xE4lt\xE4 lumiukolta. Haluaisitko auttaa
+      minua?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036696881917952
+    m_Localized: "T\xE4t\xE4 rataa kaikki ty\xF6nantajat haluavat juuri sinut t\xF6ihin
+      heille. Kiitokset avusta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036706847584256
+    m_Localized: "Aika n\xE4pp\xE4r\xE4sti hoidettu. S\xE4h\xE4n oot aika maisteri
+      n\xE4iss\xE4 hommissa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036714430885888
+    m_Localized: "Ja eikun seuraavaa avunpyynt\xF6\xE4 kohti! Hyvin menee!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036722685276160
+    m_Localized: "Korjaa, ratkaise, selvit\xE4! Pelasta kaikki!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5036730876751872
+    m_Localized: "Pit\xE4\xE4p\xE4 menn\xE4 pyyt\xE4m\xE4\xE4n Jesse\xE4 kokkaamaan
+      kanssani. Kiitos avusta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5038735246553088
+    m_Localized: "Olisin soittanut Saulille, mutta h\xE4nen k\xE4tens\xE4 ovat kuulemma
+      t\xE4ynn\xE4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5042037812162560
+    m_Localized: "Vaadin saada puhua esimiehenne kanssa! T\xE4m\xE4 on hyv\xE4ksym\xE4t\xF6nt\xE4!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5042586544566272
+    m_Localized: "T\xE4m\xE4 ei j\xE4\xE4 t\xE4h\xE4n! Haastan sinut oikeuteen!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5047561739890688
+    m_Localized: "Itse festivaalin sankari! Oisko apu mit\xE4\xE4n?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5047812613795840
+    m_Localized: "Hitsinpimpulat! Mik\xE4 nyt neuvoksi?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5048054897766400
+    m_Localized: "Tiesitk\xF6 ett\xE4 \"jiffy\" on hetken mittainen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5048240227282944
+    m_Localized: "N\xE4yt\xE4t tiet\xE4v\xE4n jotain jostain. Kykenetk\xF6 auttamaan
+      minua?"
     m_Metadata:
       m_Items: []
   references:
