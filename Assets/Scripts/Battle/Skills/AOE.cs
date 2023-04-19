@@ -8,12 +8,13 @@ namespace Battle.Skill
     {
         public IEnumerator Use(Player player, Enemy[] enemies)
         {
+            // Only alive enemies.
+            Enemy[] aliveEnemies = enemies.Where((enemy) => !enemy.IsDead).ToArray();
+
             yield return player.Roundtrip(
                 () =>
-                    // Deal damage to all enemies.
-                    enemies
-                        // Only alive enemies.
-                        .Where((enemy) => !enemy.IsDead)
+                    // Deal damage to all alive enemies.
+                    aliveEnemies
                         .ToList()
                         .ForEach(
                             (enemy) =>
@@ -25,7 +26,7 @@ namespace Battle.Skill
                                 else
                                     // Evenly divide damage between enemies.
                                     enemy.InflictDamage(
-                                        Game.PlayerStats.Damage / (uint)enemies.Length
+                                        Game.PlayerStats.Damage / (uint)aliveEnemies.Length
                                     );
                             }
                         )
