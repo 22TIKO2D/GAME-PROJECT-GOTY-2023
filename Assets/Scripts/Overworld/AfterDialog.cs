@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace Overworld
 {
@@ -20,45 +21,54 @@ namespace Overworld
 
         private void Start()
         {
-            VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
+            this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
 
-            rootVisual.Query<Button>("Ok").First().clicked += () =>
+            this.rootVisual.Query<Button>("Ok").First().clicked += () =>
             {
                 // Hide the dialog.
-                rootVisual.visible = false;
+                this.rootVisual.visible = false;
 
                 // Show the canvas again.
                 this.canvas.enabled = true;
-            };
-
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                rootVisual.Query<Button>("Ok").First().text = table["Ok"].Value;
             };
 
             // Check if after dialog is set.
             if (Game.PlayerStats.AfterDialogName == "" || Game.PlayerStats.AfterDialogDesc == "")
             {
                 // Hide by default.
-                rootVisual.visible = false;
+                this.rootVisual.visible = false;
             }
             else
             {
                 // Set the name and description.
-                rootVisual.Query<Label>("Name").First().text = Game.PlayerStats.AfterDialogName;
-                rootVisual.Query<Label>("Desc").First().text = Game.PlayerStats.AfterDialogDesc;
+                this.rootVisual.Query<Label>("Name").First().text =
+                    Game.PlayerStats.AfterDialogName;
+                this.rootVisual.Query<Label>("Desc").First().text =
+                    Game.PlayerStats.AfterDialogDesc;
 
                 // Reset the after dialog.
                 Game.PlayerStats.AfterDialogName = "";
                 Game.PlayerStats.AfterDialogDesc = "";
 
                 // Show the dialog.
-                rootVisual.visible = true;
+                this.rootVisual.visible = true;
 
                 // Hide the canvas.
                 this.canvas.enabled = false;
             }
+
+            this.translation.TableChanged += this.OnTableChanged;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<Button>("Ok").First().text = table["Ok"].Value;
         }
     }
 }

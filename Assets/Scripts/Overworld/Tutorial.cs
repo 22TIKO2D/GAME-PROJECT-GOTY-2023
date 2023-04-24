@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace Overworld
 {
     /// <summary>Tutorial dialog box shown at the beginning of the game.</summary>
     public class Tutorial : MonoBehaviour
     {
+        /// <summary>Tutorial dialog root visual element.</summary>
+        private VisualElement rootVisual;
+
         /// <summary>Enemies seen in the battle.</summary>
         [SerializeField]
         private string[] battleEnemies;
@@ -21,16 +25,16 @@ namespace Overworld
 
         private void Start()
         {
-            VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
+            this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
 
             // Show if the player has not seen the tutorial.
-            rootVisual.visible = !Game.PlayerStats.SeenTutorial;
+            this.rootVisual.visible = !Game.PlayerStats.SeenTutorial;
 
             // Hide when player doesn't want to help.
-            rootVisual.Query<Button>("No").First().clicked += () =>
+            this.rootVisual.Query<Button>("No").First().clicked += () =>
             {
                 // Hide the dialog.
-                rootVisual.visible = false;
+                this.rootVisual.visible = false;
 
                 // Show the canvas again.
                 this.canvas.enabled = true;
@@ -40,22 +44,29 @@ namespace Overworld
             };
 
             // Start the battle when player wants to see the tutorial.
-            rootVisual.Query<Button>("Yes").First().clicked += () =>
+            this.rootVisual.Query<Button>("Yes").First().clicked += () =>
             {
                 // Hide the dialog.
-                rootVisual.visible = false;
+                this.rootVisual.visible = false;
 
                 StartCoroutine(Game.State.Battle(this.battleEnemies, "", "", ""));
             };
 
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                rootVisual.Query<Label>("Name").First().text = table["Golden"].Value;
-                rootVisual.Query<Label>("Desc").First().text = table["Intro"].Value;
-                rootVisual.Query<Button>("No").First().text = table["No"].Value;
-                rootVisual.Query<Button>("Yes").First().text = table["Yes"].Value;
-            };
+            this.translation.TableChanged += this.OnTableChanged;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<Label>("Name").First().text = table["Golden"].Value;
+            this.rootVisual.Query<Label>("Desc").First().text = table["Intro"].Value;
+            this.rootVisual.Query<Button>("No").First().text = table["No"].Value;
+            this.rootVisual.Query<Button>("Yes").First().text = table["Yes"].Value;
         }
     }
 }

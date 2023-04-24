@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace Overworld
 {
@@ -61,15 +62,7 @@ namespace Overworld
                 );
             };
 
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                this.rootVisual.Query<Label>("DifficultyLabel").First().text = table[
-                    "Difficulty"
-                ].Value;
-                this.rootVisual.Query<Button>("DontHelp").First().text = table["Dont Help"].Value;
-                this.rootVisual.Query<Button>("Help").First().text = table["Help"].Value;
-            };
+            this.translation.TableChanged += this.OnTableChanged;
         }
 
         public void Show(string name, string desc, string afterDesc, string[] enemies, string skill)
@@ -138,6 +131,21 @@ namespace Overworld
             {
                 stars[i].style.opacity = 0.2f;
             }
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<Label>("DifficultyLabel").First().text = table[
+                "Difficulty"
+            ].Value;
+            this.rootVisual.Query<Button>("DontHelp").First().text = table["Dont Help"].Value;
+            this.rootVisual.Query<Button>("Help").First().text = table["Help"].Value;
         }
     }
 }

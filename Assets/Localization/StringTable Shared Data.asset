@@ -483,6 +483,10 @@ MonoBehaviour:
     m_Key: NPC8
     m_Metadata:
       m_Items: []
+  - m_Id: 6900281046388736
+    m_Key: AppName
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

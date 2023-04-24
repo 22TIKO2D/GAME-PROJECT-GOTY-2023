@@ -3,12 +3,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace Overworld
 {
     /// <summary>Phone UI.</summary>
     public class Phone : MonoBehaviour
     {
+        /// <summary>Phone UI root visual element.</summary>
+        private VisualElement rootVisual;
+
         /// <summary>Buttons group.</summary>
         private GroupBox buttons;
 
@@ -40,9 +44,9 @@ namespace Overworld
         {
             this.player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
-            VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
+            this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
 
-            this.phone = rootVisual.Query<VisualElement>("Phone");
+            this.phone = this.rootVisual.Query<VisualElement>("Phone");
             // Hide when clicked the empty area.
             this.phone.RegisterCallback<ClickEvent>(
                 (e) =>
@@ -53,27 +57,27 @@ namespace Overworld
                 }
             );
 
-            this.phoneButton = rootVisual.Query<VisualElement>("PhoneButton");
+            this.phoneButton = this.rootVisual.Query<VisualElement>("PhoneButton");
             // Show the phone screen when the phone button is clicked.
             this.phoneButton.RegisterCallback<ClickEvent>((_) => this.SetVisible(true));
 
-            this.buttons = rootVisual.Query<GroupBox>("Buttons");
-            this.app = rootVisual.Query<ScrollView>("App");
+            this.buttons = this.rootVisual.Query<GroupBox>("Buttons");
+            this.app = this.rootVisual.Query<ScrollView>("App");
 
             // Hide when closed.
-            rootVisual.Query<Button>("Close").First().clicked += () => this.SetVisible(false);
+            this.rootVisual.Query<Button>("Close").First().clicked += () => this.SetVisible(false);
 
             // Show Apuva! when this button is clicked.
-            rootVisual.Query<Button>("Apuva").First().clicked += this.ShowApuva;
+            this.rootVisual.Query<Button>("Apuva").First().clicked += this.ShowApuva;
 
             // Show infos when this button is clicked.
-            rootVisual.Query<Button>("Stats").First().clicked += this.ShowStats;
+            this.rootVisual.Query<Button>("Stats").First().clicked += this.ShowStats;
 
             // Show items when this button is clicked.
-            rootVisual.Query<Button>("Items").First().clicked += this.ShowItems;
+            this.rootVisual.Query<Button>("Items").First().clicked += this.ShowItems;
 
             // Show the settings dialog when settings button is clicked.
-            rootVisual.Query<Button>("Settings").First().clicked += () =>
+            this.rootVisual.Query<Button>("Settings").First().clicked += () =>
             {
                 // Hide the phone.
                 this.SetVisible(false);
@@ -82,28 +86,10 @@ namespace Overworld
                 this.settings.SetVisible(true);
             };
 
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                rootVisual.Query<Button>("Close").First().Query<Label>().First().text = table[
-                    "Close"
-                ].Value;
-                rootVisual.Query<Button>("Apuva").First().Query<Label>().First().text = table[
-                    "Apuva"
-                ].Value;
-                rootVisual.Query<Button>("Stats").First().Query<Label>().First().text = table[
-                    "Stats"
-                ].Value;
-                rootVisual.Query<Button>("Items").First().Query<Label>().First().text = table[
-                    "Items"
-                ].Value;
-                rootVisual.Query<Button>("Settings").First().Query<Label>().First().text = table[
-                    "Settings"
-                ].Value;
-            };
-
             // Hide on start.
             this.SetVisible(false);
+
+            this.translation.TableChanged += this.OnTableChanged;
         }
 
         /// <summary>Reset the app view.</summary>
@@ -294,6 +280,31 @@ namespace Overworld
         {
             this.buttons.style.display = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
             this.app.style.display = isVisible ? DisplayStyle.None : DisplayStyle.Flex;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<Button>("Close").First().Query<Label>().First().text = table[
+                "Close"
+            ].Value;
+            this.rootVisual.Query<Button>("Apuva").First().Query<Label>().First().text = table[
+                "Apuva"
+            ].Value;
+            this.rootVisual.Query<Button>("Stats").First().Query<Label>().First().text = table[
+                "Stats"
+            ].Value;
+            this.rootVisual.Query<Button>("Items").First().Query<Label>().First().text = table[
+                "Items"
+            ].Value;
+            this.rootVisual.Query<Button>("Settings").First().Query<Label>().First().text = table[
+                "Settings"
+            ].Value;
         }
     }
 }

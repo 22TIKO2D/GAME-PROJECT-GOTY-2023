@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace MainMenu
 {
@@ -31,20 +32,10 @@ namespace MainMenu
             // Start a new game.
             this.rootVisual.Query<Button>("Start").First().clicked += this.StartNewGame;
 
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                this.rootVisual.Query<TextField>("Name").First().label = table["Give Name"].Value;
-                this.rootVisual.Query<Button>("Cancel").First().text = table["Cancel"].Value;
-                this.rootVisual.Query<Button>("Start").First().text = table["Start"].Value;
-                this.rootVisual.Query<GroupBox>("NewGame").First().text = table[
-                    // Get from the NewGame button.
-                    "MainMenu/Canvas/NewGame/Text (TMP)"
-                ].Value;
-            };
-
             // Hide at the start.
             this.SetVisible(false);
+
+            this.translation.TableChanged += this.OnTableChanged;
         }
 
         /// <summary>Start a new game.</summary>
@@ -103,6 +94,23 @@ namespace MainMenu
 
             this.rootVisual.visible = visible;
             this.mainCanvas.enabled = !visible;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<TextField>("Name").First().label = table["Give Name"].Value;
+            this.rootVisual.Query<Button>("Cancel").First().text = table["Cancel"].Value;
+            this.rootVisual.Query<Button>("Start").First().text = table["Start"].Value;
+            this.rootVisual.Query<GroupBox>("NewGame").First().text = table[
+                // Get from the NewGame button.
+                "MainMenu/Canvas/NewGame/Text (TMP)"
+            ].Value;
         }
     }
 }

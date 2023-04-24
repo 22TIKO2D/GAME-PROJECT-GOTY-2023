@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 namespace Game
 {
@@ -128,19 +129,10 @@ namespace Game
                     this.localizationSettings.GetAvailableLocales().GetLocale("en")
                 );
 
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                this.rootVisual.Query<GroupBox>("Settings").First().text = table["Settings"].Value;
-                this.rootVisual.Query<GroupBox>("Lang").First().text = table["Language"].Value;
-                this.rootVisual.Query<GroupBox>("Speed").First().text = table["Speed"].Value;
-                this.rootVisual.Query<Slider>("Music").First().label = table["Music"].Value;
-                this.rootVisual.Query<Slider>("Sound").First().label = table["Sound"].Value;
-                this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
-            };
-
             // Hide at the start.
             this.SetVisible(false);
+
+            this.translation.TableChanged += this.OnTableChanged;
         }
 
         /// <summary>Convert linear audio to decibels.
@@ -156,6 +148,22 @@ namespace Game
             this.rootVisual.visible = visible;
             this.mainCanvas.enabled = !visible;
             this.eventSystem.enabled = !visible;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<GroupBox>("Settings").First().text = table["Settings"].Value;
+            this.rootVisual.Query<GroupBox>("Lang").First().text = table["Language"].Value;
+            this.rootVisual.Query<GroupBox>("Speed").First().text = table["Speed"].Value;
+            this.rootVisual.Query<Slider>("Music").First().label = table["Music"].Value;
+            this.rootVisual.Query<Slider>("Sound").First().label = table["Sound"].Value;
+            this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
         }
     }
 }

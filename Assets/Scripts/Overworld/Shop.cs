@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace Overworld
 {
@@ -48,16 +49,7 @@ namespace Overworld
                 this.canvas.enabled = true;
             };
 
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                this.rootVisual.Query<Label>("Buy").First().text = table[
-                    // Get from the Buy button.
-                    "Overworld/Canvas/Buy/Button/Text (TMP)"
-                ].Value;
-                this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
-                this.moneyLabel.text = table["Money"].GetLocalizedString(Game.PlayerStats.Money);
-            };
+            this.translation.TableChanged += this.OnTableChanged;
         }
 
         public void Show(string[] products)
@@ -112,6 +104,22 @@ namespace Overworld
 
             // Hide the canvas.
             this.canvas.enabled = false;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<Label>("Buy").First().text = table[
+                // Get from the Buy button.
+                "Overworld/Canvas/Buy/Button/Text (TMP)"
+            ].Value;
+            this.rootVisual.Query<Button>("Close").First().text = table["Close"].Value;
+            this.moneyLabel.text = table["Money"].GetLocalizedString(Game.PlayerStats.Money);
         }
     }
 }

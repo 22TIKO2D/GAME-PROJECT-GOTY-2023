@@ -236,7 +236,7 @@ MonoBehaviour:
       m_Items:
       - rid: 5325306575037136964
   - m_Id: 29868634218496
-    m_Localized: Sait taidon {0}.
+    m_Localized: Sait taidon "{0}".
     m_Metadata:
       m_Items:
       - rid: 5325306575037136964
@@ -381,24 +381,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2182168184274944
-    m_Localized: "Ensinn\xE4kin voit korjata ongelmia k\xE4ytt\xE4m\xE4ll\xE4 \"Korjaa\"-painiketta
-      ja valitsemalla sitten ongelman, jota haluat korjata. Kokeile sit\xE4, kun
-      sinun vuorosi tulee!"
+    m_Localized: "Pelin ongelmanratkaisu toimii vuoropohjaisesti. Ensin on sinun
+      vuorosi. K\xE4yt\xE4 normaalia ongelman korjausta. Voit aina k\xE4ytt\xE4\xE4
+      t\xE4t\xE4. Toiminnan j\xE4lkeen vuorosi p\xE4\xE4ttyy. Kun t\xE4m\xE4 palkki
+      t\xE4yttyy, on taas sinun vuorosi."
     m_Metadata:
       m_Items: []
   - m_Id: 2182653674962944
-    m_Localized: "Hienoa! Seuraavaksi voit k\xE4ytt\xE4\xE4 tavaroita, jotka palauttavat
-      motivaatiotasi, \"Tavarat\"-valikosta. Kokeile nyt juoda kahvia."
+    m_Localized: "Ongelmat aiheuttavat vuorollaan vahinkoa motivaatioosi. Jos motivaatiosi
+      loppuu, ratkaisutilanne p\xE4\xE4ttyy h\xE4vi\xF6\xF6si. Ongelmilla on my\xF6s
+      omat toimintonsa. Niidenkin t\xE4ytyy kuitenkin odottaa palkkinsa t\xE4yttymist\xE4
+      ennen vuoroaan. Tavaroiden avulla voit tehd\xE4 monia eri asioita, kuten palauttaa
+      motivaatiota. Voit ostaa n\xE4it\xE4 kartalla. Kokeile sit\xE4!"
     m_Metadata:
       m_Items: []
   - m_Id: 2183197097377792
-    m_Localized: "Loistavaa! Kokeile nyt k\xE4ytt\xE4\xE4 taitoa \"Tehokas korjaus\",
-      joka l\xF6ytyy \"Taidot\"-valikon alta."
+    m_Localized: "Taitojen avulla voit tehd\xE4 erikoistoimintoja. Kokeile \"Tehokas
+      korjaus\" taitoa taitovalikosta."
     m_Metadata:
       m_Items: []
   - m_Id: 2183878097158144
-    m_Localized: "Hienoa! Osaat nyt k\xE4ytt\xE4\xE4 kaikkia pelin perusmekaniikkoja.
-      Ei muuta kuin korjaamaan ongelmia!"
+    m_Localized: "Saat pisteit\xE4 ongelman korjatessasi. Onnea matkaan!"
     m_Metadata:
       m_Items: []
   - m_Id: 2186862029881344
@@ -599,6 +602,10 @@ MonoBehaviour:
   - m_Id: 5048240227282944
     m_Localized: "N\xE4yt\xE4t tiet\xE4v\xE4n jotain jostain. Kykenetk\xF6 auttamaan
       minua?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6900281046388736
+    m_Localized: "Tie Ty\xF6h\xF6n"
     m_Metadata:
       m_Items: []
   references:

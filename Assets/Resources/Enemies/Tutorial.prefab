@@ -111,7 +111,7 @@ MonoBehaviour:
   damage: 5
   expGain: 0
   maxHealth: 50
-  speed: 5
+  speed: 3
   value: 0
   time: 0
   references:

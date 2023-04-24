@@ -239,7 +239,7 @@ MonoBehaviour:
       m_Items:
       - rid: 5325306575037136965
   - m_Id: 29868634218496
-    m_Localized: You received {0} skill.
+    m_Localized: You received "{0}" skill.
     m_Metadata:
       m_Items:
       - rid: 5325306575037136965
@@ -377,23 +377,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2182168184274944
-    m_Localized: First, you can fix problems by using the "Fix" button and then selecting
-      the problem you want to fix. Try it out when it's your turn!
+    m_Localized: "The game\u2019s problem solving is turn-based. First, it is your
+      turn. Use normal problem solving. This option is always available. After your
+      action, your turn ends. When this bar is full, you can act again."
     m_Metadata:
       m_Items: []
   - m_Id: 2182653674962944
-    m_Localized: Great! Next, you can use items from the "Items" menu to restore
-      your motivation. Now try drinking some coffee.
+    m_Localized: The problems deal damage to your motivation on their turn. If you
+      run out of motivation, the situation ends in your defeat. The problems have
+      their own actions. They, too, need to wait for their bars to fill without their
+      turn. Items can do many different things, like restore motivation. You can
+      buy these on the map. Test it out!
     m_Metadata:
       m_Items: []
   - m_Id: 2183197097377792
-    m_Localized: Brilliant! Now try using the skill "Efficient fixing", which can
-      be found under the "Skills" menu.
+    m_Localized: With skills, you can do special actions. Test the skill "Efficient
+      fixing" from the skill menu.
     m_Metadata:
       m_Items: []
   - m_Id: 2183878097158144
-    m_Localized: Great! You now know how to use all the basic mechanics of the game.
-      Let's get to work on fixing problems!
+    m_Localized: You earn points from fixing problems! Good luck!
     m_Metadata:
       m_Items: []
   - m_Id: 2186862029881344
@@ -586,6 +589,10 @@ MonoBehaviour:
   - m_Id: 5048240227282944
     m_Localized: You seem to know something about something. Would you be able to
       help me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6900281046388736
+    m_Localized: "Tie Ty\xF6h\xF6n"
     m_Metadata:
       m_Items: []
   references:

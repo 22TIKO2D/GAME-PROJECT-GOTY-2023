@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 namespace Overworld
 {
@@ -30,25 +31,19 @@ namespace Overworld
 
         private void Start()
         {
-            VisualElement rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
+            this.rootVisual = this.GetComponent<UIDocument>().rootVisualElement;
 
-            rootVisual.Query<Button>("Ok").First().clicked += () =>
+            this.rootVisual.Query<Button>("Ok").First().clicked += () =>
             {
                 // Return back to the main menu when the player beats the game.
                 StartCoroutine(Game.State.MainMenu());
-            };
-
-            // Set translations.
-            this.translation.TableChanged += (table) =>
-            {
-                rootVisual.Query<Button>("Ok").First().text = table["Ok"].Value;
             };
 
             // See if less than 10 hours has passed.
             if (Game.PlayerStats.Time < 600)
             {
                 // Hide by default.
-                rootVisual.visible = false;
+                this.rootVisual.visible = false;
             }
             else
             {
@@ -67,17 +62,17 @@ namespace Overworld
                         .Count() == Game.PlayerStats.Skills.Count();
 
                 // Set the win text and description.
-                rootVisual.Query<Label>("Win").First().text = this.translation.GetTable()[
+                this.rootVisual.Query<Label>("Win").First().text = this.translation.GetTable()[
                     hasWon ? "Win" : "Lose"
                 ].Value;
-                rootVisual.Query<Label>("Desc").First().text = hasWon
+                this.rootVisual.Query<Label>("Desc").First().text = hasWon
                     ? this.translation.GetTable()["Victory"].GetLocalizedString(
                         Game.PlayerStats.Exp
                     )
                     : this.translation.GetTable()["Defeat"].Value;
 
                 // Show the dialog.
-                rootVisual.visible = true;
+                this.rootVisual.visible = true;
 
                 // Hide the canvas.
                 this.canvas.enabled = false;
@@ -91,6 +86,19 @@ namespace Overworld
                 audioSource.clip = hasWon ? this.victoryClip : this.defeatClip;
                 audioSource.Play();
             }
+
+            this.translation.TableChanged += this.OnTableChanged;
+        }
+
+        private void OnDisable()
+        {
+            this.translation.TableChanged -= this.OnTableChanged;
+        }
+
+        /// <summary>Set translations when string table changes.</summary>
+        private void OnTableChanged(StringTable table)
+        {
+            this.rootVisual.Query<Button>("Ok").First().text = table["Ok"].Value;
         }
     }
 }
