@@ -69,32 +69,26 @@ namespace Game
         public static void AddItem(string name, uint count = 1)
         {
             // Add the `count` amount of items.
-            Items[name] = Items.GetValueOrDefault(name, (uint)0) + count;
+            Items[name] = GetItemCount(name) + count;
         }
 
         /// <summary>Get the amount of a specific item.</summary>
-        public static uint GetItemCount(string name)
-        {
+        public static uint GetItemCount(string name) =>
             // Get the item or 0 if we have none of that type.
-            return Items.GetValueOrDefault(name, (uint)0);
-        }
+            Items.GetValueOrDefault(name, (uint)0);
 
         /// <summary>Remove an item from the player.</summary>
         public static void RemoveItem(string name)
         {
             // If we have this type of item.
             if (GetItemCount(name) > 0)
-            {
                 // Remove it.
                 Items[name]--;
-            }
 
             // If we have no items of this type left.
             if (GetItemCount(name) == 0)
-            {
                 // Remove the item.
                 Items.Remove(name);
-            }
         }
 
         /// <summary>Data structure used for saving the player stats.</summary>

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 752716735408331999}
   - component: {fileID: 752716735408331998}
   - component: {fileID: 2579839825449589843}
+  - component: {fileID: 492246159651193555}
+  - component: {fileID: 637721116862282492}
   m_Layer: 0
   m_Name: Donuts
   m_TagString: Untagged
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -807750355
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f2d14357d8d3236c95948cc6cd179a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,3 +113,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.625}
   m_EdgeRadius: 0
+--- !u!58 &492246159651193555
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752716735408331984}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!114 &637721116862282492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752716735408331984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2e2a5b1e73e278783c12aeeb7a0c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - Donut
